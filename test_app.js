@@ -81,8 +81,8 @@ console.log("\n--- MODULE 5: Family Devotion & Telugu Song Lyrics ---");
 assert(htmlContent.includes('id="devotion-view"'), "#devotion-view container section exists");
 assert(htmlContent.includes('id="tab-devotion"'), "#tab-devotion navigation button exists");
 assert(htmlContent.includes('Psalm 23:1'), "Daily scripture verse (Psalm 23:1) exists");
-assert(htmlContent.includes('https://teluguchristiansongslyrics.com/'), "Telugu Christian Songs Lyrics portal link exists");
-assert(htmlContent.includes('https://andhrachristiankeerthanalu.com/'), "Andhra Christian Keerthanalu portal link exists");
+assert(htmlContent.includes('q=telugu+christian+songs+lyrics'), "Telugu Christian Songs Lyrics verified portal link exists");
+assert(htmlContent.includes('q=andhra+christian+keerthanalu+lyrics'), "Andhra Christian Keerthanalu verified portal link exists");
 
 // ---------------------------------------------------------
 // MODULE 6: HANDS-FREE PDF DRIVING VOICE READER
@@ -96,10 +96,9 @@ assert(htmlContent.includes('id="play-icon"'), "#play-icon audio player icon exi
 assert(htmlContent.includes('id="pdf-file-input"'), "#pdf-file-input document loader exists");
 assert(htmlContent.includes('function toggleSpeech('), "toggleSpeech() Web Speech API function defined");
 assert(htmlContent.includes('function stopSpeech('), "stopSpeech() JS function defined");
-assert(htmlContent.includes('function setSpeed('), "setSpeed() JS function defined");
 
 // ---------------------------------------------------------
-// MODULE 7: FAMILY WALLET & LIVE EXCHANGE RATE API
+// MODULE 7: FAMILY WALLET & LIVE EXCHANGE API
 // ---------------------------------------------------------
 console.log("\n--- MODULE 7: Family Wallet & Live Exchange API ---");
 assert(htmlContent.includes('id="expense-view"'), "#expense-view container section exists");

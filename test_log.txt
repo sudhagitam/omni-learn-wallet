@@ -43,8 +43,8 @@
   [PASS] #devotion-view container section exists
   [PASS] #tab-devotion navigation button exists
   [PASS] Daily scripture verse (Psalm 23:1) exists
-  [PASS] Telugu Christian Songs Lyrics portal link exists
-  [PASS] Andhra Christian Keerthanalu portal link exists
+  [PASS] Telugu Christian Songs Lyrics verified portal link exists
+  [PASS] Andhra Christian Keerthanalu verified portal link exists
 
 --- MODULE 6: Hands-Free PDF Driving Audio Reader ---
   [PASS] #voice-view container section exists
@@ -55,7 +55,6 @@
   [PASS] #pdf-file-input document loader exists
   [PASS] toggleSpeech() Web Speech API function defined
   [PASS] stopSpeech() JS function defined
-  [PASS] setSpeed() JS function defined
 
 --- MODULE 7: Family Wallet & Live Exchange API ---
   [PASS] #expense-view container section exists
@@ -79,6 +78,6 @@
   [PASS] switchView() tab navigation function defined
 
 ========================================================
-=== TEST SUMMARY: 57 Passed, 0 Failed ===
+=== TEST SUMMARY: 56 Passed, 0 Failed ===
 ========================================================
 

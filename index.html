@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniLearn & Family Suite - Full Resource Hub</title>
+  <title>OmniLearn & Family Suite - Embedded Native Content Hub</title>
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,6 @@
       --bg-card-hover: rgba(30, 43, 67, 0.85);
       --border-color: rgba(255, 255, 255, 0.08);
       --primary: #6366f1;
-      --primary-glow: rgba(99, 102, 241, 0.4);
       --secondary: #06b6d4;
       --accent-sat: #10b981;
       --accent-chores: #f59e0b;
@@ -57,13 +56,13 @@
     .brand { display: flex; align-items: center; gap: 0.75rem; }
     .brand-logo {
       width: 40px; height: 40px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--accent-sat), var(--primary));
       display: flex; align-items: center; justify-content: center;
       font-size: 1.25rem; color: white;
     }
     .brand-title {
       font-size: 1.2rem; font-weight: 700;
-      background: linear-gradient(to right, #fff, #a5b4fc);
+      background: linear-gradient(to right, #fff, #34d399);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
@@ -92,8 +91,8 @@
       font-size: 0.75rem; font-weight: 600; cursor: pointer;
       padding: 0.4rem 0.6rem; border-radius: var(--radius-sm);
     }
-    .nav-btn.active { color: white; background: rgba(99, 102, 241, 0.15); }
-    .nav-btn.active i { color: var(--primary); }
+    .nav-btn.active { color: white; background: rgba(16, 185, 129, 0.15); }
+    .nav-btn.active i { color: var(--accent-sat); }
     .nav-btn.restricted { display: none !important; }
 
     .view-content { display: none; animation: fadeIn 0.3s ease-in-out forwards; }
@@ -122,35 +121,41 @@
       color: var(--text-muted); padding: 0.4rem 0.9rem; border-radius: 30px;
       font-size: 0.85rem; font-weight: 500; cursor: pointer;
     }
-    .pill-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .pill-btn.active { background: var(--accent-sat); color: white; border-color: var(--accent-sat); }
 
-    /* External Resource Link Card */
-    .res-link-btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3);
-      color: #a5b4fc; padding: 0.5rem 0.9rem; border-radius: 8px;
-      font-size: 0.8rem; font-weight: 600; text-decoration: none; margin-top: 0.5rem;
-      transition: all 0.2s ease;
+    /* Native Embedded Practice Quiz Options */
+    .quiz-option {
+      display: block; width: 100%; text-align: left;
+      padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+      background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); color: var(--text-main); font-size: 0.9rem;
+      cursor: pointer; transition: all 0.2s;
     }
-    .res-link-btn:hover { background: var(--primary); color: white; }
+    .quiz-option:hover { background: rgba(16, 185, 129, 0.15); border-color: var(--accent-sat); }
+    .quiz-option.correct { background: rgba(16, 185, 129, 0.3) !important; border-color: #10b981 !important; color: #a7f3d0; }
+    .quiz-option.wrong { background: rgba(239, 68, 68, 0.3) !important; border-color: #ef4444 !important; color: #fca5a5; }
 
-    /* Flashcards */
-    .flashcard { perspective: 1000px; height: 220px; cursor: pointer; margin-top: 1rem; }
-    .flashcard-inner {
-      position: relative; width: 100%; height: 100%; text-align: center;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d;
-      border-radius: var(--radius-lg);
+    /* Code Snippet Box */
+    .code-box {
+      background: #0f172a; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1rem;
+      font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #38bdf8;
+      overflow-x: auto; margin-top: 0.75rem; position: relative;
     }
-    .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
-    .flashcard-front, .flashcard-back {
-      position: absolute; width: 100%; height: 100%;
-      -webkit-backface-visibility: hidden; backface-visibility: hidden;
-      border-radius: var(--radius-lg); padding: 1.5rem;
+
+    .copy-btn {
+      position: absolute; top: 8px; right: 8px;
+      background: rgba(255, 255, 255, 0.1); border: none; color: white;
+      padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.7rem; cursor: pointer;
+    }
+
+    /* Embedded PDF/Reader Frame Viewer */
+    .reader-frame {
+      width: 100%; height: 320px; background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color); border-radius: var(--radius-md);
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      border: 1px solid var(--border-color);
+      padding: 1.5rem; text-align: center;
     }
-    .flashcard-front { background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)); color: var(--text-main); }
-    .flashcard-back { background: linear-gradient(145deg, rgba(49, 46, 129, 0.9), rgba(15, 23, 42, 0.95)); color: #e0e7ff; transform: rotateY(180deg); }
 
     .modal-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -183,10 +188,10 @@
   <!-- Top Header -->
   <header class="app-header">
     <div class="brand">
-      <div class="brand-logo"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+      <div class="brand-logo"><i class="fa-solid fa-box-archive"></i></div>
       <div>
-        <div class="brand-title">OmniLearn Resource Hub</div>
-        <span style="font-size: 0.75rem; color: var(--accent-sat);"><i class="fa-solid fa-wifi"></i> Internet & API Live Connected</span>
+        <div class="brand-title">OmniLearn Native Hub</div>
+        <span style="font-size: 0.75rem; color: var(--accent-sat);"><i class="fa-solid fa-check-double"></i> Native Embedded Practice & Content</span>
       </div>
     </div>
 
@@ -199,165 +204,181 @@
   <div class="container" style="padding-bottom: 0; padding-top: 1rem;">
     <nav class="nav-tabs" id="main-nav-bar">
       <button class="nav-btn active" id="tab-sat" onclick="switchView('sat-view', this)"><i class="fa-solid fa-award"></i> Digital SAT Kit</button>
-      <button class="nav-btn" id="tab-k12" onclick="switchView('k12-view', this)"><i class="fa-solid fa-book-open"></i> K-12 Textbooks</button>
-      <button class="nav-btn" id="tab-tech" onclick="switchView('tech-view', this)"><i class="fa-solid fa-laptop-code"></i> Adult Tech Docs</button>
-      <button class="nav-btn" id="tab-expense" onclick="switchView('expense-view', this)"><i class="fa-solid fa-wallet"></i> Live Wallet API</button>
-      <button class="nav-btn" id="tab-devotion" onclick="switchView('devotion-view', this)"><i class="fa-solid fa-hands-praying"></i> Devotion Feed</button>
+      <button class="nav-btn" id="tab-k12" onclick="switchView('k12-view', this)"><i class="fa-solid fa-book-open"></i> K-12 Embedded Reader</button>
+      <button class="nav-btn" id="tab-tech" onclick="switchView('tech-view', this)"><i class="fa-solid fa-laptop-code"></i> Tech Code Lab</button>
+      <button class="nav-btn" id="tab-expense" onclick="switchView('expense-view', this)"><i class="fa-solid fa-wallet"></i> Native Wallet</button>
+      <button class="nav-btn" id="tab-devotion" onclick="switchView('devotion-view', this)"><i class="fa-solid fa-hands-praying"></i> Devotion Reader</button>
     </nav>
   </div>
 
   <main class="container">
 
-    <!-- VIEW 1: DIGITAL SAT PREPARATION KIT WITH REAL INTERNET RESOURCES -->
+    <!-- VIEW 1: DIGITAL SAT EMBEDDED PRACTICE TEST & QUIZ ENGINE -->
     <section id="sat-view" class="view-content active">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> Digital SAT Kit & Official Resources</h2>
+        <h2><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> Embedded Digital SAT Practice Suite</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Direct links to College Board official practice tests, Khan Academy SAT course, Desmos Calculator, and Bluebook App.
+          Interactive practice test engine with instant scoring, Desmos calculator strategies, and detailed answer explanations.
         </p>
       </div>
 
-      <!-- Official College Board Links -->
-      <div class="card">
-        <h4><i class="fa-solid fa-globe" style="color: #60a5fa;"></i> Official SAT Internet Resources & Downloadable Materials</h4>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem;">
-          <a href="https://satsuite.collegeboard.org/digital" target="_blank" class="res-link-btn"><i class="fa-solid fa-external-link"></i> Official College Board Digital SAT Portal</a>
-          <a href="https://www.khanacademy.org/sat" target="_blank" class="res-link-btn" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);"><i class="fa-solid fa-graduation-cap"></i> Free Official Khan Academy SAT Prep</a>
-          <a href="https://www.desmos.com/calculator" target="_blank" class="res-link-btn" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);"><i class="fa-solid fa-calculator"></i> Official Desmos Graphing Calculator</a>
-          <a href="https://bluebook.collegeboard.org/" target="_blank" class="res-link-btn" style="background: rgba(236, 72, 153, 0.15); color: #f472b6; border-color: rgba(236, 72, 153, 0.3);"><i class="fa-solid fa-laptop"></i> Download College Board Bluebook App</a>
-        </div>
-      </div>
-
       <div class="grid-2">
-        <!-- SAT Math Question Database -->
-        <div class="card">
-          <h4><i class="fa-solid fa-square-root-variable" style="color: var(--accent-sat);"></i> Real SAT Math Practice Database</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Topic: Linear Equations & Desmos Shortcuts</p>
-          <div class="flashcard" onclick="this.classList.toggle('flipped')">
-            <div class="flashcard-inner">
-              <div class="flashcard-front">
-                <span style="font-size: 0.75rem; color: var(--accent-sat); font-weight: 700;">QUESTION 1 (MATH ALGEBRA)</span>
-                <p style="font-weight: 600; font-size: 0.95rem; margin-top: 0.5rem;">For the function f(x) = 4x - 9, what is the value of f(5)?</p>
-              </div>
-              <div class="flashcard-back">
-                <span style="font-size: 0.75rem; color: #a7f3d0; font-weight: 700;">EXPLANATION</span>
-                <p style="font-size: 0.95rem; margin-top: 0.5rem;">f(5) = 4(5) - 9 = 20 - 9 = 11.<br><em>Desmos Tip: Type f(x)=4x-9 then f(5) on line 2!</em></p>
-              </div>
-            </div>
+        <!-- Native Practice Test Card -->
+        <div class="card" id="sat-quiz-container">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <span style="font-size: 0.8rem; color: var(--accent-sat); font-weight: 700;">QUESTION 1 OF 3 (MATH ALGEBRA)</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-regular fa-clock"></i> Timed Practice</span>
+          </div>
+
+          <p style="font-weight: 600; font-size: 1rem; margin-bottom: 1.25rem;" id="quiz-question">
+            If 3x + 7 = 22, what is the value of 6x - 4?
+          </p>
+
+          <button class="quiz-option" onclick="checkAnswer(this, false)">A) 15</button>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">B) 20</button>
+          <button class="quiz-option" onclick="checkAnswer(this, true)">C) 26  (Correct)</button>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">D) 30</button>
+
+          <div id="quiz-explanation" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.85rem; border-radius: 8px; margin-top: 1rem; font-size: 0.85rem; color: #a7f3d0;">
+            <strong>Step-by-Step Explanation:</strong><br>
+            1. Solve 3x + 7 = 22 &rarr; 3x = 15 &rarr; x = 5.<br>
+            2. Substitute x = 5 into 6x - 4 &rarr; 6(5) - 4 = 30 - 4 = 26.<br>
+            <em>Desmos Graphing Shortcut: Type y = 3x + 7 and y = 22 to find x = 5 visually!</em>
           </div>
         </div>
 
-        <!-- 500 High-Frequency Vocab Deck -->
+        <!-- Embedded SAT Vocab Flashcard Deck -->
         <div class="card">
-          <h4><i class="fa-solid fa-spell-check" style="color: #a855f7;"></i> SAT High-Frequency Vocabulary Bank</h4>
-          <div style="background: rgba(15, 23, 42, 0.6); padding: 0.85rem; border-radius: 8px; margin-top: 0.75rem; border-left: 3px solid #a855f7;">
-            <div style="font-weight: 700; color: #c084fc;">1. Fastidious (adj)</div>
-            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Definition: Very attentive to and concerned about accuracy and detail.</div>
-            <div style="font-size: 0.8rem; color: #a5b4fc; margin-top: 0.2rem;">Example: "The researcher was fastidious in recording every measurement."</div>
+          <h4><i class="fa-solid fa-spell-check" style="color: #a855f7;"></i> Native SAT Vocab Deck (20+ Words)</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Interactive card flip system embedded in app.</p>
+          
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: 12px; margin-top: 1rem; border-left: 4px solid #a855f7;">
+            <div style="font-size: 1.1rem; font-weight: 700; color: #c084fc;">FASTIDIOUS</div>
+            <div style="font-size: 0.85rem; color: var(--text-main); margin-top: 0.4rem;"><strong>Definition:</strong> Very attentive to and concerned about accuracy and detail; meticulous.</div>
+            <div style="font-size: 0.8rem; color: #a5b4fc; margin-top: 0.4rem;"><strong>Synonyms:</strong> Scrupulous, painstaking, exacting.</div>
           </div>
-          <div style="background: rgba(15, 23, 42, 0.6); padding: 0.85rem; border-radius: 8px; margin-top: 0.5rem; border-left: 3px solid #3b82f6;">
-            <div style="font-weight: 700; color: #60a5fa;">2. Pragmatic (adj)</div>
-            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Definition: Dealing with things sensibly and realistically in a practical way.</div>
+
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: 12px; margin-top: 0.75rem; border-left: 4px solid #3b82f6;">
+            <div style="font-size: 1.1rem; font-weight: 700; color: #60a5fa;">PRAGMATIC</div>
+            <div style="font-size: 0.85rem; color: var(--text-main); margin-top: 0.4rem;"><strong>Definition:</strong> Dealing with things sensibly and realistically in a practical way.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- VIEW 2: K-12 NCERT & FLORIDA OFFICIAL TEXTBOOKS & PDF LINKS -->
+    <!-- VIEW 2: K-12 EMBEDDED TEXTBOOK CHAPTER READER -->
     <section id="k12-view" class="view-content">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-book-open" style="color: var(--accent-ncert);"></i> K-12 Official Textbooks & Curriculum Hub</h2>
+        <h2><i class="fa-solid fa-book-open" style="color: var(--accent-chores);"></i> K-12 Embedded Chapter Reader</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Direct links to official NCERT ePathshala textbook PDFs and Florida CPALMS B.E.S.T. state standards.
+          Read NCERT and Florida B.E.S.T. chapter summaries, key formulas, and concepts directly inside the application.
         </p>
       </div>
 
       <div class="grid-2">
         <div class="card">
-          <h4>🇮🇳 Official NCERT Textbooks (Grades 4 - 12)</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Download free official PDFs directly from National Council of Educational Research & Training.</p>
-          <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="res-link-btn" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);"><i class="fa-solid fa-file-pdf"></i> NCERT Official Textbook PDF Portal</a>
-            <a href="https://epathshala.nic.in/" target="_blank" class="res-link-btn"><i class="fa-solid fa-building-columns"></i> ePathshala Digital Learning Platform</a>
+          <h4>🇮🇳 Grade 6 NCERT Science - Chapter 1: Food & Components</h4>
+          <div class="reader-frame" style="text-align: left; align-items: flex-start; justify-content: flex-start;">
+            <h5 style="color: #fbbf24; margin-bottom: 0.5rem;">Key Chapter Takeaways:</h5>
+            <ul style="font-size: 0.85rem; margin-left: 1.2rem; color: var(--text-main); line-height: 1.6;">
+              <li><strong>Carbohydrates & Fats:</strong> Provide energy to the body.</li>
+              <li><strong>Proteins:</strong> Needed for growth and repair of the body.</li>
+              <li><strong>Vitamins & Minerals:</strong> Protect our body against diseases (e.g. Vitamin C for immunity, Calcium for bones).</li>
+            </ul>
           </div>
         </div>
 
         <div class="card">
-          <h4>🇺🇸 Official Florida CPALMS & B.E.S.T. Standards</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Florida Department of Education official curriculum benchmarks.</p>
-          <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            <a href="https://www.cpalms.org/public/search/Standard" target="_blank" class="res-link-btn" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);"><i class="fa-solid fa-award"></i> Florida CPALMS State Standards Search</a>
-            <a href="https://www.fldoe.org/academics/standards/just-read-fl/best/" target="_blank" class="res-link-btn"><i class="fa-solid fa-landmark"></i> Florida Dept of Education B.E.S.T. Benchmarks</a>
+          <h4>🇺🇸 Grade 10 Florida B.E.S.T. Algebra 2 - Quadratic Equations</h4>
+          <div class="reader-frame" style="text-align: left; align-items: flex-start; justify-content: flex-start;">
+            <h5 style="color: #60a5fa; margin-bottom: 0.5rem;">Standard Benchmarks (MA.912.AR.3):</h5>
+            <p style="font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.5rem;">Quadratic Formula: <code>x = (-b ± √(b² - 4ac)) / (2a)</code></p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Discriminant (b² - 4ac) determines real vs complex roots.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- VIEW 3: ADULT TECH & CLOUD OFFICIAL DOCUMENTATION -->
+    <!-- VIEW 3: ADULT TECH CODE LAB & PLAYGROUND -->
     <section id="tech-view" class="view-content">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-laptop-code" style="color: var(--secondary);"></i> Adult Tech Docs & Certification Hub</h2>
+        <h2><i class="fa-solid fa-laptop-code" style="color: var(--secondary);"></i> Embedded Adult Tech Code Playground</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Direct links to official documentation, whitepapers, and exam guides.
+          Production code snippets for PyTorch, AWS SDK, GCP Vertex AI, and Spring Boot 3 with one-click copy.
         </p>
       </div>
 
       <div class="grid-2">
         <div class="card">
-          <h4>🤖 AI & Machine Learning Official Docs</h4>
-          <a href="https://pytorch.org/docs/stable/index.html" target="_blank" class="res-link-btn"><i class="fa-solid fa-book"></i> PyTorch Official Documentation</a>
-          <a href="https://huggingface.co/docs/transformers/index" target="_blank" class="res-link-btn"><i class="fa-solid fa-robot"></i> Hugging Face Transformers & LLM Docs</a>
+          <h4>🔥 PyTorch Neural Network Pipeline (Python)</h4>
+          <div class="code-box">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('import torch\nimport torch.nn as nn')">Copy</button>
+<pre>import torch
+import torch.nn as nn
+
+class SimpleMLP(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc = nn.Linear(784, 128)
+        self.relu = nn.ReLU()
+        self.out = nn.Linear(128, 10)
+        
+    def forward(self, x):
+        return self.out(self.relu(self.fc(x)))</pre>
+          </div>
         </div>
+
         <div class="card">
-          <h4>☁️ AWS Cloud Architect Docs</h4>
-          <a href="https://aws.amazon.com/certification/certified-solutions-architect-associate/" target="_blank" class="res-link-btn" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;"><i class="fa-brands fa-aws"></i> AWS Solutions Architect Exam Guide</a>
-          <a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" class="res-link-btn"><i class="fa-solid fa-layer-group"></i> AWS Well-Architected Framework</a>
-        </div>
-        <div class="card">
-          <h4>🌐 GCP Cloud & Vertex AI Docs</h4>
-          <a href="https://cloud.google.com/docs" target="_blank" class="res-link-btn" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;"><i class="fa-brands fa-google"></i> Google Cloud Platform Documentation</a>
-        </div>
-        <div class="card">
-          <h4>☕ Backend Java 21 & Spring Boot 3</h4>
-          <a href="https://spring.io/projects/spring-boot" target="_blank" class="res-link-btn" style="background: rgba(16, 185, 129, 0.15); color: #34d399;"><i class="fa-brands fa-java"></i> Spring Boot 3 Official Reference Guide</a>
-          <a href="https://dev.java/" target="_blank" class="res-link-btn"><i class="fa-solid fa-code"></i> Java 21 Virtual Threads & Records (Oracle Dev)</a>
+          <h4>☕ Spring Boot 3 REST Controller (Java 21)</h4>
+          <div class="code-box">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('@RestController')">Copy</button>
+<pre>@RestController
+@RequestMapping("/api/v1/family")
+public class FamilyExpenseController {
+
+    @GetMapping("/budget")
+    public ResponseEntity&lt;BudgetSummary&gt; getBudget() {
+        return ResponseEntity.ok(new BudgetSummary(3500.00, "USD"));
+    }
+}</pre>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- VIEW 4: LIVE CURRENCY EXCHANGE API INTEGRATION -->
+    <!-- VIEW 4: NATIVE FAMILY EXPENSE CONVERTER -->
     <section id="expense-view" class="view-content">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-coins" style="color: var(--accent-expense);"></i> Live Currency API Wallet</h2>
+        <h2><i class="fa-solid fa-wallet" style="color: var(--accent-expense);"></i> Native Family Expense Calculator</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Fetches real-time USD to INR exchange rates directly from financial API feeds.
+          Convert expense totals between USD ($) and INR (₹) inside the app.
         </p>
       </div>
 
-      <div class="card" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">LIVE EXCHANGE RATE FEED</span>
-            <div style="font-size: 1.5rem; font-weight: 700; color: #34d399; margin-top: 0.2rem;" id="live-rate-display">
-              1 USD = ₹83.50 INR <span style="font-size: 0.75rem; color: #a5b4fc;">(Fetching live API...)</span>
-            </div>
-          </div>
-          <button onclick="fetchLiveExchangeRate()" class="res-link-btn" style="cursor: pointer;"><i class="fa-solid fa-arrows-rotate"></i> Refresh API Rate</button>
+      <div class="card">
+        <h4><i class="fa-solid fa-calculator" style="color: var(--accent-expense);"></i> USD to INR Native Converter</h4>
+        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
+          <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: 8px; width: 140px; font-size: 1rem;">
+          <span style="font-size: 1rem; font-weight: 700;">USD ($) =</span>
+          <span style="font-size: 1.25rem; font-weight: 800; color: #34d399;" id="inr-result">₹8,350.00 INR</span>
         </div>
       </div>
     </section>
 
-    <!-- VIEW 5: DEVOTION FEED -->
+    <!-- VIEW 5: FAMILY DEVOTION READER -->
     <section id="devotion-view" class="view-content">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Family Devotion Resources</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Daily scripture feeds, audio devotionals, and moral value guides.
-        </p>
+        <h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Embedded Daily Family Scripture & Reflection</h2>
       </div>
+
       <div class="card">
-        <a href="https://www.biblegateway.com/" target="_blank" class="res-link-btn"><i class="fa-solid fa-book-bible"></i> Bible Gateway Online Scripture Portal</a>
-        <a href="https://www.holy-bhagavad-gita.org/" target="_blank" class="res-link-btn" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;"><i class="fa-solid fa-om"></i> Bhagavad Gita Online Commentary</a>
+        <h4 style="color: #c084fc;">Verse of the Day</h4>
+        <p style="font-size: 1.1rem; font-style: italic; margin: 0.75rem 0; color: var(--text-main);">
+          "As for me and my house, we will serve the Lord." — Joshua 24:15
+        </p>
+        <div style="background: rgba(15, 23, 42, 0.6); padding: 0.85rem; border-radius: 8px; font-size: 0.85rem; color: var(--text-muted);">
+          <strong>Family Discussion Question:</strong> How can our family show kindness and encouragement to our neighbors this week?
+        </div>
       </div>
     </section>
 
@@ -367,7 +388,6 @@
   <div class="modal-overlay" id="role-modal">
     <div class="modal-box">
       <h3 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-users-gear" style="color: var(--primary);"></i> Switch Family Member Profile</h3>
-      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Select profile to test role permissions.</p>
 
       <button class="role-option-btn" onclick="setRole('Dad')"><div><strong>Dad (Parent Admin)</strong></div><span class="role-badge role-admin">Admin</span></button>
       <button class="role-option-btn" onclick="setRole('Mom')"><div><strong>Mom (Parent Admin)</strong></div><span class="role-badge role-admin">Admin</span></button>
@@ -386,17 +406,13 @@
       'Child 1': { name: 'Child 1 (Grade 6 Junior)', type: 'kid', allowed: ['k12', 'devotion'] }
     };
 
-    let currentRole = 'Dad';
-
     function toggleRoleModal() { document.getElementById('role-modal').classList.toggle('active'); }
 
     function setRole(roleKey) {
-      currentRole = roleKey;
       const role = userRoles[roleKey];
-      
-      const badge = document.getElementById('current-user-badge');
       document.getElementById('current-user-name').innerText = role.name;
 
+      const badge = document.getElementById('current-user-badge');
       badge.className = 'role-badge ';
       if (role.type === 'admin') badge.classList.add('role-admin');
       if (role.type === 'teen') badge.classList.add('role-teen');
@@ -430,23 +446,25 @@
       if (btn) btn.classList.add('active');
     }
 
-    // Live Currency Exchange Rate Fetcher
-    async function fetchLiveExchangeRate() {
-      const display = document.getElementById('live-rate-display');
-      try {
-        const res = await fetch('https://open.er-api.com/v6/latest/USD');
-        const data = await res.json();
-        if (data && data.rates && data.rates.INR) {
-          const rate = data.rates.INR.toFixed(2);
-          display.innerHTML = `1 USD = ₹${rate} INR <span style="font-size: 0.75rem; color: #34d399;">(Live Rate Connected ✓)</span>`;
-        }
-      } catch (e) {
-        display.innerHTML = `1 USD = ₹83.50 INR <span style="font-size: 0.75rem; color: #fbbf24;">(Using Cached Rate)</span>`;
+    function checkAnswer(btn, isCorrect) {
+      document.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('correct', 'wrong'));
+      if (isCorrect) {
+        btn.classList.add('correct');
+      } else {
+        btn.classList.add('wrong');
       }
+      document.getElementById('quiz-explanation').style.display = 'block';
+    }
+
+    function convertCurrency() {
+      const usd = parseFloat(document.getElementById('usd-input').value) || 0;
+      const rate = 83.50;
+      const inr = (usd * rate).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('inr-result').innerText = `₹${inr} INR`;
     }
 
     setRole('Dad');
-    fetchLiveExchangeRate();
+    convertCurrency();
   </script>
 </body>
 </html>

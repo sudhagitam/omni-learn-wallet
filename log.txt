@@ -1,0 +1,31 @@
+=== RUNNING OMNILEARN APPLICATION UNIT TESTS ===
+
+[PASS] View section #voice-view exists in DOM
+[PASS] View section #sat-view exists in DOM
+[PASS] View section #k12-view exists in DOM
+[PASS] View section #tech-view exists in DOM
+[PASS] View section #expense-view exists in DOM
+[PASS] View section #devotion-view exists in DOM
+[PASS] View section #chores-view exists in DOM
+[PASS] Navigation button #tab-voice exists in DOM
+[PASS] Navigation button #tab-sat exists in DOM
+[PASS] Navigation button #tab-k12 exists in DOM
+[PASS] Navigation button #tab-tech exists in DOM
+[PASS] Navigation button #tab-expense exists in DOM
+[PASS] Navigation button #tab-devotion exists in DOM
+[PASS] Navigation button #tab-chores exists in DOM
+[PASS] JavaScript function switchView() is defined
+[FAIL] JavaScript function setRole() is defined
+[FAIL] JavaScript function toggleRoleModal() is defined
+[FAIL] JavaScript function toggleSpeech() is defined
+[FAIL] JavaScript function stopSpeech() is defined
+[FAIL] JavaScript function setSpeed() is defined
+[FAIL] JavaScript function loadAudioText() is defined
+[PASS] JavaScript function convertCurrency() is defined
+[FAIL] JavaScript function checkAnswer() is defined
+[PASS] Currency converter input #usd-input exists
+[PASS] Currency result output #inr-result exists
+[FAIL] Role switcher modal #role-modal exists
+[FAIL] Header user badge #current-user-badge exists
+
+=== TEST SUMMARY: 18 Passed, 9 Failed ===

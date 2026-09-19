@@ -15,19 +15,21 @@
 [PASS] Navigation button #tab-expense exists in DOM
 [PASS] Navigation button #tab-devotion exists in DOM
 [PASS] Navigation button #tab-chores exists in DOM
-[PASS] JavaScript function switchView() is defined
-[PASS] JavaScript function setRole() is defined
-[PASS] JavaScript function toggleRoleModal() is defined
-[PASS] JavaScript function saveToGoogleDrive() is defined
-[PASS] JavaScript function syncAllDocsToGoogleDrive() is defined
-[PASS] JavaScript function handleLockerUpload() is defined
-[PASS] JavaScript function filterLockerDocs() is defined
-[PASS] JavaScript function convertCurrency() is defined
+[PASS] Locker Google Drive status badge exists
+[PASS] SAT Practice Score counter #sat-score-count exists
+[PASS] PDF Driving Voice file input #pdf-file-input exists
 [PASS] Currency converter input #usd-input exists
 [PASS] Currency result output #inr-result exists
 [PASS] Locker search input #locker-search-input exists
 [PASS] Role switcher modal #role-modal exists
-[PASS] Header user badge #current-user-badge exists
+[PASS] JavaScript function switchView() is defined
+[PASS] JavaScript function setRole() is defined
+[PASS] JavaScript function saveToGoogleDrive() is defined
+[PASS] JavaScript function syncAllDocsToGoogleDrive() is defined
+[PASS] JavaScript function toggleSpeech() is defined
+[PASS] JavaScript function checkSatAnswer() is defined
+[PASS] JavaScript function convertCurrency() is defined
+[PASS] JavaScript function fetchLiveCurrencyRate() is defined
 
-=== TEST SUMMARY: 29 Passed, 0 Failed ===
+=== TEST SUMMARY: 31 Passed, 0 Failed ===
 

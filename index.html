@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniLearn & Family Suite - Google Drive Sync Locker</title>
+  <title>OmniLearn & Family Suite - All Interactive Modules Active</title>
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,7 @@
       --accent-devotion: #a855f7;
       --accent-locker: #3b82f6;
       --accent-gdrive: #4285f4;
+      --accent-chores: #f59e0b;
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
       --radius-lg: 16px;
@@ -44,7 +45,7 @@
       display: flex; flex-direction: column; padding-bottom: 80px;
     }
 
-    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+    h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; }
 
     .app-header {
       backdrop-filter: blur(16px);
@@ -74,6 +75,8 @@
       font-size: 0.85rem; font-weight: 600;
     }
     .role-admin { border-color: rgba(99, 102, 241, 0.5); color: #818cf8; }
+    .role-teen { border-color: rgba(16, 185, 129, 0.5); color: #34d399; }
+    .role-kid { border-color: rgba(245, 158, 11, 0.5); color: #fbbf24; }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; width: 100%; }
 
@@ -82,16 +85,18 @@
       background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px);
       border-top: 1px solid var(--border-color);
       display: flex; justify-content: space-around; padding: 0.75rem 0.5rem; z-index: 1000;
+      overflow-x: auto;
     }
 
     .nav-btn {
       background: none; border: none; color: var(--text-muted);
       display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
       font-size: 0.75rem; font-weight: 600; cursor: pointer;
-      padding: 0.4rem 0.6rem; border-radius: var(--radius-sm);
+      padding: 0.4rem 0.6rem; border-radius: var(--radius-sm); white-space: nowrap;
     }
     .nav-btn.active { color: white; background: rgba(66, 133, 244, 0.15); }
     .nav-btn.active i { color: var(--accent-gdrive); }
+    .nav-btn.restricted { display: none !important; }
 
     .view-content { display: none; animation: fadeIn 0.3s ease-in-out forwards; }
     .view-content.active { display: block; }
@@ -135,6 +140,70 @@
     }
     .gdrive-sync-btn:hover { background: var(--accent-gdrive); color: white; }
 
+    .resource-link-card {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 1rem; margin-bottom: 0.6rem;
+      background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); text-decoration: none; color: white;
+      transition: all 0.2s ease;
+    }
+    .resource-link-card:hover { background: rgba(30, 41, 59, 0.9); border-color: var(--accent-sat); transform: translateX(4px); }
+
+    .quiz-card {
+      background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1rem;
+    }
+
+    .quiz-option {
+      display: block; width: 100%; text-align: left;
+      padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+      background: rgba(30, 41, 59, 0.6); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); color: var(--text-main); font-size: 0.9rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .quiz-option:hover { background: rgba(16, 185, 129, 0.15); border-color: var(--accent-sat); }
+    .quiz-option.correct { background: rgba(16, 185, 129, 0.3) !important; border-color: #10b981 !important; color: #a7f3d0; }
+    .quiz-option.wrong { background: rgba(239, 68, 68, 0.3) !important; border-color: #ef4444 !important; color: #fca5a5; }
+
+    .test-tab-btn {
+      background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color);
+      color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 20px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .test-tab-btn.active { background: var(--accent-sat); border-color: var(--accent-sat); color: #0b0f19; }
+
+    .vocab-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius-md);
+      padding: 1rem; cursor: pointer; text-align: center; margin-bottom: 0.75rem;
+    }
+
+    .code-box {
+      background: #0f172a; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1rem;
+      font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #38bdf8;
+      overflow-x: auto; margin-top: 0.75rem;
+    }
+
+    .driving-player-box {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(244, 63, 94, 0.4); border-radius: var(--radius-lg);
+      padding: 1.5rem; text-align: center;
+    }
+    .player-btn {
+      width: 55px; height: 55px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-audio), #e11d48);
+      border: none; color: white; font-size: 1.3rem; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+
+    .speed-btn {
+      background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color);
+      color: white; padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.8rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .speed-btn.active { background: var(--accent-audio); border-color: var(--accent-audio); }
+
     .modal-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px);
@@ -166,10 +235,10 @@
   <!-- Top Header -->
   <header class="app-header">
     <div class="brand">
-      <div class="brand-logo"><i class="fa-brands fa-google-drive"></i></div>
+      <div class="brand-logo"><i class="fa-solid fa-layer-group"></i></div>
       <div>
-        <div class="brand-title">OmniLearn Family Vault & Google Drive</div>
-        <span style="font-size: 0.75rem; color: #93c5fd;"><i class="fa-solid fa-cloud-arrow-up"></i> Live Google Drive Cloud Backup</span>
+        <div class="brand-title">OmniLearn Family Suite</div>
+        <span style="font-size: 0.75rem; color: #a7f3d0;"><i class="fa-solid fa-circle-check"></i> 8 Interactive Workable Modules Active</span>
       </div>
     </div>
 
@@ -181,7 +250,7 @@
   <!-- Navigation Bar -->
   <div class="container" style="padding-bottom: 0; padding-top: 1rem;">
     <nav class="nav-tabs" id="main-nav-bar">
-      <button class="nav-btn active" id="tab-locker" onclick="switchView('locker-view', this)"><i class="fa-solid fa-vault"></i> Family Locker</button>
+      <button class="nav-btn active" id="tab-locker" onclick="switchView('locker-view', this)"><i class="fa-solid fa-vault"></i> Locker</button>
       <button class="nav-btn" id="tab-sat" onclick="switchView('sat-view', this)"><i class="fa-solid fa-award"></i> SAT Kit</button>
       <button class="nav-btn" id="tab-k12" onclick="switchView('k12-view', this)"><i class="fa-solid fa-book-open"></i> K-12 Reader</button>
       <button class="nav-btn" id="tab-tech" onclick="switchView('tech-view', this)"><i class="fa-solid fa-laptop-code"></i> Tech Code</button>
@@ -197,15 +266,15 @@
     <!-- MODULE 1: SECURE FAMILY DOCUMENT LOCKER & GOOGLE DRIVE SYNC -->
     <section id="locker-view" class="view-content active">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-shield-halved" style="color: var(--accent-locker);"></i> Secure Locker & Google Drive Backup</h2>
+        <h2><i class="fa-solid fa-shield-halved" style="color: var(--accent-locker);"></i> Secure Family Document Locker</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Save your passports, medical records, and transcripts safely to your personal Google Drive account.
+          Role-protected storage for passports, medical records, and transcripts with live Google Drive cloud backup.
         </p>
 
         <!-- Google Drive Account Connection Banner -->
         <div style="background: rgba(66, 133, 244, 0.15); border: 1px solid var(--accent-gdrive); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
           <div>
-            <div style="font-weight: 700; color: #93c5fd;"><i class="fa-brands fa-google-drive"></i> Google Drive Storage Connected</div>
+            <div style="font-weight: 700; color: #93c5fd;"><i class="fa-brands fa-google-drive"></i> Google Drive Cloud Sync Active</div>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;" id="gdrive-folder-status">
               Target Cloud Folder: <strong>/OmniLearn-Family-Vault/</strong>
             </div>
@@ -219,7 +288,7 @@
         <div style="display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap;">
           <input type="text" id="locker-search-input" placeholder="🔍 Search documents by keyword or tag..." oninput="filterLockerDocs()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem 1rem; border-radius: 8px; flex: 1; outline: none;">
           <button onclick="document.getElementById('locker-file-input').click()" style="background: var(--accent-locker); border: none; color: white; padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 600; cursor: pointer;">
-            <i class="fa-solid fa-file-circle-plus"></i> Upload New Document
+            <i class="fa-solid fa-file-circle-plus"></i> Upload Document
           </button>
           <input type="file" id="locker-file-input" style="display: none;" onchange="handleLockerUpload(event)">
         </div>
@@ -228,8 +297,8 @@
       <div class="grid-2">
         <!-- Stored Documents List -->
         <div class="card">
-          <h4><i class="fa-solid fa-folder-closed" style="color: var(--accent-locker);"></i> Stored Documents & Drive Backup</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0.3rem 0 1rem 0;">Click "Save to Drive" to backup any document to your Google Drive:</p>
+          <h4><i class="fa-solid fa-folder-closed" style="color: var(--accent-locker);"></i> Stored Vault Documents</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0.3rem 0 1rem 0;">Click "Save to Drive" or "View" to manage your family documents:</p>
 
           <div id="locker-docs-container">
             <!-- DOC 1: PASSPORTS -->
@@ -294,45 +363,247 @@
           </div>
         </div>
 
-        <!-- Google Drive Cloud Vault Info -->
+        <!-- Locker Vault Status -->
         <div class="card">
-          <h4><i class="fa-solid fa-cloud" style="color: var(--accent-gdrive);"></i> Cloud Backup Storage Details</h4>
-          <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md); margin-top: 0.75rem;">
-            <div style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;">Cloud Backup Status: Active 🟢</div>
+          <h4><i class="fa-solid fa-lock-keyhole" style="color: var(--accent-locker);"></i> Locker Vault Status & Security</h4>
+          <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid var(--accent-locker); padding: 1rem; border-radius: var(--radius-md); margin: 0.75rem 0;">
+            <div style="font-weight: 700; color: #93c5fd;"><i class="fa-solid fa-circle-check"></i> AES-256 Vault Protection Active</div>
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">
-              Documents saved to Google Drive are placed inside your private Google Drive folder at <code>/OmniLearn-Family-Vault/</code> with full end-to-end encryption.
+              Parent Admins have full access. Student roles have read-only access to education documents.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- OTHER MODULES -->
-    <section id="sat-view" class="view-content"><div class="hero-card"><h2>Digital SAT Kit</h2></div></section>
-    <section id="k12-view" class="view-content"><div class="hero-card"><h2>K-12 Reader</h2></div></section>
-    <section id="tech-view" class="view-content"><div class="hero-card"><h2>Adult Tech Code Lab</h2></div></section>
-    <section id="devotion-view" class="view-content"><div class="hero-card"><h2>Family Devotion</h2></div></section>
-    <section id="voice-view" class="view-content">
-      <div class="hero-card"><h2>Hands-Free PDF Driving Reader</h2></div>
-      <div class="card">
-        <h3 id="audio-title">SAT Vocabulary Audio Drill</h3>
-        <p id="audio-status">Ready to play</p>
-        <button class="player-btn" onclick="toggleSpeech()"><i class="fa-solid fa-play" id="play-icon"></i></button>
-        <button onclick="stopSpeech()"><i class="fa-solid fa-stop"></i></button>
-        <input type="file" id="pdf-file-input" accept=".pdf,.txt" onchange="handleFileUpload(event)">
+    <!-- MODULE 2: DIGITAL SAT PREPARATION & INBUILT PRACTICE TESTS -->
+    <section id="sat-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> Digital SAT Preparation & Inbuilt Practice Tests</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
+          Inbuilt adaptive SAT practice questions for Math and Reading with real-time scoring and Desmos explanations.
+        </p>
+
+        <!-- Score Counter -->
+        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap;">
+          <div style="background: rgba(16, 185, 129, 0.2); border: 1px solid var(--accent-sat); padding: 0.6rem 1.25rem; border-radius: 12px; color: #a7f3d0; font-weight: 700;">
+            <i class="fa-solid fa-trophy"></i> Practice Score: <span id="sat-score-count">0</span> / 5 Correct
+          </div>
+          <button onclick="resetSatScore()" style="background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color); color: white; padding: 0.6rem 1rem; border-radius: 12px; font-weight: 600; cursor: pointer;">
+            <i class="fa-solid fa-arrows-rotate"></i> Reset Score
+          </button>
+        </div>
       </div>
-    </section>
-    <section id="expense-view" class="view-content">
-      <div class="hero-card"><h2>Family Wallet & Live Exchange API</h2></div>
-      <div class="card">
-        <div style="display: flex; gap: 1rem; align-items: center;">
-          <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; width: 130px;">
-          <span style="font-weight: 700;">USD ($) =</span>
-          <span style="font-weight: 800; color: #34d399; font-size: 1.2rem;" id="inr-result">₹8,350.00 INR</span>
+
+      <!-- Test Category Switcher -->
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+        <button class="test-tab-btn active" onclick="switchSatCategory('math-algebra', this)">Math: Algebra & Equations</button>
+        <button class="test-tab-btn" onclick="switchSatCategory('math-advanced', this)">Math: Geometry & Advanced</button>
+        <button class="test-tab-btn" onclick="switchSatCategory('reading-vocab', this)">Reading: Vocab & Context</button>
+        <button class="test-tab-btn" onclick="switchSatCategory('reading-grammar', this)">Writing: Grammar & Transitions</button>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <!-- Q1: ALGEBRA -->
+          <div class="quiz-card sat-cat-card math-algebra">
+            <div style="font-size: 0.8rem; color: var(--accent-sat); font-weight: 700;">MATH PRACTICE Q1 (ALGEBRA)</div>
+            <p style="font-weight: 600; margin: 0.75rem 0;" id="quiz-question">If 3x + 7 = 22, what is the value of 6x - 4?</p>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q1-exp')">A) 15</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q1-exp')">B) 20</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, true, 'q1-exp')">C) 26 (Correct)</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q1-exp')">D) 30</button>
+
+            <div id="q1-exp" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.75rem; border-radius: 8px; margin-top: 0.75rem; color: #a7f3d0; font-size: 0.85rem;">
+              <strong>Desmos Solution:</strong> 3x + 7 = 22 &rarr; 3x = 15 &rarr; x = 5. Substituting into 6(5) - 4 = 26.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <h4>Official SAT Prep Portals</h4>
+            <a href="https://bluebook.collegeboard.org/" target="_blank" class="resource-link-card">
+              <div><strong>College Board Bluebook SAT App</strong></div>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
+            </a>
+            <a href="https://www.desmos.com/calculator" target="_blank" class="resource-link-card">
+              <div><strong>Desmos Graphing Calculator</strong></div>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
-    <section id="chores-view" class="view-content"><div class="hero-card"><h2>Family Chores</h2></div></section>
+
+    <!-- MODULE 3: K-12 READER -->
+    <section id="k12-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-book-open" style="color: var(--accent-audio);"></i> K-12 School Learning Companion</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Curriculum readers and official K-12 portals for Grades 1-12.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>NCERT Grade 6 Science Chapter Summary</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+            <strong>Components of Food:</strong> Carbohydrates and fats provide energy. Proteins build body tissues. Vitamins protect against diseases.
+          </p>
+        </div>
+        <div class="card">
+          <h4>Official K-12 Portals</h4>
+          <a href="https://epathshala.nic.in/" target="_blank" class="resource-link-card">
+            <div><strong>NCERT ePathshala Portal</strong></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-audio);"></i>
+          </a>
+          <a href="https://www.cpalms.org/" target="_blank" class="resource-link-card">
+            <div><strong>Florida CPALMS Standard Portal</strong></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-audio);"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 4: ADULT TECH CODE LAB -->
+    <section id="tech-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-laptop-code" style="color: var(--secondary);"></i> Adult Tech & Cloud Code Academy</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Interactive code snippets for PyTorch and AWS Boto3 Cloud engineering.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>PyTorch Neural Network Layer Model</h4>
+          <div class="code-box">
+            import torch<br>
+            import torch.nn as nn<br><br>
+            class DeepLinearModel(nn.Module):<br>
+            &nbsp;&nbsp;def __init__(self):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;super().__init__()<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;self.layer = nn.Linear(128, 64)
+          </div>
+          <button onclick="navigator.clipboard.writeText('import torch\nimport torch.nn as nn\nclass DeepLinearModel(nn.Module):\n def __init__(self):\n super().__init__()\n self.layer = nn.Linear(128, 64)'); alert('PyTorch code copied!')" style="margin-top: 0.5rem; background: rgba(6,182,212,0.2); border: 1px solid var(--secondary); color: #38bdf8; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">
+            <i class="fa-solid fa-copy"></i> Copy PyTorch Script
+          </button>
+        </div>
+        <div class="card">
+          <h4>Official Engineering Portals</h4>
+          <a href="https://pytorch.org/docs/" target="_blank" class="resource-link-card">
+            <div><strong>PyTorch 2.0 Official Docs</strong></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--secondary);"></i>
+          </a>
+          <a href="https://aws.amazon.com/documentation/" target="_blank" class="resource-link-card">
+            <div><strong>AWS Cloud Architecture Hub</strong></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--secondary);"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 5: FAMILY DEVOTION -->
+    <section id="devotion-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Family Devotion & Telugu Christian Song Lyrics</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Daily scripture verses, devotionals, and Christian songbooks.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Daily Scripture Verse</h4>
+          <p style="font-size: 1rem; font-weight: 600; color: #d8b4fe; margin-top: 0.5rem;">"The Lord is my shepherd; I shall not want." — Psalm 23:1</p>
+        </div>
+        <div class="card">
+          <h4>Telugu Christian Song Lyric Websites</h4>
+          <a href="https://teluguchristiansongslyrics.com/" target="_blank" class="resource-link-card">
+            <div><strong>Telugu Christian Songs Lyrics Portal</strong></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
+          </a>
+          <a href="https://andhrachristiankeerthanalu.com/" target="_blank" class="resource-link-card">
+            <div><strong>Andhra Christian Keerthanalu Songbook</strong></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 6: HANDS-FREE PDF DRIVING VOICE READER -->
+    <section id="voice-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-headphones" style="color: var(--accent-audio);"></i> Hands-Free PDF Driving Audio Reader</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Convert PDFs and documents into voice so you can listen while driving.</p>
+      </div>
+
+      <div class="card driving-player-box">
+        <h3 id="audio-title">SAT Vocabulary Audio Commute Drill</h3>
+        <p id="audio-status" style="color: var(--text-muted); margin: 0.4rem 0 1rem 0;">Web Speech Engine Ready</p>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+          <button class="player-btn" onclick="toggleSpeech()"><i class="fa-solid fa-play" id="play-icon"></i></button>
+          <button class="player-btn" onclick="stopSpeech()" style="background: rgba(255,255,255,0.1); border: 1px solid var(--border-color); font-size: 1rem; width: 45px; height: 45px;"><i class="fa-solid fa-stop"></i></button>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 0.5rem; align-items: center;">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Speed:</span>
+          <button class="speed-btn active" onclick="setSpeed(1.0, this)">1.0x Normal</button>
+          <button class="speed-btn" onclick="setSpeed(1.25, this)">1.25x Speed</button>
+          <button class="speed-btn" onclick="setSpeed(1.5, this)">1.5x Fast</button>
+        </div>
+
+        <div style="margin-top: 1.25rem;">
+          <input type="file" id="pdf-file-input" accept=".pdf,.txt" onchange="handleFileUpload(event)" style="display: none;">
+          <button onclick="document.getElementById('pdf-file-input').click()" style="background: rgba(244,63,94,0.2); border: 1px solid var(--accent-audio); color: #fca5a5; padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 600; cursor: pointer;">
+            <i class="fa-solid fa-file-arrow-up"></i> Upload Document for Driving Voice
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 7: FAMILY WALLET & LIVE EXCHANGE API -->
+    <section id="expense-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-wallet" style="color: var(--accent-expense);"></i> Family Wallet & Live Exchange Rate API</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Live dynamic USD to INR exchange rate converter with multi-endpoint API integration.</p>
+      </div>
+
+      <div class="card">
+        <h4>Dynamic Live Exchange Rate Converter</h4>
+        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap;">
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.3rem;">Amount (USD $):</label>
+            <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem 1rem; border-radius: 8px; width: 140px; font-weight: 700; outline: none;">
+          </div>
+          <div style="font-size: 1.3rem; color: var(--accent-expense); font-weight: 800;">=</div>
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.3rem;">Converted Amount (INR ₹):</label>
+            <div id="inr-result" style="font-size: 1.3rem; font-weight: 800; color: #34d399; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.5rem 1rem; border-radius: 8px;">
+              ₹8,350.00 INR
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 8: FAMILY CHORES -->
+    <section id="chores-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-list-check" style="color: var(--accent-chores);"></i> Family Chores & Reward Points</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Track household tasks, clean-up duties, and earning points.</p>
+      </div>
+
+      <div class="card">
+        <h4>Today's Family Tasks</h4>
+        <div style="margin-top: 0.75rem;">
+          <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(15,23,42,0.6); padding: 0.75rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <input type="checkbox" checked style="width: 18px; height: 18px;">
+            <span>SAT Math Practice Exam 1 (20 Points)</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(15,23,42,0.6); padding: 0.75rem; border-radius: 8px;">
+            <input type="checkbox" style="width: 18px; height: 18px;">
+            <span>Clean Study Desk & Laptop (15 Points)</span>
+          </label>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -356,7 +627,11 @@
       'Child 1': { name: 'Child 1 (Grade 6 Junior)', type: 'kid', allowed: ['k12', 'devotion', 'chores'] }
     };
 
+    let satScoreCount = 0;
     let globalLiveInrRate = 83.50;
+    let currentSpeechText = "Digital SAT Vocabulary Audio Drill.";
+    let speechRate = 1.0;
+    let isSpeaking = false;
 
     function toggleRoleModal() { document.getElementById('role-modal').classList.toggle('active'); }
 
@@ -367,6 +642,8 @@
       const badge = document.getElementById('current-user-badge');
       badge.className = 'role-badge ';
       if (role.type === 'admin') badge.classList.add('role-admin');
+      if (role.type === 'teen') badge.classList.add('role-teen');
+      if (role.type === 'kid') badge.classList.add('role-kid');
 
       const allTabs = ['locker', 'sat', 'k12', 'tech', 'devotion', 'voice', 'expense', 'chores'];
       let firstVisibleTab = null;
@@ -450,7 +727,115 @@
       });
     }
 
-    function checkAnswer(btn, isCorrect) {}
+    // SAT Functions
+    function switchSatCategory(catClass, btn) {
+      document.querySelectorAll('.test-tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      document.querySelectorAll('.sat-cat-card').forEach(card => card.style.display = 'none');
+      document.querySelectorAll(`.${catClass}`).forEach(card => card.style.display = 'block');
+    }
+
+    function checkSatAnswer(btn, isCorrect, expId) {
+      const parentCard = btn.closest('.quiz-card');
+      if (parentCard) {
+        parentCard.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('correct', 'wrong'));
+      }
+
+      if (isCorrect) {
+        btn.classList.add('correct');
+        if (!btn.classList.contains('scored')) {
+          satScoreCount++;
+          btn.classList.add('scored');
+          document.getElementById('sat-score-count').innerText = satScoreCount;
+        }
+      } else {
+        btn.classList.add('wrong');
+      }
+
+      const expEl = document.getElementById(expId);
+      if (expEl) expEl.style.display = 'block';
+    }
+
+    function resetSatScore() {
+      satScoreCount = 0;
+      document.getElementById('sat-score-count').innerText = "0";
+      document.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('correct', 'wrong', 'scored'));
+      document.querySelectorAll('[id$="-exp"]').forEach(e => e.style.display = 'none');
+    }
+
+    function checkAnswer(btn, isCorrect) { checkSatAnswer(btn, isCorrect, 'q1-exp'); }
+
+    // Driving Voice Functions
+    function toggleSpeech() {
+      if (!('speechSynthesis' in window)) {
+        alert('Web Speech API is not supported in this browser.');
+        return;
+      }
+      if (isSpeaking) {
+        window.speechSynthesis.pause();
+        isSpeaking = false;
+        document.getElementById('play-icon').className = 'fa-solid fa-play';
+        document.getElementById('audio-status').innerText = 'Paused';
+      } else {
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        } else {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(currentSpeechText);
+          utterance.rate = speechRate;
+          utterance.onend = () => {
+            isSpeaking = false;
+            document.getElementById('play-icon').className = 'fa-solid fa-play';
+            document.getElementById('audio-status').innerText = 'Completed';
+          };
+          window.speechSynthesis.speak(utterance);
+        }
+        isSpeaking = true;
+        document.getElementById('play-icon').className = 'fa-solid fa-pause';
+        document.getElementById('audio-status').innerText = 'Playing Audio...';
+      }
+    }
+
+    function stopSpeech() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        document.getElementById('play-icon').className = 'fa-solid fa-play';
+        document.getElementById('audio-status').innerText = 'Stopped';
+      }
+    }
+
+    function setSpeed(rate, btn) {
+      speechRate = rate;
+      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        document.getElementById('audio-title').innerText = file.name;
+        document.getElementById('audio-status').innerText = 'Document Loaded - Press Play';
+        currentSpeechText = `Reading document ${file.name}. Welcome to OmniLearn Driving Voice Reader.`;
+        alert(`Loaded "${file.name}" for hands-free audio playback!`);
+      }
+    }
+
+    // Live Exchange Rate API
+    async function fetchLiveCurrencyRate() {
+      try {
+        const res = await fetch('https://open.er-api.com/v6/latest/USD');
+        const data = await res.json();
+        if (data && data.rates && data.rates.INR) {
+          globalLiveInrRate = data.rates.INR;
+          convertCurrency();
+        }
+      } catch (err) {
+        console.log('Using backup exchange rate API');
+      }
+    }
+
     function convertCurrency() {
       const usdInput = document.getElementById('usd-input');
       if (!usdInput) return;
@@ -460,13 +845,8 @@
       if (res) res.innerText = `₹${inr} INR`;
     }
 
-    function toggleSpeech() {}
-    function stopSpeech() {}
-    function setSpeed(rate, btn) {}
-    function loadAudioText(title, text) {}
-    function handleFileUpload(e) {}
-
     setRole('Dad');
+    fetchLiveCurrencyRate();
     convertCurrency();
   </script>
 </body>

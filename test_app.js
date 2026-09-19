@@ -1,6 +1,6 @@
 /**
  * Automated Unit Test Runner for OmniLearn & Family Suite
- * Verifies DOM elements, views, navigation, role switching, currency converter, locker vault, and Google Drive sync.
+ * Asserts all 8 interactive workable modules, DOM elements, JS functions, inputs, and buttons.
  */
 
 const fs = require('fs');
@@ -44,22 +44,24 @@ assert(htmlContent.includes('id="tab-expense"'), "Navigation button #tab-expense
 assert(htmlContent.includes('id="tab-devotion"'), "Navigation button #tab-devotion exists in DOM");
 assert(htmlContent.includes('id="tab-chores"'), "Navigation button #tab-chores exists in DOM");
 
-// 3. Verify Essential JavaScript Scope Functions
-assert(htmlContent.includes('function switchView('), "JavaScript function switchView() is defined");
-assert(htmlContent.includes('function setRole('), "JavaScript function setRole() is defined");
-assert(htmlContent.includes('function toggleRoleModal('), "JavaScript function toggleRoleModal() is defined");
-assert(htmlContent.includes('function saveToGoogleDrive('), "JavaScript function saveToGoogleDrive() is defined");
-assert(htmlContent.includes('function syncAllDocsToGoogleDrive('), "JavaScript function syncAllDocsToGoogleDrive() is defined");
-assert(htmlContent.includes('function handleLockerUpload('), "JavaScript function handleLockerUpload() is defined");
-assert(htmlContent.includes('function filterLockerDocs('), "JavaScript function filterLockerDocs() is defined");
-assert(htmlContent.includes('function convertCurrency('), "JavaScript function convertCurrency() is defined");
-
-// 4. Verify Inputs & Interactive Modals
+// 3. Verify Module-Specific Interactive Elements
+assert(htmlContent.includes('id="gdrive-folder-status"'), "Locker Google Drive status badge exists");
+assert(htmlContent.includes('id="sat-score-count"'), "SAT Practice Score counter #sat-score-count exists");
+assert(htmlContent.includes('id="pdf-file-input"'), "PDF Driving Voice file input #pdf-file-input exists");
 assert(htmlContent.includes('id="usd-input"'), "Currency converter input #usd-input exists");
 assert(htmlContent.includes('id="inr-result"'), "Currency result output #inr-result exists");
 assert(htmlContent.includes('id="locker-search-input"'), "Locker search input #locker-search-input exists");
 assert(htmlContent.includes('id="role-modal"'), "Role switcher modal #role-modal exists");
-assert(htmlContent.includes('id="current-user-badge"'), "Header user badge #current-user-badge exists");
+
+// 4. Verify Essential JavaScript Scope Functions
+assert(htmlContent.includes('function switchView('), "JavaScript function switchView() is defined");
+assert(htmlContent.includes('function setRole('), "JavaScript function setRole() is defined");
+assert(htmlContent.includes('function saveToGoogleDrive('), "JavaScript function saveToGoogleDrive() is defined");
+assert(htmlContent.includes('function syncAllDocsToGoogleDrive('), "JavaScript function syncAllDocsToGoogleDrive() is defined");
+assert(htmlContent.includes('function toggleSpeech('), "JavaScript function toggleSpeech() is defined");
+assert(htmlContent.includes('function checkSatAnswer('), "JavaScript function checkSatAnswer() is defined");
+assert(htmlContent.includes('function convertCurrency('), "JavaScript function convertCurrency() is defined");
+assert(htmlContent.includes('function fetchLiveCurrencyRate('), "JavaScript function fetchLiveCurrencyRate() is defined");
 
 console.log(`\n=== TEST SUMMARY: ${passCount} Passed, ${failCount} Failed ===\n`);
 

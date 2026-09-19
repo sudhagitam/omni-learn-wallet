@@ -1,35 +1,84 @@
-=== RUNNING OMNILEARN APPLICATION UNIT TESTS ===
-[PASS] View section #locker-view exists in DOM
-[PASS] View section #voice-view exists in DOM
-[PASS] View section #sat-view exists in DOM
-[PASS] View section #k12-view exists in DOM
-[PASS] View section #tech-view exists in DOM
-[PASS] View section #expense-view exists in DOM
-[PASS] View section #devotion-view exists in DOM
-[PASS] View section #chores-view exists in DOM
-[PASS] Navigation button #tab-locker exists in DOM
-[PASS] Navigation button #tab-voice exists in DOM
-[PASS] Navigation button #tab-sat exists in DOM
-[PASS] Navigation button #tab-k12 exists in DOM
-[PASS] Navigation button #tab-tech exists in DOM
-[PASS] Navigation button #tab-expense exists in DOM
-[PASS] Navigation button #tab-devotion exists in DOM
-[PASS] Navigation button #tab-chores exists in DOM
-[PASS] Locker Google Drive status badge exists
-[PASS] SAT Practice Score counter #sat-score-count exists
-[PASS] PDF Driving Voice file input #pdf-file-input exists
-[PASS] Currency converter input #usd-input exists
-[PASS] Currency result output #inr-result exists
-[PASS] Locker search input #locker-search-input exists
-[PASS] Role switcher modal #role-modal exists
-[PASS] JavaScript function switchView() is defined
-[PASS] JavaScript function setRole() is defined
-[PASS] JavaScript function saveToGoogleDrive() is defined
-[PASS] JavaScript function syncAllDocsToGoogleDrive() is defined
-[PASS] JavaScript function toggleSpeech() is defined
-[PASS] JavaScript function checkSatAnswer() is defined
-[PASS] JavaScript function convertCurrency() is defined
-[PASS] JavaScript function fetchLiveCurrencyRate() is defined
 
-=== TEST SUMMARY: 31 Passed, 0 Failed ===
+========================================================
+=== OMNILEARN FULL GRANULAR MODULE UNIT TEST SUITE ===
+========================================================
+
+--- MODULE 1: Family Document Locker & Google Drive ---
+  [PASS] #locker-view container section exists
+  [PASS] #tab-locker navigation button exists
+  [PASS] #gdrive-folder-status cloud badge exists
+  [PASS] #locker-search-input search box exists
+  [PASS] #locker-file-input upload input exists
+  [PASS] saveToGoogleDrive() JS function defined
+  [PASS] syncAllDocsToGoogleDrive() JS function defined
+  [PASS] handleLockerUpload() JS function defined
+  [PASS] filterLockerDocs() JS function defined
+
+--- MODULE 2: Digital SAT Prep & Inbuilt Practice Tests ---
+  [PASS] #sat-view container section exists
+  [PASS] #tab-sat navigation button exists
+  [PASS] #sat-score-count live score counter exists
+  [PASS] SAT practice question card exists
+  [PASS] #q1-exp Desmos explanation container exists
+  [PASS] switchSatCategory() JS function defined
+  [PASS] checkSatAnswer() JS function defined
+  [PASS] resetSatScore() JS function defined
+
+--- MODULE 3: K-12 School Learning Companion ---
+  [PASS] #k12-view container section exists
+  [PASS] #tab-k12 navigation button exists
+  [PASS] NCERT Grade 6 Science summary exists
+  [PASS] NCERT ePathshala official portal link exists
+  [PASS] Florida CPALMS official portal link exists
+
+--- MODULE 4: Adult Tech & Cloud Code Lab ---
+  [PASS] #tech-view container section exists
+  [PASS] #tab-tech navigation button exists
+  [PASS] PyTorch interactive code box exists
+  [PASS] One-Click Copy PyTorch script button exists
+  [PASS] PyTorch Official Documentation link exists
+  [PASS] AWS Cloud Architecture Hub link exists
+
+--- MODULE 5: Family Devotion & Telugu Song Lyrics ---
+  [PASS] #devotion-view container section exists
+  [PASS] #tab-devotion navigation button exists
+  [PASS] Daily scripture verse (Psalm 23:1) exists
+  [PASS] Telugu Christian Songs Lyrics portal link exists
+  [PASS] Andhra Christian Keerthanalu portal link exists
+
+--- MODULE 6: Hands-Free PDF Driving Audio Reader ---
+  [PASS] #voice-view container section exists
+  [PASS] #tab-voice navigation button exists
+  [PASS] #audio-title heading exists
+  [PASS] #audio-status label exists
+  [PASS] #play-icon audio player icon exists
+  [PASS] #pdf-file-input document loader exists
+  [PASS] toggleSpeech() Web Speech API function defined
+  [PASS] stopSpeech() JS function defined
+  [PASS] setSpeed() JS function defined
+
+--- MODULE 7: Family Wallet & Live Exchange API ---
+  [PASS] #expense-view container section exists
+  [PASS] #tab-expense navigation button exists
+  [PASS] #usd-input USD currency input exists
+  [PASS] #inr-result INR converted result exists
+  [PASS] convertCurrency() JS function defined
+  [PASS] fetchLiveCurrencyRate() API function defined
+
+--- MODULE 8: Family Chores & Task Tracker ---
+  [PASS] #chores-view container section exists
+  [PASS] #tab-chores navigation button exists
+  [PASS] Today's Family Tasks header exists
+
+--- GLOBAL SYSTEM: RBAC Security & Profile Switcher ---
+  [PASS] #role-modal switcher modal exists
+  [PASS] #current-user-badge header badge exists
+  [PASS] #current-user-name profile label exists
+  [PASS] setRole() RBAC security function defined
+  [PASS] toggleRoleModal() JS function defined
+  [PASS] switchView() tab navigation function defined
+
+========================================================
+=== TEST SUMMARY: 57 Passed, 0 Failed ===
+========================================================
 

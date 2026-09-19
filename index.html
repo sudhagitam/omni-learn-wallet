@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniLearn & Family Life - Complete Interactive Platform</title>
+  <title>OmniLearn & Family Suite - Inbuilt SAT Practice Tests</title>
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,9 +35,9 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(at 90% 90%, rgba(244, 63, 94, 0.12) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+        radial-gradient(at 10% 10%, rgba(16, 185, 129, 0.15) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
       background-attachment: fixed;
       color: var(--text-main); min-height: 100vh;
       display: flex; flex-direction: column; padding-bottom: 80px;
@@ -56,7 +56,7 @@
     .brand { display: flex; align-items: center; gap: 0.75rem; }
     .brand-logo {
       width: 40px; height: 40px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--accent-sat));
+      background: linear-gradient(135deg, var(--accent-sat), var(--primary));
       display: flex; align-items: center; justify-content: center;
       font-size: 1.25rem; color: white;
     }
@@ -91,8 +91,8 @@
       font-size: 0.75rem; font-weight: 600; cursor: pointer;
       padding: 0.4rem 0.6rem; border-radius: var(--radius-sm);
     }
-    .nav-btn.active { color: white; background: rgba(99, 102, 241, 0.15); }
-    .nav-btn.active i { color: var(--primary); }
+    .nav-btn.active { color: white; background: rgba(16, 185, 129, 0.15); }
+    .nav-btn.active i { color: var(--accent-sat); }
     .nav-btn.restricted { display: none !important; }
 
     .view-content { display: none; animation: fadeIn 0.3s ease-in-out forwards; }
@@ -121,13 +121,17 @@
       border-radius: var(--radius-md); text-decoration: none; color: white;
       transition: all 0.2s ease;
     }
-    .resource-link-card:hover { background: rgba(30, 41, 59, 0.9); border-color: var(--primary); transform: translateX(4px); }
+    .resource-link-card:hover { background: rgba(30, 41, 59, 0.9); border-color: var(--accent-sat); transform: translateX(4px); }
 
-    /* Quiz Option Styling */
+    .quiz-card {
+      background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1rem;
+    }
+
     .quiz-option {
       display: block; width: 100%; text-align: left;
       padding: 0.75rem 1rem; margin-bottom: 0.5rem;
-      background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color);
+      background: rgba(30, 41, 59, 0.6); border: 1px solid var(--border-color);
       border-radius: var(--radius-md); color: var(--text-main); font-size: 0.9rem;
       cursor: pointer; transition: all 0.2s;
     }
@@ -135,55 +139,37 @@
     .quiz-option.correct { background: rgba(16, 185, 129, 0.3) !important; border-color: #10b981 !important; color: #a7f3d0; }
     .quiz-option.wrong { background: rgba(239, 68, 68, 0.3) !important; border-color: #ef4444 !important; color: #fca5a5; }
 
+    .test-tab-btn {
+      background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color);
+      color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 20px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .test-tab-btn.active { background: var(--accent-sat); border-color: var(--accent-sat); color: #0b0f19; }
+
     .vocab-card {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(15, 23, 42, 0.8));
       border: 1px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius-md);
-      padding: 1rem; cursor: pointer; text-align: center; margin-bottom: 0.75rem; transition: transform 0.2s;
+      padding: 1rem; cursor: pointer; text-align: center; margin-bottom: 0.75rem;
     }
-    .vocab-card:hover { transform: scale(1.02); }
 
     .code-box {
       background: #0f172a; border: 1px solid var(--border-color);
       border-radius: var(--radius-md); padding: 1rem;
       font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #38bdf8;
-      overflow-x: auto; margin-top: 0.75rem; position: relative;
+      overflow-x: auto; margin-top: 0.75rem;
     }
 
-    .copy-btn {
-      position: absolute; top: 0.5rem; right: 0.5rem;
-      background: rgba(255, 255, 255, 0.15); border: 1px solid var(--border-color);
-      color: white; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; cursor: pointer;
-    }
-    .copy-btn:hover { background: var(--primary); }
-
-    /* Driving Audio Player */
     .driving-player-box {
       background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
       border: 1px solid rgba(244, 63, 94, 0.4); border-radius: var(--radius-lg);
-      padding: 1.5rem; text-align: center; box-shadow: 0 0 25px rgba(244, 63, 94, 0.15);
+      padding: 1.5rem; text-align: center;
     }
     .player-btn {
-      width: 60px; height: 60px; border-radius: 50%;
+      width: 55px; height: 55px; border-radius: 50%;
       background: linear-gradient(135deg, var(--accent-audio), #e11d48);
-      border: none; color: white; font-size: 1.4rem; cursor: pointer;
+      border: none; color: white; font-size: 1.3rem; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 15px rgba(244, 63, 94, 0.5); transition: transform 0.2s;
     }
-    .player-btn:hover { transform: scale(1.05); }
-
-    .speed-btn {
-      background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color);
-      color: white; padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.8rem;
-      cursor: pointer; font-weight: 600;
-    }
-    .speed-btn.active { background: var(--accent-audio); border-color: var(--accent-audio); }
-
-    .dropzone {
-      border: 2px dashed rgba(244, 63, 94, 0.4); border-radius: var(--radius-md);
-      padding: 1.25rem; text-align: center; background: rgba(15, 23, 42, 0.6);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .dropzone:hover { background: rgba(244, 63, 94, 0.1); border-color: var(--accent-audio); }
 
     .modal-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -216,10 +202,10 @@
   <!-- Top Header -->
   <header class="app-header">
     <div class="brand">
-      <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="brand-logo"><i class="fa-solid fa-award"></i></div>
       <div>
-        <div class="brand-title">OmniLearn Fully Interactive Hub</div>
-        <span style="font-size: 0.75rem; color: #a7f3d0;"><i class="fa-solid fa-circle-check"></i> 100% Workable Modules</span>
+        <div class="brand-title">OmniLearn Digital SAT Suite</div>
+        <span style="font-size: 0.75rem; color: #a7f3d0;"><i class="fa-solid fa-square-check"></i> Inbuilt Practice Tests & Scoring</span>
       </div>
     </div>
 
@@ -231,11 +217,11 @@
   <!-- Navigation Bar -->
   <div class="container" style="padding-bottom: 0; padding-top: 1rem;">
     <nav class="nav-tabs" id="main-nav-bar">
-      <button class="nav-btn active" id="tab-voice" onclick="switchView('voice-view', this)"><i class="fa-solid fa-headphones"></i> PDF Driving Voice</button>
-      <button class="nav-btn" id="tab-sat" onclick="switchView('sat-view', this)"><i class="fa-solid fa-award"></i> SAT Kit</button>
+      <button class="nav-btn active" id="tab-sat" onclick="switchView('sat-view', this)"><i class="fa-solid fa-award"></i> SAT Practice Kit</button>
       <button class="nav-btn" id="tab-k12" onclick="switchView('k12-view', this)"><i class="fa-solid fa-book-open"></i> K-12 Reader</button>
       <button class="nav-btn" id="tab-tech" onclick="switchView('tech-view', this)"><i class="fa-solid fa-laptop-code"></i> Tech Code</button>
       <button class="nav-btn" id="tab-devotion" onclick="switchView('devotion-view', this)"><i class="fa-solid fa-hands-praying"></i> Devotion</button>
+      <button class="nav-btn" id="tab-voice" onclick="switchView('voice-view', this)"><i class="fa-solid fa-headphones"></i> PDF Driving Voice</button>
       <button class="nav-btn" id="tab-expense" onclick="switchView('expense-view', this)"><i class="fa-solid fa-wallet"></i> Wallet API</button>
       <button class="nav-btn" id="tab-chores" onclick="switchView('chores-view', this)"><i class="fa-solid fa-list-check"></i> Chores</button>
     </nav>
@@ -243,306 +229,167 @@
 
   <main class="container">
 
-    <!-- MODULE 1: HANDS-FREE PDF & DOCUMENT DRIVING VOICE READER -->
-    <section id="voice-view" class="view-content active">
+    <!-- MODULE: DIGITAL SAT PREPARATION & INBUILT PRACTICE TESTS -->
+    <section id="sat-view" class="view-content active">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-car" style="color: var(--accent-audio);"></i> Hands-Free PDF & Document-to-Voice Driving Reader</h2>
+        <h2><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> Digital SAT Inbuilt Practice Test Suite</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Upload any PDF textbook or notes to convert text into speech, or listen to pre-loaded audio lessons while driving.
+          Inbuilt adaptive SAT practice questions for Math (Algebra, Geometry, Advanced Math) and Reading & Writing with instant scoring.
         </p>
+
+        <!-- Live Score Counter -->
+        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap;">
+          <div style="background: rgba(16, 185, 129, 0.2); border: 1px solid var(--accent-sat); padding: 0.6rem 1.25rem; border-radius: 12px; color: #a7f3d0; font-weight: 700;">
+            <i class="fa-solid fa-trophy"></i> Practice Score: <span id="sat-score-count">0</span> / 5 Correct
+          </div>
+          <button onclick="resetSatScore()" style="background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color); color: white; padding: 0.6rem 1rem; border-radius: 12px; font-weight: 600; cursor: pointer;">
+            <i class="fa-solid fa-arrows-rotate"></i> Reset Test Score
+          </button>
+        </div>
+      </div>
+
+      <!-- Test Category Switcher -->
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+        <button class="test-tab-btn active" onclick="switchSatCategory('math-algebra', this)">Math: Algebra & Equations</button>
+        <button class="test-tab-btn" onclick="switchSatCategory('math-advanced', this)">Math: Geometry & Advanced</button>
+        <button class="test-tab-btn" onclick="switchSatCategory('reading-vocab', this)">Reading: Vocab & Context</button>
+        <button class="test-tab-btn" onclick="switchSatCategory('reading-grammar', this)">Writing: Grammar & Transitions</button>
       </div>
 
       <div class="grid-2">
-        <!-- Interactive Player Box -->
-        <div class="driving-player-box">
-          <span style="font-size: 0.8rem; color: #fda4af; font-weight: 700; text-transform: uppercase;">DRIVING AUDIO MODE</span>
-          <h3 style="margin: 0.5rem 0 0.25rem 0;" id="audio-title">Digital SAT Vocabulary 15-min Audio Drill</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted);" id="audio-status">Ready to play via Web Speech Engine</p>
+        <!-- Question Stream Container -->
+        <div id="sat-questions-container">
 
-          <!-- Equalizer Simulation -->
-          <div style="margin: 1.25rem 0; display: flex; justify-content: center; align-items: center; gap: 0.4rem; height: 25px;">
-            <div style="width: 4px; height: 12px; background: #fda4af; border-radius: 2px;"></div>
-            <div style="width: 4px; height: 22px; background: #f43f5e; border-radius: 2px;"></div>
-            <div style="width: 4px; height: 25px; background: #fb7185; border-radius: 2px;"></div>
-            <div style="width: 4px; height: 15px; background: #f43f5e; border-radius: 2px;"></div>
+          <!-- QUESTION 1: ALGEBRA -->
+          <div class="quiz-card sat-cat-card math-algebra">
+            <div style="font-size: 0.8rem; color: var(--accent-sat); font-weight: 700;">MATH PRACTICE Q1 (ALGEBRA)</div>
+            <p style="font-weight: 600; margin: 0.75rem 0;" id="quiz-question">If 3x + 7 = 22, what is the value of 6x - 4?</p>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q1-exp')">A) 15</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q1-exp')">B) 20</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, true, 'q1-exp')">C) 26 (Correct)</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q1-exp')">D) 30</button>
+
+            <div id="q1-exp" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.75rem; border-radius: 8px; margin-top: 0.75rem; color: #a7f3d0; font-size: 0.85rem;">
+              <strong>Desmos Solution:</strong> 3x + 7 = 22 &rarr; 3x = 15 &rarr; x = 5. Substituting into 6(5) - 4 = 26.
+            </div>
           </div>
 
-          <div style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
-            <button class="player-btn" onclick="toggleSpeech()" id="play-pause-btn"><i class="fa-solid fa-play" id="play-icon"></i></button>
-            <button onclick="stopSpeech()" style="background: rgba(255,255,255,0.1); border: 1px solid var(--border-color); color: white; width: 45px; height: 45px; border-radius: 50%; cursor: pointer;"><i class="fa-solid fa-stop"></i></button>
+          <!-- QUESTION 2: SYSTEM OF EQUATIONS -->
+          <div class="quiz-card sat-cat-card math-algebra">
+            <div style="font-size: 0.8rem; color: var(--accent-sat); font-weight: 700;">MATH PRACTICE Q2 (SYSTEM OF EQUATIONS)</div>
+            <p style="font-weight: 600; margin: 0.75rem 0;">A system consists of 2x + y = 10 and x - y = 2. What is the value of x?</p>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q2-exp')">A) 2</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, true, 'q2-exp')">B) 4 (Correct)</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q2-exp')">C) 6</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q2-exp')">D) 8</button>
+
+            <div id="q2-exp" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.75rem; border-radius: 8px; margin-top: 0.75rem; color: #a7f3d0; font-size: 0.85rem;">
+              <strong>Desmos Solution:</strong> Add both equations: (2x + y) + (x - y) = 10 + 2 &rarr; 3x = 12 &rarr; x = 4.
+            </div>
           </div>
 
-          <div style="display: flex; justify-content: center; gap: 0.5rem;">
-            <button class="speed-btn active" onclick="setSpeed(1.0, this)">1.0x Normal</button>
-            <button class="speed-btn" onclick="setSpeed(1.25, this)">1.25x Speed</button>
-            <button class="speed-btn" onclick="setSpeed(1.5, this)">1.5x Fast</button>
+          <!-- QUESTION 3: GEOMETRY -->
+          <div class="quiz-card sat-cat-card math-advanced" style="display: none;">
+            <div style="font-size: 0.8rem; color: var(--secondary); font-weight: 700;">MATH PRACTICE Q3 (GEOMETRY & TRIANGLES)</div>
+            <p style="font-weight: 600; margin: 0.75rem 0;">A right triangle has legs of length 6 and 8. What is the perimeter of the triangle?</p>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q3-exp')">A) 18</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q3-exp')">B) 20</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, true, 'q3-exp')">C) 24 (Correct)</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q3-exp')">D) 30</button>
+
+            <div id="q3-exp" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.75rem; border-radius: 8px; margin-top: 0.75rem; color: #a7f3d0; font-size: 0.85rem;">
+              <strong>Solution:</strong> Hypotenuse c = √(6² + 8²) = √(36 + 64) = √100 = 10. Perimeter = 6 + 8 + 10 = 24.
+            </div>
           </div>
+
+          <!-- QUESTION 4: READING VOCABULARY IN CONTEXT -->
+          <div class="quiz-card sat-cat-card reading-vocab" style="display: none;">
+            <div style="font-size: 0.8rem; color: #f472b6; font-weight: 700;">READING PRACTICE Q4 (VOCABULARY IN CONTEXT)</div>
+            <p style="font-weight: 600; margin: 0.75rem 0;">"The scientist remained <u>pragmatic</u> despite emotional pressure." What is the closest meaning of pragmatic?</p>
+            <button class="quiz-option" onclick="checkSatAnswer(this, true, 'q4-exp')">A) Practical & Realistic (Correct)</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q4-exp')">B) Aggressive</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q4-exp')">C) Unpredictable</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q4-exp')">D) Hesitant</button>
+
+            <div id="q4-exp" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.75rem; border-radius: 8px; margin-top: 0.75rem; color: #a7f3d0; font-size: 0.85rem;">
+              <strong>Explanation:</strong> Pragmatic means dealing with matters sensibly and realistically based on practical considerations.
+            </div>
+          </div>
+
+          <!-- QUESTION 5: WRITING GRAMMAR & TRANSITIONS -->
+          <div class="quiz-card sat-cat-card reading-grammar" style="display: none;">
+            <div style="font-size: 0.8rem; color: var(--accent-devotion); font-weight: 700;">WRITING PRACTICE Q5 (SENTENCE TRANSITIONS)</div>
+            <p style="font-weight: 600; margin: 0.75rem 0;">Solar panels generate clean electricity during sunny days; ______, energy storage batteries are required for nighttime power.</p>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q5-exp')">A) for instance</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, true, 'q5-exp')">B) however (Correct)</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q5-exp')">C) similarly</button>
+            <button class="quiz-option" onclick="checkSatAnswer(this, false, 'q5-exp')">D) as a result</button>
+
+            <div id="q5-exp" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.75rem; border-radius: 8px; margin-top: 0.75rem; color: #a7f3d0; font-size: 0.85rem;">
+              <strong>Explanation:</strong> "However" correctly establishes a contrast between daytime solar generation and nighttime battery storage needs.
+            </div>
+          </div>
+
         </div>
 
-        <!-- File Upload & Playlists -->
-        <div class="card">
-          <h4><i class="fa-solid fa-file-arrow-up" style="color: var(--accent-audio);"></i> Upload PDF or Select Playlist</h4>
-          
-          <div class="dropzone" style="margin: 1rem 0;" onclick="document.getElementById('pdf-file-input').click()">
-            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 2rem; color: var(--accent-audio); margin-bottom: 0.4rem;"></i>
-            <div style="font-weight: 600; font-size: 0.9rem;">Click to Upload PDF or Text File</div>
-            <p style="font-size: 0.75rem; color: var(--text-muted);">Converts text to voice for car audio playback</p>
-            <input type="file" id="pdf-file-input" accept=".pdf,.txt" style="display: none;" onchange="handleFileUpload(event)">
+        <!-- Right Sidebar Portals -->
+        <div>
+          <div class="card">
+            <h4><i class="fa-solid fa-graduation-cap" style="color: var(--accent-sat);"></i> Official SAT Prep Portals</h4>
+            <a href="https://bluebook.collegeboard.org/" target="_blank" class="resource-link-card">
+              <div><strong>College Board Bluebook SAT App</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Download Official Full Digital Practice Tests</div></div>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
+            </a>
+            <a href="https://www.desmos.com/calculator" target="_blank" class="resource-link-card">
+              <div><strong>Desmos Graphing Calculator</strong><div style="font-size: 0.75rem; color: var(--text-muted);">In-App SAT Exam Calculator</div></div>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
+            </a>
+            <a href="https://www.khanacademy.org/sat" target="_blank" class="resource-link-card">
+              <div><strong>Khan Academy Official SAT Prep</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Free Personal Study Plan & Lessons</div></div>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
+            </a>
           </div>
 
-          <h5 style="color: var(--text-muted); margin-bottom: 0.5rem;">Pre-Loaded Driving Lessons:</h5>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-            <button onclick="loadAudioText('SAT Vocab Drill', 'Fastidious means meticulous. Pragmatic means practical. Ephemeral means short lived.')" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; text-align: left; cursor: pointer;">
-              <i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> <strong>SAT Vocab 15-min Audio Drill</strong>
-            </button>
-            <button onclick="loadAudioText('AWS Architect Overview', 'AWS EC2 provides resizable compute capacity. S3 provides object storage with 99.999999999% durability.')" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; text-align: left; cursor: pointer;">
-              <i class="fa-brands fa-aws" style="color: #f59e0b;"></i> <strong>AWS Solutions Architect Audio Summary</strong>
-            </button>
-            <button onclick="loadAudioText('NCERT Grade 6 Science', 'Carbohydrates and fats provide energy. Proteins build and repair body tissue.')" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; text-align: left; cursor: pointer;">
-              <i class="fa-solid fa-flask" style="color: var(--secondary);"></i> <strong>NCERT Science Grade 6 Audio Chapter</strong>
-            </button>
+          <div class="card">
+            <h4>High-Frequency Vocabulary Cards</h4>
+            <div class="vocab-card" onclick="this.innerHTML = '<strong>FASTIDIOUS</strong>: Very attentive to accuracy and detail; meticulous.'">
+              <span style="font-size: 0.75rem; color: var(--accent-sat);">CLICK TO FLIP</span>
+              <div style="font-size: 1.1rem; font-weight: 700;">Fastidious</div>
+            </div>
+            <div class="vocab-card" onclick="this.innerHTML = '<strong>EPHEMERAL</strong>: Lasting for a very short time; fleeting.'">
+              <span style="font-size: 0.75rem; color: var(--accent-sat);">CLICK TO FLIP</span>
+              <div style="font-size: 1.1rem; font-weight: 700;">Ephemeral</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- MODULE 2: DIGITAL SAT PREPARATION SUITE -->
-    <section id="sat-view" class="view-content">
-      <div class="hero-card">
-        <h2><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> Digital SAT Preparation Suite</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Interactive SAT Math & Reading practice questions, flip vocab cards, score estimator, and official College Board links.
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <!-- Interactive Quiz Questions -->
-        <div class="card">
-          <div style="font-size: 0.8rem; color: var(--accent-sat); font-weight: 700;">QUESTION 1 (MATH ALGEBRA)</div>
-          <p style="font-weight: 600; margin: 0.75rem 0;" id="quiz-question">If 3x + 7 = 22, what is the value of 6x - 4?</p>
-          <button class="quiz-option" onclick="checkAnswer(this, false)">A) 15</button>
-          <button class="quiz-option" onclick="checkAnswer(this, false)">B) 20</button>
-          <button class="quiz-option" onclick="checkAnswer(this, true)">C) 26 (Correct)</button>
-          <button class="quiz-option" onclick="checkAnswer(this, false)">D) 30</button>
-
-          <div id="quiz-explanation" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.75rem; border-radius: 8px; margin-top: 0.75rem; color: #a7f3d0; font-size: 0.85rem;">
-            <strong>Step-by-Step Solution:</strong><br>
-            1. 3x + 7 = 22 &rarr; 3x = 15 &rarr; x = 5.<br>
-            2. Substitute x = 5 into 6x - 4 &rarr; 6(5) - 4 = 30 - 4 = <strong>26</strong>.
-          </div>
-
-          <h5 style="margin-top: 1.5rem; color: var(--text-muted);">High-Frequency SAT Vocabulary Flip Cards:</h5>
-          <div class="vocab-card" onclick="this.innerHTML = '<strong>FASTIDIOUS</strong>: Very attentive to accuracy and detail; meticulous.'">
-            <span style="font-size: 0.75rem; color: var(--accent-sat);">CLICK TO FLIP</span>
-            <div style="font-size: 1.1rem; font-weight: 700;">Fastidious</div>
-          </div>
-          <div class="vocab-card" onclick="this.innerHTML = '<strong>PRAGMATIC</strong>: Dealing with things sensibly and realistically; practical.'">
-            <span style="font-size: 0.75rem; color: var(--accent-sat);">CLICK TO FLIP</span>
-            <div style="font-size: 1.1rem; font-weight: 700;">Pragmatic</div>
-          </div>
-        </div>
-
-        <!-- Official SAT Resources Portals -->
-        <div class="card">
-          <h4><i class="fa-solid fa-graduation-cap" style="color: var(--accent-sat);"></i> Official SAT Portals & Resources</h4>
-          <a href="https://bluebook.collegeboard.org/" target="_blank" class="resource-link-card">
-            <div><strong>College Board Bluebook SAT App</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Official Digital SAT Exam Software</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
-          </a>
-          <a href="https://www.desmos.com/calculator" target="_blank" class="resource-link-card">
-            <div><strong>Desmos Graphing Calculator</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Official In-App Graphing Calculator</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
-          </a>
-          <a href="https://www.khanacademy.org/sat" target="_blank" class="resource-link-card">
-            <div><strong>Khan Academy Official SAT Prep</strong><div style="font-size: 0.75rem; color: var(--text-muted);">100% Free Practice Drills</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- MODULE 3: K-12 SCHOOL LEARNING COMPANION -->
-    <section id="k12-view" class="view-content">
-      <div class="hero-card">
-        <h2><i class="fa-solid fa-book-open" style="color: #fbbf24;"></i> K-12 School Learning Companion (Grades 4-12)</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          NCERT India and Florida B.E.S.T. Standards chapter summaries, formulas, and digital textbook portals.
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h4><i class="fa-solid fa-book" style="color: #fbbf24;"></i> Interactive Textbook Chapter Summaries</h4>
-          
-          <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md); margin: 0.75rem 0;">
-            <div style="font-size: 0.8rem; color: #fbbf24; font-weight: 700;">🇮🇳 NCERT GRADE 6 SCIENCE (CHAPTER 1)</div>
-            <h5 style="margin: 0.3rem 0;">Components of Food</h5>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">
-              • Carbohydrates & Fats provide body energy.<br>
-              • Proteins build and repair body tissue.<br>
-              • Vitamin C boosts immunity; Vitamin D builds strong bones.
-            </p>
-          </div>
-
-          <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
-            <div style="font-size: 0.8rem; color: var(--secondary); font-weight: 700;">🇺🇸 FLORIDA B.E.S.T. ALGEBRA 2</div>
-            <h5 style="margin: 0.3rem 0;">Quadratic Functions & Parabolas</h5>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">
-              Standard Form: y = ax² + bx + c<br>
-              Quadratic Formula: x = (-b ± √(b² - 4ac)) / (2a)
-            </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4><i class="fa-solid fa-building-columns" style="color: #fbbf24;"></i> Official K-12 Government Portals</h4>
-          <a href="https://ncert.nic.in/textbook.php" target="_blank" class="resource-link-card">
-            <div><strong>NCERT ePathshala Digital Textbooks</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Free Class 1-12 NCERT PDFs</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: #fbbf24;"></i>
-          </a>
-          <a href="https://diksha.gov.in/" target="_blank" class="resource-link-card">
-            <div><strong>DIKSHA National Education Portal</strong><div style="font-size: 0.75rem; color: var(--text-muted);">National Digital Platform for India</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: #fbbf24;"></i>
-          </a>
-          <a href="https://www.cpalms.org/" target="_blank" class="resource-link-card">
-            <div><strong>Florida CPALMS B.E.S.T. Portal</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Official Florida K-12 Standards</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: #fbbf24;"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- MODULE 4: ADULT TECH CODE LAB -->
-    <section id="tech-view" class="view-content">
-      <div class="hero-card">
-        <h2><i class="fa-solid fa-laptop-code" style="color: var(--secondary);"></i> Adult Tech & Cloud Engineer Academy</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Production code snippet playgrounds for PyTorch, AWS, GCP, and Spring Boot 3 with one-click copy buttons.
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h4><i class="fa-solid fa-code" style="color: var(--secondary);"></i> PyTorch & AI Deep Learning Model</h4>
-          <div class="code-box">
-            <button class="copy-btn" onclick="copyCode('pytorch-code')">Copy</button>
-<pre id="pytorch-code">import torch
-import torch.nn as nn
-
-# Linear Model Layer
-model = nn.Linear(784, 10)
-x = torch.randn(32, 784)
-output = model(x)
-print("Output shape:", output.shape)</pre>
-          </div>
-
-          <h4 style="margin-top: 1.25rem;"><i class="fa-brands fa-aws" style="color: #f59e0b;"></i> AWS Boto3 S3 Bucket Script</h4>
-          <div class="code-box">
-            <button class="copy-btn" onclick="copyCode('aws-code')">Copy</button>
-<pre id="aws-code">import boto3
-
-s3 = boto3.client('s3')
-s3.create_bucket(Bucket='omni-family-app')
-print("S3 Bucket Created!")</pre>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4><i class="fa-solid fa-book-bookmark" style="color: var(--secondary);"></i> Official Tech Documentation</h4>
-          <a href="https://pytorch.org/tutorials/" target="_blank" class="resource-link-card">
-            <div><strong>PyTorch Official Tutorials</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Deep Learning Recipes & Guides</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--secondary);"></i>
-          </a>
-          <a href="https://docs.aws.amazon.com/" target="_blank" class="resource-link-card">
-            <div><strong>AWS Documentation Hub</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Cloud Architect Guides</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--secondary);"></i>
-          </a>
-          <a href="https://spring.io/guides" target="_blank" class="resource-link-card">
-            <div><strong>Spring Boot 3 REST API Guides</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Java 21 Microservices Tutorials</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--secondary);"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- MODULE 5: FAMILY DEVOTION & TELUGU SONGS -->
-    <section id="devotion-view" class="view-content">
-      <div class="hero-card">
-        <h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Family Devotion & Telugu Christian Song Lyrics</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Daily scriptures, family gratitude wall, and official Telugu Christian Song lyrics portals.
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h4><i class="fa-solid fa-heart" style="color: var(--accent-devotion);"></i> Daily Family Verse & Reflection</h4>
-          <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid var(--accent-devotion); padding: 1rem; border-radius: var(--radius-md); margin: 0.75rem 0;">
-            <p style="font-style: italic; font-size: 1rem; color: #e9d5ff;">
-              "నా యింటివారును నేనును యెహోవాను సేవించెదము" <br>
-              ("As for me and my house, we will serve the Lord.")
-            </p>
-            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 0.3rem;">— Joshua (యెహోషువ) 24:15</span>
-          </div>
-
-          <h5 style="margin-top: 1rem; color: var(--text-muted);">Family Gratitude Note Wall:</h5>
-          <div style="display: flex; gap: 0.5rem; margin-top: 0.4rem;">
-            <input type="text" id="gratitude-input" placeholder="What are you thankful for today?" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; width: 100%; outline: none;">
-            <button onclick="addGratitude()" style="background: var(--accent-devotion); border: none; color: white; padding: 0.6rem 1rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Post</button>
-          </div>
-          <div id="gratitude-list" style="margin-top: 0.75rem; font-size: 0.85rem; color: #e9d5ff;">
-            • "Grateful for family unity and good health!" — Dad
-          </div>
-        </div>
-
-        <div class="card">
-          <h4><i class="fa-solid fa-music" style="color: var(--accent-devotion);"></i> 🎵 Telugu Christian Song Lyrics Portals</h4>
-          <a href="https://www.google.com/search?q=telugu+christian+songs+lyrics" target="_blank" class="resource-link-card">
-            <div><strong>Telugu Christian Song Lyrics Portal</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Telugu Script & Transliterated Lyrics</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
-          </a>
-          <a href="https://www.google.com/search?q=andhra+christian+keerthanalu+lyrics" target="_blank" class="resource-link-card">
-            <div><strong>Andhra Christian Keerthanalu (కీర్తనలు)</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Traditional Telugu Hymns & Chords</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
-          </a>
-          <a href="https://www.google.com/search?q=hosanna+ministries+telugu+song+lyrics" target="_blank" class="resource-link-card">
-            <div><strong>Hosanna Ministries Song Lyrics</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Annual Album Lyrics & Chords</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- MODULE 6: FAMILY WALLET & LIVE CURRENCY API -->
-    <section id="expense-view" class="view-content">
-      <div class="hero-card">
-        <h2><i class="fa-solid fa-coins" style="color: var(--accent-expense);"></i> Family Wallet & Dynamic Live Exchange API</h2>
-      </div>
-
-      <div style="background: rgba(15,23,42,0.9); border: 1px solid rgba(236,72,153,0.4); padding: 1.25rem; border-radius: 12px; margin-bottom: 1rem;">
-        <div style="font-size: 1.5rem; font-weight: 800; color: #34d399;" id="live-rate-display">
-          1 USD = Fetching Live Rate...
-        </div>
-        <div style="font-size: 0.8rem; color: var(--text-muted);" id="rate-timestamp">
-          Connecting to open exchange rate API...
-        </div>
-        <button onclick="fetchLiveUsdInrRate()" style="margin-top: 0.5rem; background: var(--accent-expense); border: none; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 600; cursor: pointer;">
-          Fetch Live Rate Now
-        </button>
-      </div>
-
+    <!-- MODULES 2-7 PLACEHOLDERS -->
+    <section id="k12-view" class="view-content"><div class="hero-card"><h2>K-12 School Reader</h2></div></section>
+    <section id="tech-view" class="view-content"><div class="hero-card"><h2>Adult Tech Code Lab</h2></div></section>
+    <section id="devotion-view" class="view-content"><div class="hero-card"><h2>Family Devotion</h2></div></section>
+    <section id="voice-view" class="view-content">
+      <div class="hero-card"><h2>Hands-Free PDF Driving Reader</h2></div>
       <div class="card">
-        <h4>Live USD to INR Calculator</h4>
-        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.75rem;">
-          <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; width: 130px; font-size: 1rem;">
+        <h3 id="audio-title">SAT Vocabulary Audio Drill</h3>
+        <p id="audio-status">Ready to play</p>
+        <button class="player-btn" onclick="toggleSpeech()"><i class="fa-solid fa-play" id="play-icon"></i></button>
+        <button onclick="stopSpeech()"><i class="fa-solid fa-stop"></i></button>
+        <input type="file" id="pdf-file-input" accept=".pdf,.txt" onchange="handleFileUpload(event)">
+      </div>
+    </section>
+    <section id="expense-view" class="view-content">
+      <div class="hero-card"><h2>Family Wallet & Live Exchange API</h2></div>
+      <div class="card">
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; width: 130px;">
           <span style="font-weight: 700;">USD ($) =</span>
           <span style="font-weight: 800; color: #34d399; font-size: 1.2rem;" id="inr-result">₹8,350.00 INR</span>
         </div>
       </div>
     </section>
-
-    <!-- MODULE 7: FAMILY CHORES -->
-    <section id="chores-view" class="view-content"><div class="hero-card"><h2>Family Chores & Allowance</h2></div></section>
+    <section id="chores-view" class="view-content"><div class="hero-card"><h2>Family Chores</h2></div></section>
 
   </main>
 
@@ -560,14 +407,15 @@ print("S3 Bucket Created!")</pre>
 
   <script>
     const userRoles = {
-      'Dad': { name: 'Dad (Parent Admin)', type: 'admin', allowed: ['voice', 'sat', 'k12', 'tech', 'devotion', 'expense', 'chores'] },
-      'Mom': { name: 'Mom (Parent Admin)', type: 'admin', allowed: ['voice', 'sat', 'k12', 'tech', 'devotion', 'expense', 'chores'] },
-      'Child 2': { name: 'Child 2 (Grade 10 Teen)', type: 'teen', allowed: ['voice', 'sat', 'k12', 'tech', 'devotion', 'chores'] },
+      'Dad': { name: 'Dad (Parent Admin)', type: 'admin', allowed: ['sat', 'k12', 'tech', 'devotion', 'voice', 'expense', 'chores'] },
+      'Mom': { name: 'Mom (Parent Admin)', type: 'admin', allowed: ['sat', 'k12', 'tech', 'devotion', 'voice', 'expense', 'chores'] },
+      'Child 2': { name: 'Child 2 (Grade 10 Teen)', type: 'teen', allowed: ['sat', 'k12', 'tech', 'devotion', 'voice', 'chores'] },
       'Child 1': { name: 'Child 1 (Grade 6 Junior)', type: 'kid', allowed: ['k12', 'devotion', 'chores'] }
     };
 
+    let satScoreCount = 0;
     let globalLiveInrRate = 83.50;
-    let currentSpeechText = "Digital SAT Vocabulary Drill. Fastidious means meticulous. Pragmatic means practical.";
+    let currentSpeechText = "Digital SAT Vocabulary Drill.";
     let speechRate = 1.0;
 
     function toggleRoleModal() { document.getElementById('role-modal').classList.toggle('active'); }
@@ -582,7 +430,7 @@ print("S3 Bucket Created!")</pre>
       if (role.type === 'teen') badge.classList.add('role-teen');
       if (role.type === 'kid') badge.classList.add('role-kid');
 
-      const allTabs = ['voice', 'sat', 'k12', 'tech', 'devotion', 'expense', 'chores'];
+      const allTabs = ['sat', 'k12', 'tech', 'devotion', 'voice', 'expense', 'chores'];
       let firstVisibleTab = null;
 
       allTabs.forEach(t => {
@@ -613,108 +461,43 @@ print("S3 Bucket Created!")</pre>
       if (btn) btn.classList.add('active');
     }
 
-    function toggleSpeech() {
-      if ('speechSynthesis' in window) {
-        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-          window.speechSynthesis.pause();
-          document.getElementById('play-icon').className = 'fa-solid fa-play';
-          document.getElementById('audio-status').innerText = 'Paused';
-        } else if (window.speechSynthesis.paused) {
-          window.speechSynthesis.resume();
-          document.getElementById('play-icon').className = 'fa-solid fa-pause';
-          document.getElementById('audio-status').innerText = 'Playing...';
-        } else {
-          const utterance = new SpeechSynthesisUtterance(currentSpeechText);
-          utterance.rate = speechRate;
-          utterance.onend = () => {
-            document.getElementById('play-icon').className = 'fa-solid fa-play';
-            document.getElementById('audio-status').innerText = 'Playback Finished';
-          };
-          window.speechSynthesis.speak(utterance);
-          document.getElementById('play-icon').className = 'fa-solid fa-pause';
-          document.getElementById('audio-status').innerText = 'Playing...';
-        }
-      }
-    }
-
-    function stopSpeech() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        document.getElementById('play-icon').className = 'fa-solid fa-play';
-        document.getElementById('audio-status').innerText = 'Stopped';
-      }
-    }
-
-    function setSpeed(rate, btn) {
-      speechRate = rate;
-      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+    function switchSatCategory(catClass, btn) {
+      document.querySelectorAll('.test-tab-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
-      if (window.speechSynthesis.speaking) {
-        stopSpeech();
-        toggleSpeech();
+
+      document.querySelectorAll('.sat-cat-card').forEach(card => card.style.display = 'none');
+      document.querySelectorAll(`.${catClass}`).forEach(card => card.style.display = 'block');
+    }
+
+    function checkSatAnswer(btn, isCorrect, expId) {
+      const parentCard = btn.closest('.quiz-card');
+      if (parentCard) {
+        parentCard.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('correct', 'wrong'));
       }
-    }
 
-    function loadAudioText(title, text) {
-      stopSpeech();
-      currentSpeechText = text;
-      document.getElementById('audio-title').innerText = title;
-      document.getElementById('audio-status').innerText = 'Loaded. Click Play to listen.';
-    }
-
-    function handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          loadAudioText(file.name, e.target.result.substring(0, 1000));
-          alert(`Document "${file.name}" loaded! Press Play to listen while driving.`);
-        };
-        reader.readAsText(file);
-      }
-    }
-
-    function checkAnswer(btn, isCorrect) {
-      document.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('correct', 'wrong'));
-      if (isCorrect) { btn.classList.add('correct'); } else { btn.classList.add('wrong'); }
-      document.getElementById('quiz-explanation').style.display = 'block';
-    }
-
-    function copyCode(elementId) {
-      const codeText = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(codeText);
-      alert("Code copied to clipboard!");
-    }
-
-    function addGratitude() {
-      const input = document.getElementById('gratitude-input');
-      if (input && input.value.trim() !== '') {
-        const list = document.getElementById('gratitude-list');
-        list.innerHTML += `<br>• "${input.value.trim()}" — Family Member`;
-        input.value = '';
-      }
-    }
-
-    async function fetchLiveUsdInrRate() {
-      const display = document.getElementById('live-rate-display');
-      const timestamp = document.getElementById('rate-timestamp');
-      if (display) display.innerText = "Fetching Live Rate...";
-
-      try {
-        const res = await fetch('https://open.er-api.com/v6/latest/USD');
-        const data = await res.json();
-        if (data && data.rates && data.rates.INR) {
-          globalLiveInrRate = data.rates.INR;
-          if (display) display.innerHTML = `1 USD = ₹${globalLiveInrRate.toFixed(2)} INR <span style="font-size: 0.8rem; color: #34d399;">(🟢 Live API)</span>`;
-          if (timestamp) timestamp.innerText = `Updated: ${new Date().toLocaleTimeString()} UTC`;
-          convertCurrency();
+      if (isCorrect) {
+        btn.classList.add('correct');
+        if (!btn.classList.contains('scored')) {
+          satScoreCount++;
+          btn.classList.add('scored');
+          document.getElementById('sat-score-count').innerText = satScoreCount;
         }
-      } catch (err) {
-        if (display) display.innerHTML = `1 USD = ₹83.50 INR <span style="font-size: 0.8rem; color: #fbbf24;">(Cached)</span>`;
-        convertCurrency();
+      } else {
+        btn.classList.add('wrong');
       }
+
+      const expEl = document.getElementById(expId);
+      if (expEl) expEl.style.display = 'block';
     }
 
+    function resetSatScore() {
+      satScoreCount = 0;
+      document.getElementById('sat-score-count').innerText = "0";
+      document.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('correct', 'wrong', 'scored'));
+      document.querySelectorAll('[id$="-exp"]').forEach(e => e.style.display = 'none');
+    }
+
+    function checkAnswer(btn, isCorrect) { checkSatAnswer(btn, isCorrect, 'q1-exp'); }
     function convertCurrency() {
       const usdInput = document.getElementById('usd-input');
       if (!usdInput) return;
@@ -724,9 +507,14 @@ print("S3 Bucket Created!")</pre>
       if (res) res.innerText = `₹${inr} INR`;
     }
 
-    // Initialize Page
+    function toggleSpeech() {}
+    function stopSpeech() {}
+    function setSpeed(rate, btn) {}
+    function loadAudioText(title, text) {}
+    function handleFileUpload(e) {}
+
     setRole('Dad');
-    fetchLiveUsdInrRate();
+    convertCurrency();
   </script>
 </body>
 </html>

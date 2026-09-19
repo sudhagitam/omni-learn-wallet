@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniLearn & Family Wallet - K12, Tech & Expense Tracker</title>
+  <title>OmniLearn & Family Wallet - K12, Tech, Expense & Devotion</title>
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,7 @@
       --accent-florida: #3b82f6;
       --accent-tech: #10b981;
       --accent-expense: #ec4899;
+      --accent-devotion: #a855f7;
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
       --radius-lg: 16px;
@@ -40,7 +41,7 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 10% 10%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
         radial-gradient(at 90% 90%, rgba(236, 72, 153, 0.12) 0px, transparent 50%),
         radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
       background-attachment: fixed;
@@ -79,19 +80,19 @@
       width: 40px;
       height: 40px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--accent-devotion), var(--primary));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.25rem;
       color: white;
-      box-shadow: 0 0 15px var(--primary-glow);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
     }
 
     .brand-title {
       font-size: 1.25rem;
       font-weight: 700;
-      background: linear-gradient(to right, #fff, #94a3b8);
+      background: linear-gradient(to right, #fff, #c084fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -100,9 +101,9 @@
       font-size: 0.75rem;
       padding: 0.25rem 0.6rem;
       border-radius: 20px;
-      background: rgba(99, 102, 241, 0.2);
-      color: #818cf8;
-      border: 1px solid rgba(99, 102, 241, 0.3);
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
     }
 
     .container {
@@ -139,21 +140,21 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      padding: 0.4rem 1rem;
+      padding: 0.4rem 0.8rem;
       border-radius: var(--radius-sm);
     }
 
     .nav-btn i {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     .nav-btn.active {
       color: white;
-      background: rgba(99, 102, 241, 0.15);
+      background: rgba(168, 85, 247, 0.15);
     }
 
     .nav-btn.active i {
-      color: var(--primary);
+      color: var(--accent-devotion);
     }
 
     /* Views Framework */
@@ -189,7 +190,7 @@
       right: 0;
       width: 200px;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1));
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1));
       pointer-events: none;
     }
 
@@ -243,10 +244,56 @@
     }
 
     .pill-btn.active {
-      background: var(--primary);
+      background: var(--accent-devotion);
       color: white;
-      border-color: var(--primary);
-      box-shadow: 0 0 10px var(--primary-glow);
+      border-color: var(--accent-devotion);
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+    }
+
+    /* Devotion Card */
+    .verse-card {
+      background: linear-gradient(145deg, rgba(88, 28, 135, 0.3), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-devotion), #7e22ce);
+      color: white;
+      border: none;
+      padding: 0.85rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
     }
 
     /* Flashcard System */
@@ -296,90 +343,6 @@
       transform: rotateY(180deg);
     }
 
-    /* Form Controls */
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .form-input, .form-select {
-      width: 100%;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 0.75rem;
-      color: white;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border 0.2s;
-    }
-
-    .form-input:focus, .form-select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 8px var(--primary-glow);
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--primary), #4f46e5);
-      color: white;
-      border: none;
-      padding: 0.85rem;
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: opacity 0.2s ease;
-    }
-
-    .btn-submit:hover {
-      opacity: 0.9;
-    }
-
-    /* Expense List & Stats */
-    .stat-box {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--border-color);
-      padding: 1rem;
-      border-radius: var(--radius-md);
-    }
-
-    .stat-val {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-top: 0.25rem;
-    }
-
-    .expense-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.85rem;
-      background: rgba(15, 23, 42, 0.4);
-      border-bottom: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      margin-bottom: 0.5rem;
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .tag-family { background: rgba(236, 72, 153, 0.2); color: #f472b6; }
-    .tag-education { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-    .tag-groceries { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-    .tag-utility { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-
     /* Code Snippet Box */
     .code-box {
       background: #0f172a;
@@ -393,28 +356,6 @@
       margin-top: 0.75rem;
     }
 
-    /* Copy Prompt Container */
-    .prompt-container {
-      background: #090d16;
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      position: relative;
-    }
-
-    .copy-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.8rem;
-      cursor: pointer;
-    }
-
     /* Responsive */
     @media (min-width: 768px) {
       .nav-tabs {
@@ -423,12 +364,12 @@
         border-top: none;
         padding: 0;
         justify-content: flex-start;
-        gap: 1rem;
+        gap: 0.75rem;
       }
       .nav-btn {
         flex-direction: row;
-        font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
       }
       body {
         padding-bottom: 20px;
@@ -441,10 +382,10 @@
   <!-- Top Header -->
   <header class="app-header">
     <div class="brand">
-      <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="brand-logo"><i class="fa-solid fa-hands-praying"></i></div>
       <div>
-        <div class="brand-title">OmniLearn & Wallet</div>
-        <span class="badge-pill">4th-12th NCERT / FL & Adult Tech & Expense</span>
+        <div class="brand-title">OmniLearn & Family Life</div>
+        <span class="badge-pill">K-12, Adult Tech, Expense & Family Devotion</span>
       </div>
     </div>
   </header>
@@ -452,25 +393,97 @@
   <!-- Navigation Bar -->
   <div class="container" style="padding-bottom: 0; padding-top: 1rem;">
     <nav class="nav-tabs">
-      <button class="nav-btn active" onclick="switchView('k12-view', this)">
+      <button class="nav-btn active" onclick="switchView('devotion-view', this)">
+        <i class="fa-solid fa-hands-praying"></i> Family Devotion
+      </button>
+      <button class="nav-btn" onclick="switchView('k12-view', this)">
         <i class="fa-solid fa-book-open"></i> K-12 School Hub
       </button>
       <button class="nav-btn" onclick="switchView('tech-view', this)">
         <i class="fa-solid fa-laptop-code"></i> Adult Tech Academy
       </button>
       <button class="nav-btn" onclick="switchView('expense-view', this)">
-        <i class="fa-solid fa-wallet"></i> Family Expense Tracker
-      </button>
-      <button class="nav-btn" onclick="switchView('prompt-view', this)">
-        <i class="fa-solid fa-wand-magic-sparkles"></i> Gemini 3.6 Prompt
+        <i class="fa-solid fa-wallet"></i> Family Expense
       </button>
     </nav>
   </div>
 
   <main class="container">
 
+    <!-- NEW VIEW: FAMILY DEVOTION & GRATITUDE -->
+    <section id="devotion-view" class="view-content active">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Daily Family Devotion & Gratitude Wall</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
+          Start or end the day together with daily scripture/reflections, age-appropriate moral stories for kids, and a shared family prayer & gratitude journal.
+        </p>
+      </div>
+
+      <!-- Daily Verse & Reflection Banner -->
+      <div class="verse-card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.8rem; color: #c084fc; font-weight: 700; text-transform: uppercase;">Today's Family Reflection</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-clock"></i> 5 Min Morning Routine</span>
+        </div>
+        <h3 style="margin-top: 0.75rem; font-size: 1.2rem; color: white;">"Train up a child in the way he should go, and when he is old he will not depart from it."</h3>
+        <p style="color: #e9d5ff; font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">
+          <strong>Family Takeaway:</strong> Knowledge puffeth up, but love buildeth up. Today, let's balance our academic studies and career goals with kindness, patience, and gratitude at home.
+        </p>
+        <div style="margin-top: 1rem; display: flex; gap: 0.75rem;">
+          <button class="pill-btn active" onclick="alert('Playing 3-minute guided family reflection audio!')"><i class="fa-solid fa-circle-play"></i> Play Audio Devotional (3 min)</button>
+          <button class="pill-btn" onclick="alert('Saved to Family Devotion History!')"><i class="fa-solid fa-bookmark"></i> Bookmark Verse</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Family Gratitude Wall -->
+        <div class="card">
+          <h4><i class="fa-solid fa-heart" style="color: #ec4899;"></i> Shared Family Gratitude Wall</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Post what you are thankful for today!</p>
+          
+          <div style="margin: 1rem 0;" id="gratitude-list">
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border-left: 3px solid #a855f7; margin-bottom: 0.5rem;">
+              <span style="font-weight: 700; font-size: 0.85rem; color: #c084fc;">Mom:</span>
+              <span style="font-size: 0.85rem; color: var(--text-main);"> "Grateful for Child 1 scoring A in NCERT Science test and good health!"</span>
+            </div>
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border-left: 3px solid #3b82f6; margin-bottom: 0.5rem;">
+              <span style="font-weight: 700; font-size: 0.85rem; color: #60a5fa;">Child 1 (Grade 6):</span>
+              <span style="font-size: 0.85rem; color: var(--text-main);"> "Thankful for Dad helping me understand fractions and our evening walk!"</span>
+            </div>
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border-left: 3px solid #10b981; margin-bottom: 0.5rem;">
+              <span style="font-weight: 700; font-size: 0.85rem; color: #34d399;">Dad:</span>
+              <span style="font-size: 0.85rem; color: var(--text-main);"> "Grateful for passing my AWS Cloud Architect practice exam today!"</span>
+            </div>
+          </div>
+
+          <form onsubmit="addGratitude(event)" style="margin-top: 1rem;">
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="text" id="gratitude-input" class="form-input" placeholder="What are you thankful for today?" required>
+              <button type="submit" class="btn-submit" style="width: auto; padding: 0 1.25rem;"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Moral Stories for Kids & Weekly Character Goal -->
+        <div class="card">
+          <h4><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Kids Moral Values & Character Goal</h4>
+          <div style="background: rgba(15, 23, 42, 0.5); padding: 1rem; border-radius: 12px; margin-top: 0.75rem; border: 1px solid var(--border-color);">
+            <span style="font-size: 0.75rem; color: var(--accent-ncert); font-weight: 700;">THIS WEEK'S VALUE: KINDNESS & HELPING OTHERS</span>
+            <h5 style="margin-top: 0.4rem; font-size: 1rem;">Story: The Lion and the Helping Mouse</h5>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;">
+              No act of kindness, no matter how small, is ever wasted. A small mouse saved a mighty lion by chewing through hunter ropes.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.8rem; color: #a7f3d0;"><i class="fa-solid fa-award"></i> Kids Challenge: 3 Acts of Kindness</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-devotion);">2/3 Done ⭐</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- VIEW 1: K-12 SCHOOL HUB -->
-    <section id="k12-view" class="view-content active">
+    <section id="k12-view" class="view-content">
       <div class="hero-card">
         <h2><i class="fa-solid fa-school" style="color: var(--accent-ncert);"></i> K-12 Learning Companion (Grades 4 - 12)</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
@@ -478,7 +491,6 @@
         </p>
       </div>
 
-      <!-- Curriculum & Grade Selectors -->
       <div class="card" style="margin-bottom: 1.5rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
           <div>
@@ -490,26 +502,17 @@
           </div>
           <div>
             <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Select Grade:</span>
-            <div class="pill-group" style="margin-bottom: 0;" id="grade-pills">
-              <!-- Dynamically built grade pills -->
-            </div>
+            <div class="pill-group" style="margin-bottom: 0;" id="grade-pills"></div>
           </div>
         </div>
       </div>
 
-      <!-- Subject Grid -->
-      <div class="grid-3" id="k12-subject-cards">
-        <!-- Injected via JavaScript -->
-      </div>
+      <div class="grid-3" id="k12-subject-cards"></div>
 
-      <!-- Interactive Revision Deck -->
       <div style="margin-top: 2rem;">
         <h3><i class="fa-solid fa-brain" style="color: var(--primary);"></i> Practice & Quick Revision Deck</h3>
         <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Click on any flashcard to flip and reveal the key summary/answer.</p>
-        
-        <div class="grid-2" id="k12-flashcard-deck">
-          <!-- Injected via JavaScript -->
-        </div>
+        <div class="grid-2" id="k12-flashcard-deck"></div>
       </div>
     </section>
 
@@ -522,7 +525,6 @@
         </p>
       </div>
 
-      <!-- Track Switcher -->
       <div class="pill-group" style="margin-bottom: 1.5rem;">
         <button class="pill-btn active" onclick="setTechTrack('aiml', this)"><i class="fa-solid fa-robot"></i> AI & Machine Learning</button>
         <button class="pill-btn" onclick="setTechTrack('aws', this)"><i class="fa-brands fa-aws"></i> AWS Cloud Architect</button>
@@ -531,21 +533,11 @@
       </div>
 
       <div class="grid-2">
-        <!-- Track Content Detail -->
-        <div class="card" id="tech-track-details">
-          <!-- Injected JS -->
-        </div>
-
-        <!-- Code Snippet & Challenge -->
+        <div class="card" id="tech-track-details"></div>
         <div class="card">
           <h4><i class="fa-solid fa-code" style="color: var(--secondary);"></i> Live Code Challenge / Architecture Pattern</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;" id="code-desc">
-            Review production code patterns for your selected track.
-          </p>
-          <div class="code-box" id="code-snippet-area">
-            // Loading snippet...
-          </div>
-          <button class="btn-submit" style="margin-top: 1rem; background: rgba(99, 102, 241, 0.2); border: 1px solid var(--primary); color: white;" onclick="runQuizAlert()">
+          <div class="code-box" id="code-snippet-area">// Loading snippet...</div>
+          <button class="btn-submit" style="margin-top: 1rem; background: rgba(99, 102, 241, 0.2); border: 1px solid var(--primary); color: white;" onclick="alert('Starting Practice Certification Quiz!')">
             <i class="fa-solid fa-circle-check"></i> Take Practice Certification Quiz
           </button>
         </div>
@@ -561,7 +553,6 @@
         </p>
       </div>
 
-      <!-- Expense Summary Stats -->
       <div class="grid-3" style="margin-bottom: 1.5rem;">
         <div class="stat-box">
           <span style="font-size: 0.8rem; color: var(--text-muted);">Total Monthly Budget</span>
@@ -581,7 +572,6 @@
       </div>
 
       <div class="grid-2">
-        <!-- Add Expense Form -->
         <div class="card">
           <h4><i class="fa-solid fa-plus-circle" style="color: var(--accent-expense);"></i> Add New Expense</h4>
           <form id="expense-form" style="margin-top: 1rem;" onsubmit="addExpense(event)">
@@ -617,91 +607,29 @@
           </form>
         </div>
 
-        <!-- Expense History -->
         <div class="card">
           <h4><i class="fa-solid fa-list-check" style="color: var(--primary);"></i> Recent Transactions</h4>
-          <div style="margin-top: 1rem;" id="expense-list">
-            <!-- Dynamically populated -->
-          </div>
+          <div style="margin-top: 1rem;" id="expense-list"></div>
         </div>
-      </div>
-    </section>
-
-    <!-- VIEW 4: GEMINI 3.6 FLASH MASTER PROMPT -->
-    <section id="prompt-view" class="view-content">
-      <div class="hero-card">
-        <h2><i class="fa-solid fa-sparkles" style="color: var(--accent-ncert);"></i> Master Gemini 3.6 Flash Prompt</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Copy this comprehensive prompt to feed into Gemini 3.6 Flash to build, expand, or push this complete application to GitHub and Vercel.
-        </p>
-      </div>
-
-      <div class="prompt-container">
-        <button class="copy-btn" onclick="copyPromptText()"><i class="fa-solid fa-copy"></i> Copy Prompt</button>
-        <pre id="master-prompt-code" style="white-space: pre-wrap; font-family: monospace; font-size: 0.85rem; color: #a7f3d0; max-height: 500px; overflow-y: auto;">
-ROLE & GOAL:
-You are an expert Full-Stack AI Engineer specializing in Next.js 14/15, React, Tailwind CSS, TypeScript, and Progressive Web Apps (PWA). Your task is to build a high-performance, mobile-optimized Web/Mobile App called "OmniLearn & Family Wallet" designed for both K-12 students and adult tech learners, combined with a family expense tracker.
-
-APP CORE SPECIFICATIONS & MODULES:
-
-1. K-12 SCHOOL STUDY HUB (Grades 4 through 12):
-   - Dual Curriculum Support:
-     * India NCERT Curriculum: Math, Science (Physics/Chemistry/Biology), Social Science (History, Geography, Civics), English Literature.
-     * US Florida Education Curriculum (Florida B.E.S.T. Standards): ELA, Mathematics, Science, Social Studies.
-   - Interactive Study Modes:
-     * Interactive Digital Flashcards with 3D flip effects.
-     * AI-Generated Practice Quizzes with instant scoring & explanations.
-     * Quick Revision Summaries for exam prep.
-
-2. ADULT TECH & CLOUD ACADEMY:
-   - AI & Machine Learning Track: Fundamentals, PyTorch/TensorFlow, LLMs, RAG, Prompt Engineering, Fine-tuning.
-   - AWS Cloud Architecture Track: S3, EC2, Lambda, DynamoDB, CloudFront, IAM, Serverless & Solutions Architect Cert prep.
-   - GCP Engineer Track: Compute Engine, GKE, BigQuery, Vertex AI, Associate Cloud Engineer Cert prep.
-   - Backend Java Developer Track: Core Java 21 (Records, Virtual Threads), Spring Boot 3, Microservices, Hibernate/JPA, PostgreSQL, System Design.
-   - Interactive Code Playground & Architectural diagrams.
-
-3. UNIFIED FAMILY EXPENSE TRACKER:
-   - Budget allocation by categories (School Fees, NCERT Books, Tech Subscriptions, AWS/GCP Labs, Groceries, Utilities).
-   - Multi-User Family Tagging (Dad, Mom, Child 1, Child 2).
-   - Multi-Currency Toggle: USD ($) and INR (₹) with real-time state conversion.
-   - Expense analytics & visual breakdown progress bars.
-
-TECH STACK & DEPLOYMENT:
-- Framework: Next.js 14/15 (App Router, Server Components) or Vite + React + TypeScript.
-- Styling: Tailwind CSS v3/v4 with dark mode glassmorphism aesthetics, Lucide React icons.
-- Persistence: LocalStorage / Supabase / Prisma with PostgreSQL schema.
-- Mobile PWA: Manifest.json and service worker support for installation on iOS & Android.
-
-GITHUB & VERCEL INSTRUCTIONS GENERATION:
-Provide step-by-step commands to:
-1. Initialize Git repository and commit files.
-2. Push repository to GitHub using `gh repo create` or standard git remote commands.
-3. Deploy directly to Vercel using `npx vercel` CLI or automatic GitHub integration.
-
-Please generate complete, runnable production code for this entire application.
-        </pre>
       </div>
     </section>
 
   </main>
 
   <script>
-    // State management
     let state = {
       board: 'NCERT',
       grade: 6,
       techTrack: 'aiml',
       currency: 'USD',
-      currencyRate: 83.5, // 1 USD = 83.5 INR
+      currencyRate: 83.5,
       expenses: [
         { id: 1, title: 'NCERT Science & Math Textbooks', amount: 45, category: 'Education', member: 'Child 1 (Grade 6)' },
         { id: 2, title: 'AWS Cloud Practitioner Prep Course', amount: 80, category: 'Tech', member: 'Dad' },
-        { id: 3, title: 'Monthly Groceries & Milk', amount: 350, category: 'Groceries', member: 'Mom' },
-        { id: 4, title: 'Florida BEST ELA Workbook', amount: 30, category: 'Education', member: 'Child 2 (Grade 10)' }
+        { id: 3, title: 'Monthly Groceries & Milk', amount: 350, category: 'Groceries', member: 'Mom' }
       ]
     };
 
-    // Navigation View Switcher
     function switchView(viewId, btn) {
       document.querySelectorAll('.view-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
@@ -709,7 +637,19 @@ Please generate complete, runnable production code for this entire application.
       btn.classList.add('active');
     }
 
-    // K-12 Module Handlers
+    function addGratitude(e) {
+      e.preventDefault();
+      const val = document.getElementById('gratitude-input').value;
+      if (val) {
+        const list = document.getElementById('gratitude-list');
+        const item = document.createElement('div');
+        item.style.cssText = 'background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border-left: 3px solid #a855f7; margin-bottom: 0.5rem;';
+        item.innerHTML = `<span style="font-weight: 700; font-size: 0.85rem; color: #c084fc;">Family Member:</span> <span style="font-size: 0.85rem; color: var(--text-main);">${val}</span>`;
+        list.appendChild(item);
+        document.getElementById('gratitude-input').value = '';
+      }
+    }
+
     function initGrades() {
       const container = document.getElementById('grade-pills');
       container.innerHTML = '';
@@ -737,10 +677,8 @@ Please generate complete, runnable production code for this entire application.
     function renderK12Content() {
       const subjectContainer = document.getElementById('k12-subject-cards');
       const flashcardContainer = document.getElementById('k12-flashcard-deck');
-
       const isNcert = state.board === 'NCERT';
 
-      // Sample Subject Data
       const subjects = isNcert ? [
         { name: 'Mathematics', desc: `Grade ${state.grade} NCERT Algebra, Geometry & Fractions`, icon: 'fa-calculator', color: '#6366f1' },
         { name: 'Science', desc: `Grade ${state.grade} NCERT Physics, Chemistry & Biology basics`, icon: 'fa-flask', color: '#10b981' },
@@ -748,7 +686,7 @@ Please generate complete, runnable production code for this entire application.
       ] : [
         { name: 'Florida B.E.S.T. Math', desc: `Grade ${state.grade} Florida Benchmarks for Excellent Student Thinking`, icon: 'fa-chart-pie', color: '#3b82f6' },
         { name: 'Science & STEM', desc: `Grade ${state.grade} Florida Next Gen Sunshine State Standards`, icon: 'fa-atom', color: '#06b6d4' },
-        { name: 'English Language Arts', desc: `Grade ${state.grade} Reading comprehension, analytical writing & vocabulary`, icon: 'fa-feather', color: '#ec4899' }
+        { name: 'English Language Arts', desc: `Grade ${state.grade} Reading comprehension & analytical writing`, icon: 'fa-feather', color: '#ec4899' }
       ];
 
       subjectContainer.innerHTML = subjects.map(s => `
@@ -760,12 +698,11 @@ Please generate complete, runnable production code for this entire application.
         </div>
       `).join('');
 
-      // Flashcards
       const cards = isNcert ? [
         { q: `[Grade ${state.grade} NCERT Math] What is the formula for the perimeter of a rectangle?`, a: `Perimeter = 2 × (Length + Breadth)` },
-        { q: `[Grade ${state.grade} NCERT Science] What is Photosynthesis?`, a: `Process by which green plants convert light energy into chemical energy (Glucose) using CO2 and Water.` }
+        { q: `[Grade ${state.grade} NCERT Science] What is Photosynthesis?`, a: `Process by which green plants convert light energy into chemical energy using CO2 and Water.` }
       ] : [
-        { q: `[Grade ${state.grade} Florida ELA] Define Central Idea in a text.`, a: `The main point or unifying concept that an author wants the reader to understand from the reading passage.` },
+        { q: `[Grade ${state.grade} Florida ELA] Define Central Idea in a text.`, a: `The main point or unifying concept that an author wants the reader to understand.` },
         { q: `[Grade ${state.grade} Florida Math] What is a Rational Number?`, a: `Any number that can be expressed as a fraction p/q where p and q are integers and q ≠ 0.` }
       ];
 
@@ -785,27 +722,26 @@ Please generate complete, runnable production code for this entire application.
       `).join('');
     }
 
-    // Adult Tech Handlers
     const techData = {
       aiml: {
         title: 'AI & Machine Learning Engineering',
-        desc: 'Master Neural Networks, PyTorch, Large Language Models (LLMs), Retrieval Augmented Generation (RAG), and Prompt Engineering.',
-        snippet: `import torch\nimport torch.nn as nn\n\n# PyTorch Simple Multi-Layer Perceptron\nclass MLP(nn.Module):\n    def __init__(self, input_dim, hidden_dim, output_dim):\n        super(MLP, self).__init__()\n        self.fc1 = nn.Linear(input_dim, hidden_dim)\n        self.relu = nn.ReLU()\n        self.fc2 = nn.Linear(hidden_dim, output_dim)\n        \n    def forward(self, x):\n        return self.fc2(self.relu(self.fc1(x)))`
+        desc: 'Master Neural Networks, PyTorch, LLMs, RAG, and Fine-tuning.',
+        snippet: `import torch\nimport torch.nn as nn\n\nclass MLP(nn.Module):\n    def __init__(self, input_dim, hidden_dim, output_dim):\n        super(MLP, self).__init__()\n        self.fc1 = nn.Linear(input_dim, hidden_dim)\n        self.relu = nn.ReLU()\n        self.fc2 = nn.Linear(hidden_dim, output_dim)\n        \n    def forward(self, x):\n        return self.fc2(self.relu(self.fc1(x)))`
       },
       aws: {
-        title: 'AWS Certified Solutions Architect & Cloud Dev',
-        desc: 'Build high-availability serverless apps using S3, AWS Lambda, DynamoDB, API Gateway, CloudFront, and Infrastructure as Code (CDK / Terraform).',
-        snippet: `// AWS CDK Lambda & DynamoDB Stack (TypeScript)\nimport * as cdk from 'aws-cdk-lib';\nimport * as dynamodb from 'aws-cdk-lib/aws-dynamodb';\nimport * as lambda from 'aws-cdk-lib/aws-lambda';\n\nconst table = new dynamodb.Table(this, 'ExpensesTable', {\n  partitionKey: { name: 'id', type: dynamodb.AttributeType.STRING }\n});`
+        title: 'AWS Certified Solutions Architect',
+        desc: 'S3, EC2, Lambda, DynamoDB, API Gateway, and CloudFront.',
+        snippet: `import * as cdk from 'aws-cdk-lib';\nimport * as dynamodb from 'aws-cdk-lib/aws-dynamodb';\n\nconst table = new dynamodb.Table(this, 'ExpensesTable', {\n  partitionKey: { name: 'id', type: dynamodb.AttributeType.STRING }\n});`
       },
       gcp: {
-        title: 'GCP Cloud Engineer & Vertex AI',
-        desc: 'Deploy containerized microservices on GKE, leverage BigQuery for big data analytics, and build enterprise ML pipelines on GCP Vertex AI.',
-        snippet: `# GCP BigQuery SQL Analytical Query\nSELECT \n  category,\n  COUNT(*) as transaction_count,\n  SUM(amount) as total_spent\nFROM \`my_project.family_expenses.transactions\`\nGROUP BY category\nORDER BY total_spent DESC;`
+        title: 'GCP Cloud Engineer',
+        desc: 'GKE, BigQuery analytics, and Vertex AI MLOps pipelines.',
+        snippet: `SELECT category, COUNT(*) as count, SUM(amount) as total\nFROM \`my_project.family_expenses.transactions\`\nGROUP BY category ORDER BY total DESC;`
       },
       java: {
-        title: 'Backend Java 21 & Spring Boot 3 Microservices',
-        desc: 'Modern Backend Java: Virtual Threads (Loom), Spring Boot 3 REST APIs, Spring Data JPA, Microservices Architecture, Docker, and System Design.',
-        snippet: `// Java 21 Spring Boot REST Controller\n@RestController\n@RequestMapping("/api/v1/expenses")\npublic class ExpenseController {\n\n    private final ExpenseService expenseService;\n\n    public ExpenseController(ExpenseService expenseService) {\n        this.expenseService = expenseService;\n    }\n\n    @GetMapping\n    public List<ExpenseResponse> getAllExpenses() {\n        return expenseService.findAllExpenses();\n    }\n}`
+        title: 'Backend Java 21 & Spring Boot 3',
+        desc: 'Virtual Threads (Loom), Spring Boot 3 REST APIs, Microservices, PostgreSQL.',
+        snippet: `@RestController\n@RequestMapping("/api/v1/expenses")\npublic class ExpenseController {\n    private final ExpenseService service;\n    public ExpenseController(ExpenseService service) { this.service = service; }\n    @GetMapping\n    public List<ExpenseResponse> getAll() { return service.findAll(); }\n}`
       }
     };
 
@@ -815,24 +751,14 @@ Please generate complete, runnable production code for this entire application.
         btn.parentElement.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
       }
-
       const data = techData[track];
       document.getElementById('tech-track-details').innerHTML = `
         <h3><i class="fa-solid fa-graduation-cap" style="color: var(--accent-tech);"></i> ${data.title}</h3>
         <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.75rem 0 1.25rem 0;">${data.desc}</p>
-        <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-          <span style="font-size: 0.8rem; color: var(--secondary); font-weight: 700;">Key Certification Targets:</span>
-          <ul style="font-size: 0.85rem; margin-left: 1.25rem; margin-top: 0.4rem; color: var(--text-main);">
-            <li>Hands-on Architectural Design & Real-world projects</li>
-            <li>Production Code Quality & Best Practices</li>
-          </ul>
-        </div>
       `;
-
       document.getElementById('code-snippet-area').innerText = data.snippet;
     }
 
-    // Family Expense Handlers
     function setCurrency(curr) {
       state.currency = curr;
       document.getElementById('curr-usd').classList.toggle('active', curr === 'USD');
@@ -848,13 +774,7 @@ Please generate complete, runnable production code for this entire application.
       const member = document.getElementById('exp-member').value;
 
       if (title && amount) {
-        state.expenses.unshift({
-          id: Date.now(),
-          title,
-          amount,
-          category,
-          member
-        });
+        state.expenses.unshift({ id: Date.now(), title, amount, category, member });
         document.getElementById('expense-form').reset();
         renderExpenses();
       }
@@ -877,46 +797,24 @@ Please generate complete, runnable production code for this entire application.
         const convertedAmt = (exp.amount * multiplier).toFixed(0);
         totalSpent += exp.amount;
 
-        let tagClass = 'tag-family';
-        if (exp.category === 'Education') tagClass = 'tag-education';
-        if (exp.category === 'Groceries') tagClass = 'tag-groceries';
-        if (exp.category === 'Utility') tagClass = 'tag-utility';
-
         return `
-          <div class="expense-item">
+          <div class="expense-item" style="display: flex; justify-content: space-between; padding: 0.75rem; background: rgba(15,23,42,0.4); margin-bottom: 0.5rem; border-radius: 8px;">
             <div>
               <div style="font-weight: 600; font-size: 0.9rem;">${exp.title}</div>
-              <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.25rem;">
-                <span class="tag ${tagClass}">${exp.category}</span>
-                <span style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-user"></i> ${exp.member}</span>
-              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-user"></i> ${exp.member} (${exp.category})</div>
             </div>
             <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <span style="font-weight: 700; font-size: 1rem; color: #f472b6;">${symbol}${convertedAmt}</span>
+              <span style="font-weight: 700; color: #f472b6;">${symbol}${convertedAmt}</span>
               <button onclick="deleteExpense(${exp.id})" style="background: none; border: none; color: #ef4444; cursor: pointer;"><i class="fa-solid fa-trash-can"></i></button>
             </div>
           </div>
         `;
       }).join('');
 
-      const convertedTotal = (totalSpent * multiplier).toFixed(0);
-      const convertedBudget = (3500 * multiplier).toFixed(0);
-
-      document.getElementById('stat-spent').innerText = `${symbol}${convertedTotal}`;
-      document.getElementById('stat-budget').innerText = `${symbol}${convertedBudget}`;
+      document.getElementById('stat-spent').innerText = `${symbol}${(totalSpent * multiplier).toFixed(0)}`;
+      document.getElementById('stat-budget').innerText = `${symbol}${(3500 * multiplier).toFixed(0)}`;
     }
 
-    function copyPromptText() {
-      const text = document.getElementById('master-prompt-code').innerText;
-      navigator.clipboard.writeText(text);
-      alert('Gemini 3.6 Flash Master Prompt copied to clipboard!');
-    }
-
-    function runQuizAlert() {
-      alert('Starting Practice Certification Quiz! Feature active in full build.');
-    }
-
-    // Initialize on page load
     initGrades();
     renderK12Content();
     setTechTrack('aiml');

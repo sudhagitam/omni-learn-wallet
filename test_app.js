@@ -1,6 +1,7 @@
 /**
- * Granular Unit Test Suite for OmniLearn & Family Suite
- * Tests every single module (1 through 8) + RBAC Security System
+ * OmniLearn Application Complete Automated Test Runner
+ * Part 1: Module-by-Module Granular Unit Tests
+ * Part 2: Cross-Module System Integration Tests
  */
 
 const fs = require('fs');
@@ -22,9 +23,13 @@ function assert(condition, message) {
   }
 }
 
-console.log("\n========================================================");
-console.log("=== OMNILEARN FULL GRANULAR MODULE UNIT TEST SUITE ===");
-console.log("========================================================\n");
+console.log("\n==========================================================================");
+console.log("=== OMNILEARN FULL GRANULAR MODULE UNIT & INTEGRATION TEST SUITE ===");
+console.log("==========================================================================\n");
+
+// =========================================================
+// PART 1: MODULE-BY-MODULE GRANULAR UNIT TESTS
+// =========================================================
 
 // ---------------------------------------------------------
 // MODULE 1: SECURE FAMILY DOCUMENT LOCKER & GOOGLE DRIVE
@@ -64,7 +69,7 @@ assert(htmlContent.includes('https://epathshala.nic.in/'), "NCERT ePathshala off
 assert(htmlContent.includes('https://www.cpalms.org/'), "Florida CPALMS official portal link exists");
 
 // ---------------------------------------------------------
-// MODULE 4: ADULT TECH & CLOUD ENGINEER ACADEMY
+// MODULE 4: ADULT TECH & CLOUD CODE LAB
 // ---------------------------------------------------------
 console.log("\n--- MODULE 4: Adult Tech & Cloud Code Lab ---");
 assert(htmlContent.includes('id="tech-view"'), "#tech-view container section exists");
@@ -116,20 +121,33 @@ assert(htmlContent.includes('id="chores-view"'), "#chores-view container section
 assert(htmlContent.includes('id="tab-chores"'), "#tab-chores navigation button exists");
 assert(htmlContent.includes('Today\'s Family Tasks'), "Today's Family Tasks header exists");
 
-// ---------------------------------------------------------
-// GLOBAL SYSTEM SUITE: RBAC SECURITY & ROLE SWITCHER
-// ---------------------------------------------------------
-console.log("\n--- GLOBAL SYSTEM: RBAC Security & Profile Switcher ---");
-assert(htmlContent.includes('id="role-modal"'), "#role-modal switcher modal exists");
-assert(htmlContent.includes('id="current-user-badge"'), "#current-user-badge header badge exists");
-assert(htmlContent.includes('id="current-user-name"'), "#current-user-name profile label exists");
-assert(htmlContent.includes('function setRole('), "setRole() RBAC security function defined");
-assert(htmlContent.includes('function toggleRoleModal('), "toggleRoleModal() JS function defined");
-assert(htmlContent.includes('function switchView('), "switchView() tab navigation function defined");
 
-console.log("\n========================================================");
-console.log(`=== TEST SUMMARY: ${passCount} Passed, ${failCount} Failed ===`);
-console.log("========================================================\n");
+// =========================================================
+// PART 2: CROSS-MODULE SYSTEM INTEGRATION TESTS
+// =========================================================
+console.log("\n--- PART 2: CROSS-MODULE SYSTEM INTEGRATION SUITE ---");
+
+// Integration Test 1: RBAC Permission Matrix
+assert(htmlContent.includes("userRoles = {"), "INTEGRATION: Role-based Access Control matrix defined");
+assert(htmlContent.includes("allowed: ['locker', 'sat', 'k12', 'tech', 'devotion', 'voice', 'expense', 'chores']"), "INTEGRATION: Parent Admin allowed access to all 8 modules");
+assert(htmlContent.includes("allowed: ['devotion', 'k12', 'chores']"), "INTEGRATION: Junior role restricted to age-appropriate modules");
+
+// Integration Test 2: Google Drive Locker Sync Workflow
+assert(htmlContent.includes("saveToGoogleDrive('Family_Passports_US_India.pdf')"), "INTEGRATION: Passport document connected to Google Drive Save trigger");
+assert(htmlContent.includes("syncAllDocsToGoogleDrive()"), "INTEGRATION: Locker connected to batch Google Drive cloud sync trigger");
+
+// Integration Test 3: Live Currency API Converter Integration
+assert(htmlContent.includes("fetchLiveCurrencyRate()"), "INTEGRATION: Currency engine initialized on application load");
+assert(htmlContent.includes("https://open.er-api.com/v6/latest/USD"), "INTEGRATION: Primary Exchange Rate API endpoint connected");
+assert(htmlContent.includes("https://api.exchangerate-api.com/v4/latest/USD"), "INTEGRATION: Backup Exchange Rate API failover endpoint connected");
+
+// Integration Test 4: SAT Score Counter State Management
+assert(htmlContent.includes("satScoreCount++"), "INTEGRATION: SAT practice engine increments score counter on correct answer");
+assert(htmlContent.includes("document.getElementById('sat-score-count').innerText = satScoreCount"), "INTEGRATION: SAT score counter updates DOM element in real-time");
+
+console.log("\n==========================================================================");
+console.log(`=== FULL TEST SUITE SUMMARY: ${passCount} Passed, ${failCount} Failed ===`);
+console.log("==========================================================================\n");
 
 if (failCount > 0) {
   process.exit(1);

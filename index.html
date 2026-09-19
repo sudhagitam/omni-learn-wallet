@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniLearn & Family Wallet - K12, Tech & Expense Tracker</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: rgba(22, 31, 49, 0.75);
+      --bg-card-hover: rgba(30, 43, 67, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.4);
+      --secondary: #06b6d4;
+      --accent-ncert: #f59e0b;
+      --accent-florida: #3b82f6;
+      --accent-tech: #10b981;
+      --accent-expense: #ec4899;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(236, 72, 153, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 80px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Header & Navigation */
+    .app-header {
+      backdrop-filter: blur(16px);
+      background: rgba(11, 15, 25, 0.8);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: white;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      background: rgba(99, 102, 241, 0.2);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      width: 100%;
+    }
+
+    /* Bottom Navigation Bar (Mobile / Desktop View) */
+    .nav-tabs {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      padding: 0.75rem 0.5rem;
+      z-index: 1000;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .nav-btn i {
+      font-size: 1.2rem;
+    }
+
+    .nav-btn.active {
+      color: white;
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    .nav-btn.active i {
+      color: var(--primary);
+    }
+
+    /* Views Framework */
+    .view-content {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .view-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1));
+      pointer-events: none;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Card Styling */
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Pill Selection */
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .pill-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    /* Flashcard System */
+    .flashcard {
+      perspective: 1000px;
+      height: 220px;
+      cursor: pointer;
+    }
+
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      border-radius: var(--radius-lg);
+    }
+
+    .flashcard.flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--border-color);
+    }
+
+    .flashcard-front {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+      color: var(--text-main);
+    }
+
+    .flashcard-back {
+      background: linear-gradient(145deg, rgba(49, 46, 129, 0.9), rgba(15, 23, 42, 0.95));
+      color: #e0e7ff;
+      transform: rotateY(180deg);
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 8px var(--primary-glow);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      color: white;
+      border: none;
+      padding: 0.85rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.9;
+    }
+
+    /* Expense List & Stats */
+    .stat-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+    }
+
+    .stat-val {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 0.25rem;
+    }
+
+    .expense-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem;
+      background: rgba(15, 23, 42, 0.4);
+      border-bottom: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .tag-family { background: rgba(236, 72, 153, 0.2); color: #f472b6; }
+    .tag-education { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .tag-groceries { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .tag-utility { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+
+    /* Code Snippet Box */
+    .code-box {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin-top: 0.75rem;
+    }
+
+    /* Copy Prompt Container */
+    .prompt-container {
+      background: #090d16;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .nav-tabs {
+        position: relative;
+        background: transparent;
+        border-top: none;
+        padding: 0;
+        justify-content: flex-start;
+        gap: 1rem;
+      }
+      .nav-btn {
+        flex-direction: row;
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+      }
+      body {
+        padding-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div>
+        <div class="brand-title">OmniLearn & Wallet</div>
+        <span class="badge-pill">4th-12th NCERT / FL & Adult Tech & Expense</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <div class="container" style="padding-bottom: 0; padding-top: 1rem;">
+    <nav class="nav-tabs">
+      <button class="nav-btn active" onclick="switchView('k12-view', this)">
+        <i class="fa-solid fa-book-open"></i> K-12 School Hub
+      </button>
+      <button class="nav-btn" onclick="switchView('tech-view', this)">
+        <i class="fa-solid fa-laptop-code"></i> Adult Tech Academy
+      </button>
+      <button class="nav-btn" onclick="switchView('expense-view', this)">
+        <i class="fa-solid fa-wallet"></i> Family Expense Tracker
+      </button>
+      <button class="nav-btn" onclick="switchView('prompt-view', this)">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Gemini 3.6 Prompt
+      </button>
+    </nav>
+  </div>
+
+  <main class="container">
+
+    <!-- VIEW 1: K-12 SCHOOL HUB -->
+    <section id="k12-view" class="view-content active">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-school" style="color: var(--accent-ncert);"></i> K-12 Learning Companion (Grades 4 - 12)</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
+          Select your education board and grade to explore interactive flashcards, revision summaries, and AI test preparation.
+        </p>
+      </div>
+
+      <!-- Curriculum & Grade Selectors -->
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Select Curriculum:</span>
+            <div class="pill-group" style="margin-bottom: 0;">
+              <button class="pill-btn active" onclick="setBoard('NCERT', this)">🇮🇳 NCERT (India)</button>
+              <button class="pill-btn" onclick="setBoard('Florida', this)">🇺🇸 Florida (US B.E.S.T.)</button>
+            </div>
+          </div>
+          <div>
+            <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Select Grade:</span>
+            <div class="pill-group" style="margin-bottom: 0;" id="grade-pills">
+              <!-- Dynamically built grade pills -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subject Grid -->
+      <div class="grid-3" id="k12-subject-cards">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Interactive Revision Deck -->
+      <div style="margin-top: 2rem;">
+        <h3><i class="fa-solid fa-brain" style="color: var(--primary);"></i> Practice & Quick Revision Deck</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Click on any flashcard to flip and reveal the key summary/answer.</p>
+        
+        <div class="grid-2" id="k12-flashcard-deck">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: ADULT TECH ACADEMY -->
+    <section id="tech-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-rocket" style="color: var(--accent-tech);"></i> Adult Tech & Cloud Engineer Academy</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
+          Master AI/ML, AWS, GCP Cloud Certifications, and Production-Grade Backend Java (Spring Boot 3 & Microservices).
+        </p>
+      </div>
+
+      <!-- Track Switcher -->
+      <div class="pill-group" style="margin-bottom: 1.5rem;">
+        <button class="pill-btn active" onclick="setTechTrack('aiml', this)"><i class="fa-solid fa-robot"></i> AI & Machine Learning</button>
+        <button class="pill-btn" onclick="setTechTrack('aws', this)"><i class="fa-brands fa-aws"></i> AWS Cloud Architect</button>
+        <button class="pill-btn" onclick="setTechTrack('gcp', this)"><i class="fa-brands fa-google"></i> GCP Engineer</button>
+        <button class="pill-btn" onclick="setTechTrack('java', this)"><i class="fa-brands fa-java"></i> Backend Java & Spring</button>
+      </div>
+
+      <div class="grid-2">
+        <!-- Track Content Detail -->
+        <div class="card" id="tech-track-details">
+          <!-- Injected JS -->
+        </div>
+
+        <!-- Code Snippet & Challenge -->
+        <div class="card">
+          <h4><i class="fa-solid fa-code" style="color: var(--secondary);"></i> Live Code Challenge / Architecture Pattern</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;" id="code-desc">
+            Review production code patterns for your selected track.
+          </p>
+          <div class="code-box" id="code-snippet-area">
+            // Loading snippet...
+          </div>
+          <button class="btn-submit" style="margin-top: 1rem; background: rgba(99, 102, 241, 0.2); border: 1px solid var(--primary); color: white;" onclick="runQuizAlert()">
+            <i class="fa-solid fa-circle-check"></i> Take Practice Certification Quiz
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: FAMILY EXPENSE TRACKER -->
+    <section id="expense-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-coins" style="color: var(--accent-expense);"></i> Family Unified Expense Tracker</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
+          Track education costs, household bills, groceries, and tech learning expenses across family members.
+        </p>
+      </div>
+
+      <!-- Expense Summary Stats -->
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <div class="stat-box">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Total Monthly Budget</span>
+          <div class="stat-val" style="color: #34d399;" id="stat-budget">$3,500</div>
+        </div>
+        <div class="stat-box">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Total Spent This Month</span>
+          <div class="stat-val" style="color: #f472b6;" id="stat-spent">$1,240</div>
+        </div>
+        <div class="stat-box">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Currency View</span>
+          <div style="margin-top: 0.4rem;">
+            <button class="pill-btn active" id="curr-usd" onclick="setCurrency('USD')">USD ($)</button>
+            <button class="pill-btn" id="curr-inr" onclick="setCurrency('INR')">INR (₹)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Add Expense Form -->
+        <div class="card">
+          <h4><i class="fa-solid fa-plus-circle" style="color: var(--accent-expense);"></i> Add New Expense</h4>
+          <form id="expense-form" style="margin-top: 1rem;" onsubmit="addExpense(event)">
+            <div class="form-group">
+              <label class="form-label">Title / Description</label>
+              <input type="text" id="exp-title" class="form-input" placeholder="e.g. NCERT Science Books / AWS Exam Fee" required>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label class="form-label">Amount ($ / ₹)</label>
+                <input type="number" id="exp-amount" class="form-input" placeholder="50" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Category</label>
+                <select id="exp-category" class="form-select">
+                  <option value="Education">Education & School</option>
+                  <option value="Groceries">Groceries & Food</option>
+                  <option value="Utility">Utilities & Rent</option>
+                  <option value="Tech">Tech / Cloud Subscriptions</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Member Responsible</label>
+              <select id="exp-member" class="form-select">
+                <option value="Dad">Dad</option>
+                <option value="Mom">Mom</option>
+                <option value="Child 1 (Grade 6)">Child 1 (Grade 6)</option>
+                <option value="Child 2 (Grade 10)">Child 2 (Grade 10)</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i> Record Expense</button>
+          </form>
+        </div>
+
+        <!-- Expense History -->
+        <div class="card">
+          <h4><i class="fa-solid fa-list-check" style="color: var(--primary);"></i> Recent Transactions</h4>
+          <div style="margin-top: 1rem;" id="expense-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: GEMINI 3.6 FLASH MASTER PROMPT -->
+    <section id="prompt-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-sparkles" style="color: var(--accent-ncert);"></i> Master Gemini 3.6 Flash Prompt</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
+          Copy this comprehensive prompt to feed into Gemini 3.6 Flash to build, expand, or push this complete application to GitHub and Vercel.
+        </p>
+      </div>
+
+      <div class="prompt-container">
+        <button class="copy-btn" onclick="copyPromptText()"><i class="fa-solid fa-copy"></i> Copy Prompt</button>
+        <pre id="master-prompt-code" style="white-space: pre-wrap; font-family: monospace; font-size: 0.85rem; color: #a7f3d0; max-height: 500px; overflow-y: auto;">
+ROLE & GOAL:
+You are an expert Full-Stack AI Engineer specializing in Next.js 14/15, React, Tailwind CSS, TypeScript, and Progressive Web Apps (PWA). Your task is to build a high-performance, mobile-optimized Web/Mobile App called "OmniLearn & Family Wallet" designed for both K-12 students and adult tech learners, combined with a family expense tracker.
+
+APP CORE SPECIFICATIONS & MODULES:
+
+1. K-12 SCHOOL STUDY HUB (Grades 4 through 12):
+   - Dual Curriculum Support:
+     * India NCERT Curriculum: Math, Science (Physics/Chemistry/Biology), Social Science (History, Geography, Civics), English Literature.
+     * US Florida Education Curriculum (Florida B.E.S.T. Standards): ELA, Mathematics, Science, Social Studies.
+   - Interactive Study Modes:
+     * Interactive Digital Flashcards with 3D flip effects.
+     * AI-Generated Practice Quizzes with instant scoring & explanations.
+     * Quick Revision Summaries for exam prep.
+
+2. ADULT TECH & CLOUD ACADEMY:
+   - AI & Machine Learning Track: Fundamentals, PyTorch/TensorFlow, LLMs, RAG, Prompt Engineering, Fine-tuning.
+   - AWS Cloud Architecture Track: S3, EC2, Lambda, DynamoDB, CloudFront, IAM, Serverless & Solutions Architect Cert prep.
+   - GCP Engineer Track: Compute Engine, GKE, BigQuery, Vertex AI, Associate Cloud Engineer Cert prep.
+   - Backend Java Developer Track: Core Java 21 (Records, Virtual Threads), Spring Boot 3, Microservices, Hibernate/JPA, PostgreSQL, System Design.
+   - Interactive Code Playground & Architectural diagrams.
+
+3. UNIFIED FAMILY EXPENSE TRACKER:
+   - Budget allocation by categories (School Fees, NCERT Books, Tech Subscriptions, AWS/GCP Labs, Groceries, Utilities).
+   - Multi-User Family Tagging (Dad, Mom, Child 1, Child 2).
+   - Multi-Currency Toggle: USD ($) and INR (₹) with real-time state conversion.
+   - Expense analytics & visual breakdown progress bars.
+
+TECH STACK & DEPLOYMENT:
+- Framework: Next.js 14/15 (App Router, Server Components) or Vite + React + TypeScript.
+- Styling: Tailwind CSS v3/v4 with dark mode glassmorphism aesthetics, Lucide React icons.
+- Persistence: LocalStorage / Supabase / Prisma with PostgreSQL schema.
+- Mobile PWA: Manifest.json and service worker support for installation on iOS & Android.
+
+GITHUB & VERCEL INSTRUCTIONS GENERATION:
+Provide step-by-step commands to:
+1. Initialize Git repository and commit files.
+2. Push repository to GitHub using `gh repo create` or standard git remote commands.
+3. Deploy directly to Vercel using `npx vercel` CLI or automatic GitHub integration.
+
+Please generate complete, runnable production code for this entire application.
+        </pre>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // State management
+    let state = {
+      board: 'NCERT',
+      grade: 6,
+      techTrack: 'aiml',
+      currency: 'USD',
+      currencyRate: 83.5, // 1 USD = 83.5 INR
+      expenses: [
+        { id: 1, title: 'NCERT Science & Math Textbooks', amount: 45, category: 'Education', member: 'Child 1 (Grade 6)' },
+        { id: 2, title: 'AWS Cloud Practitioner Prep Course', amount: 80, category: 'Tech', member: 'Dad' },
+        { id: 3, title: 'Monthly Groceries & Milk', amount: 350, category: 'Groceries', member: 'Mom' },
+        { id: 4, title: 'Florida BEST ELA Workbook', amount: 30, category: 'Education', member: 'Child 2 (Grade 10)' }
+      ]
+    };
+
+    // Navigation View Switcher
+    function switchView(viewId, btn) {
+      document.querySelectorAll('.view-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // K-12 Module Handlers
+    function initGrades() {
+      const container = document.getElementById('grade-pills');
+      container.innerHTML = '';
+      for (let g = 4; g <= 12; g++) {
+        const btn = document.createElement('button');
+        btn.className = `pill-btn ${g === state.grade ? 'active' : ''}`;
+        btn.innerText = `Grade ${g}`;
+        btn.onclick = () => {
+          state.grade = g;
+          document.querySelectorAll('#grade-pills .pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderK12Content();
+        };
+        container.appendChild(btn);
+      }
+    }
+
+    function setBoard(boardName, btn) {
+      state.board = boardName;
+      btn.parentElement.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderK12Content();
+    }
+
+    function renderK12Content() {
+      const subjectContainer = document.getElementById('k12-subject-cards');
+      const flashcardContainer = document.getElementById('k12-flashcard-deck');
+
+      const isNcert = state.board === 'NCERT';
+
+      // Sample Subject Data
+      const subjects = isNcert ? [
+        { name: 'Mathematics', desc: `Grade ${state.grade} NCERT Algebra, Geometry & Fractions`, icon: 'fa-calculator', color: '#6366f1' },
+        { name: 'Science', desc: `Grade ${state.grade} NCERT Physics, Chemistry & Biology basics`, icon: 'fa-flask', color: '#10b981' },
+        { name: 'Social Science', desc: `Grade ${state.grade} NCERT History, Geography & Civics`, icon: 'fa-earth-americas', color: '#f59e0b' }
+      ] : [
+        { name: 'Florida B.E.S.T. Math', desc: `Grade ${state.grade} Florida Benchmarks for Excellent Student Thinking`, icon: 'fa-chart-pie', color: '#3b82f6' },
+        { name: 'Science & STEM', desc: `Grade ${state.grade} Florida Next Gen Sunshine State Standards`, icon: 'fa-atom', color: '#06b6d4' },
+        { name: 'English Language Arts', desc: `Grade ${state.grade} Reading comprehension, analytical writing & vocabulary`, icon: 'fa-feather', color: '#ec4899' }
+      ];
+
+      subjectContainer.innerHTML = subjects.map(s => `
+        <div class="card">
+          <div style="font-size: 1.5rem; color: ${s.color}; margin-bottom: 0.5rem;"><i class="fa-solid ${s.icon}"></i></div>
+          <h4 style="font-size: 1.1rem;">${s.name}</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.4rem 0 1rem 0;">${s.desc}</p>
+          <span style="font-size: 0.75rem; color: var(--primary); font-weight: 600;"><i class="fa-solid fa-play"></i> Start Chapter Revision &rarr;</span>
+        </div>
+      `).join('');
+
+      // Flashcards
+      const cards = isNcert ? [
+        { q: `[Grade ${state.grade} NCERT Math] What is the formula for the perimeter of a rectangle?`, a: `Perimeter = 2 × (Length + Breadth)` },
+        { q: `[Grade ${state.grade} NCERT Science] What is Photosynthesis?`, a: `Process by which green plants convert light energy into chemical energy (Glucose) using CO2 and Water.` }
+      ] : [
+        { q: `[Grade ${state.grade} Florida ELA] Define Central Idea in a text.`, a: `The main point or unifying concept that an author wants the reader to understand from the reading passage.` },
+        { q: `[Grade ${state.grade} Florida Math] What is a Rational Number?`, a: `Any number that can be expressed as a fraction p/q where p and q are integers and q ≠ 0.` }
+      ];
+
+      flashcardContainer.innerHTML = cards.map(c => `
+        <div class="flashcard" onclick="this.classList.toggle('flipped')">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <span style="font-size: 0.75rem; color: var(--accent-ncert); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;">Question (Tap to flip)</span>
+              <p style="font-weight: 600; font-size: 0.95rem;">${c.q}</p>
+            </div>
+            <div class="flashcard-back">
+              <span style="font-size: 0.75rem; color: #a5b4fc; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;">Answer</span>
+              <p style="font-size: 0.95rem;">${c.a}</p>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Adult Tech Handlers
+    const techData = {
+      aiml: {
+        title: 'AI & Machine Learning Engineering',
+        desc: 'Master Neural Networks, PyTorch, Large Language Models (LLMs), Retrieval Augmented Generation (RAG), and Prompt Engineering.',
+        snippet: `import torch\nimport torch.nn as nn\n\n# PyTorch Simple Multi-Layer Perceptron\nclass MLP(nn.Module):\n    def __init__(self, input_dim, hidden_dim, output_dim):\n        super(MLP, self).__init__()\n        self.fc1 = nn.Linear(input_dim, hidden_dim)\n        self.relu = nn.ReLU()\n        self.fc2 = nn.Linear(hidden_dim, output_dim)\n        \n    def forward(self, x):\n        return self.fc2(self.relu(self.fc1(x)))`
+      },
+      aws: {
+        title: 'AWS Certified Solutions Architect & Cloud Dev',
+        desc: 'Build high-availability serverless apps using S3, AWS Lambda, DynamoDB, API Gateway, CloudFront, and Infrastructure as Code (CDK / Terraform).',
+        snippet: `// AWS CDK Lambda & DynamoDB Stack (TypeScript)\nimport * as cdk from 'aws-cdk-lib';\nimport * as dynamodb from 'aws-cdk-lib/aws-dynamodb';\nimport * as lambda from 'aws-cdk-lib/aws-lambda';\n\nconst table = new dynamodb.Table(this, 'ExpensesTable', {\n  partitionKey: { name: 'id', type: dynamodb.AttributeType.STRING }\n});`
+      },
+      gcp: {
+        title: 'GCP Cloud Engineer & Vertex AI',
+        desc: 'Deploy containerized microservices on GKE, leverage BigQuery for big data analytics, and build enterprise ML pipelines on GCP Vertex AI.',
+        snippet: `# GCP BigQuery SQL Analytical Query\nSELECT \n  category,\n  COUNT(*) as transaction_count,\n  SUM(amount) as total_spent\nFROM \`my_project.family_expenses.transactions\`\nGROUP BY category\nORDER BY total_spent DESC;`
+      },
+      java: {
+        title: 'Backend Java 21 & Spring Boot 3 Microservices',
+        desc: 'Modern Backend Java: Virtual Threads (Loom), Spring Boot 3 REST APIs, Spring Data JPA, Microservices Architecture, Docker, and System Design.',
+        snippet: `// Java 21 Spring Boot REST Controller\n@RestController\n@RequestMapping("/api/v1/expenses")\npublic class ExpenseController {\n\n    private final ExpenseService expenseService;\n\n    public ExpenseController(ExpenseService expenseService) {\n        this.expenseService = expenseService;\n    }\n\n    @GetMapping\n    public List<ExpenseResponse> getAllExpenses() {\n        return expenseService.findAllExpenses();\n    }\n}`
+      }
+    };
+
+    function setTechTrack(track, btn) {
+      state.techTrack = track;
+      if (btn) {
+        btn.parentElement.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+
+      const data = techData[track];
+      document.getElementById('tech-track-details').innerHTML = `
+        <h3><i class="fa-solid fa-graduation-cap" style="color: var(--accent-tech);"></i> ${data.title}</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.75rem 0 1.25rem 0;">${data.desc}</p>
+        <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <span style="font-size: 0.8rem; color: var(--secondary); font-weight: 700;">Key Certification Targets:</span>
+          <ul style="font-size: 0.85rem; margin-left: 1.25rem; margin-top: 0.4rem; color: var(--text-main);">
+            <li>Hands-on Architectural Design & Real-world projects</li>
+            <li>Production Code Quality & Best Practices</li>
+          </ul>
+        </div>
+      `;
+
+      document.getElementById('code-snippet-area').innerText = data.snippet;
+    }
+
+    // Family Expense Handlers
+    function setCurrency(curr) {
+      state.currency = curr;
+      document.getElementById('curr-usd').classList.toggle('active', curr === 'USD');
+      document.getElementById('curr-inr').classList.toggle('active', curr === 'INR');
+      renderExpenses();
+    }
+
+    function addExpense(e) {
+      e.preventDefault();
+      const title = document.getElementById('exp-title').value;
+      const amount = parseFloat(document.getElementById('exp-amount').value);
+      const category = document.getElementById('exp-category').value;
+      const member = document.getElementById('exp-member').value;
+
+      if (title && amount) {
+        state.expenses.unshift({
+          id: Date.now(),
+          title,
+          amount,
+          category,
+          member
+        });
+        document.getElementById('expense-form').reset();
+        renderExpenses();
+      }
+    }
+
+    function deleteExpense(id) {
+      state.expenses = state.expenses.filter(item => item.id !== id);
+      renderExpenses();
+    }
+
+    function renderExpenses() {
+      const isINR = state.currency === 'INR';
+      const symbol = isINR ? '₹' : '$';
+      const multiplier = isINR ? state.currencyRate : 1;
+
+      let totalSpent = 0;
+      const listEl = document.getElementById('expense-list');
+      
+      listEl.innerHTML = state.expenses.map(exp => {
+        const convertedAmt = (exp.amount * multiplier).toFixed(0);
+        totalSpent += exp.amount;
+
+        let tagClass = 'tag-family';
+        if (exp.category === 'Education') tagClass = 'tag-education';
+        if (exp.category === 'Groceries') tagClass = 'tag-groceries';
+        if (exp.category === 'Utility') tagClass = 'tag-utility';
+
+        return `
+          <div class="expense-item">
+            <div>
+              <div style="font-weight: 600; font-size: 0.9rem;">${exp.title}</div>
+              <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.25rem;">
+                <span class="tag ${tagClass}">${exp.category}</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-user"></i> ${exp.member}</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span style="font-weight: 700; font-size: 1rem; color: #f472b6;">${symbol}${convertedAmt}</span>
+              <button onclick="deleteExpense(${exp.id})" style="background: none; border: none; color: #ef4444; cursor: pointer;"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const convertedTotal = (totalSpent * multiplier).toFixed(0);
+      const convertedBudget = (3500 * multiplier).toFixed(0);
+
+      document.getElementById('stat-spent').innerText = `${symbol}${convertedTotal}`;
+      document.getElementById('stat-budget').innerText = `${symbol}${convertedBudget}`;
+    }
+
+    function copyPromptText() {
+      const text = document.getElementById('master-prompt-code').innerText;
+      navigator.clipboard.writeText(text);
+      alert('Gemini 3.6 Flash Master Prompt copied to clipboard!');
+    }
+
+    function runQuizAlert() {
+      alert('Starting Practice Certification Quiz! Feature active in full build.');
+    }
+
+    // Initialize on page load
+    initGrades();
+    renderK12Content();
+    setTechTrack('aiml');
+    renderExpenses();
+  </script>
+</body>
+</html>

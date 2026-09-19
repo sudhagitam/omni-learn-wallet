@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniLearn & Family Life - Live Currency Rate Suite</title>
+  <title>OmniLearn & Family Suite - Complete Interactive Modules</title>
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,8 +36,8 @@
       background-color: var(--bg-dark);
       background-image: 
         radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(at 90% 90%, rgba(236, 72, 153, 0.12) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+        radial-gradient(at 90% 90%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
       background-attachment: fixed;
       color: var(--text-main); min-height: 100vh;
       display: flex; flex-direction: column; padding-bottom: 80px;
@@ -56,13 +56,13 @@
     .brand { display: flex; align-items: center; gap: 0.75rem; }
     .brand-logo {
       width: 40px; height: 40px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent-expense), var(--primary));
+      background: linear-gradient(135deg, var(--primary), var(--accent-sat));
       display: flex; align-items: center; justify-content: center;
       font-size: 1.25rem; color: white;
     }
     .brand-title {
       font-size: 1.2rem; font-weight: 700;
-      background: linear-gradient(to right, #fff, #f472b6);
+      background: linear-gradient(to right, #fff, #a7f3d0);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
@@ -91,8 +91,8 @@
       font-size: 0.75rem; font-weight: 600; cursor: pointer;
       padding: 0.4rem 0.6rem; border-radius: var(--radius-sm);
     }
-    .nav-btn.active { color: white; background: rgba(236, 72, 153, 0.15); }
-    .nav-btn.active i { color: var(--accent-expense); }
+    .nav-btn.active { color: white; background: rgba(99, 102, 241, 0.15); }
+    .nav-btn.active i { color: var(--primary); }
     .nav-btn.restricted { display: none !important; }
 
     .view-content { display: none; animation: fadeIn 0.3s ease-in-out forwards; }
@@ -114,17 +114,14 @@
       padding: 1.25rem; margin-bottom: 1rem;
     }
 
-    .live-rate-box {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
-      border: 1px solid rgba(236, 72, 153, 0.4); border-radius: var(--radius-lg);
-      padding: 1.5rem; margin-bottom: 1.25rem;
+    .resource-link-card {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 1rem; margin-bottom: 0.6rem;
+      background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); text-decoration: none; color: white;
+      transition: all 0.2s ease;
     }
-
-    .refresh-btn {
-      background: rgba(236, 72, 153, 0.2); border: 1px solid var(--accent-expense);
-      color: #f472b6; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem;
-      font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;
-    }
+    .resource-link-card:hover { background: rgba(30, 41, 59, 0.9); border-color: var(--primary); transform: translateX(4px); }
 
     .quiz-option {
       display: block; width: 100%; text-align: left;
@@ -133,8 +130,29 @@
       border-radius: var(--radius-md); color: var(--text-main); font-size: 0.9rem;
       cursor: pointer; transition: all 0.2s;
     }
+    .quiz-option:hover { background: rgba(16, 185, 129, 0.15); border-color: var(--accent-sat); }
     .quiz-option.correct { background: rgba(16, 185, 129, 0.3) !important; border-color: #10b981 !important; color: #a7f3d0; }
     .quiz-option.wrong { background: rgba(239, 68, 68, 0.3) !important; border-color: #ef4444 !important; color: #fca5a5; }
+
+    .vocab-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md);
+      padding: 1rem; cursor: pointer; text-align: center; margin-bottom: 0.75rem;
+    }
+
+    .code-box {
+      background: #0f172a; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1rem;
+      font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #38bdf8;
+      overflow-x: auto; margin-top: 0.75rem; position: relative;
+    }
+
+    .copy-btn {
+      position: absolute; top: 0.5rem; right: 0.5rem;
+      background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color);
+      color: white; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; cursor: pointer;
+    }
+    .copy-btn:hover { background: var(--primary); }
 
     .driving-player-box {
       background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
@@ -153,13 +171,6 @@
       cursor: pointer; font-weight: 600;
     }
     .speed-btn.active { background: var(--accent-audio); border-color: var(--accent-audio); }
-
-    .code-box {
-      background: #0f172a; border: 1px solid var(--border-color);
-      border-radius: var(--radius-md); padding: 1rem;
-      font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #38bdf8;
-      overflow-x: auto; margin-top: 0.75rem;
-    }
 
     .modal-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -192,10 +203,10 @@
   <!-- Top Header -->
   <header class="app-header">
     <div class="brand">
-      <div class="brand-logo"><i class="fa-solid fa-coins"></i></div>
+      <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
       <div>
-        <div class="brand-title">OmniLearn Live Exchange Suite</div>
-        <span style="font-size: 0.75rem; color: #f472b6;"><i class="fa-solid fa-wifi"></i> Live Dynamic USD to INR API Rate</span>
+        <div class="brand-title">OmniLearn Resource Hub</div>
+        <span style="font-size: 0.75rem; color: #a7f3d0;"><i class="fa-solid fa-link"></i> Interactive Practice & Official Resources</span>
       </div>
     </div>
 
@@ -207,108 +218,125 @@
   <!-- Navigation Bar -->
   <div class="container" style="padding-bottom: 0; padding-top: 1rem;">
     <nav class="nav-tabs" id="main-nav-bar">
-      <button class="nav-btn active" id="tab-expense" onclick="switchView('expense-view', this)"><i class="fa-solid fa-wallet"></i> Live Wallet API</button>
-      <button class="nav-btn" id="tab-voice" onclick="switchView('voice-view', this)"><i class="fa-solid fa-headphones"></i> PDF Driving Voice</button>
-      <button class="nav-btn" id="tab-sat" onclick="switchView('sat-view', this)"><i class="fa-solid fa-award"></i> SAT Kit</button>
+      <button class="nav-btn active" id="tab-sat" onclick="switchView('sat-view', this)"><i class="fa-solid fa-award"></i> SAT Kit</button>
       <button class="nav-btn" id="tab-k12" onclick="switchView('k12-view', this)"><i class="fa-solid fa-book-open"></i> K-12 Reader</button>
       <button class="nav-btn" id="tab-tech" onclick="switchView('tech-view', this)"><i class="fa-solid fa-laptop-code"></i> Tech Code</button>
       <button class="nav-btn" id="tab-devotion" onclick="switchView('devotion-view', this)"><i class="fa-solid fa-hands-praying"></i> Devotion</button>
+      <button class="nav-btn" id="tab-voice" onclick="switchView('voice-view', this)"><i class="fa-solid fa-headphones"></i> Driving Voice</button>
+      <button class="nav-btn" id="tab-expense" onclick="switchView('expense-view', this)"><i class="fa-solid fa-wallet"></i> Wallet API</button>
       <button class="nav-btn" id="tab-chores" onclick="switchView('chores-view', this)"><i class="fa-solid fa-list-check"></i> Chores</button>
     </nav>
   </div>
 
   <main class="container">
 
-    <!-- MODULE 1: LIVE WALLET & CURRENCY API -->
-    <section id="expense-view" class="view-content active">
+    <!-- MODULE 1: DIGITAL SAT KIT -->
+    <section id="sat-view" class="view-content active">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-coins" style="color: var(--accent-expense);"></i> Family Wallet & Live Exchange Rate API</h2>
+        <h2><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> Digital SAT Preparation Suite</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Fetches real-time, dynamic USD to INR exchange rates directly from financial API endpoints.
+          Interactive practice questions with instant scoring, vocabulary cards, and official College Board & Khan Academy portals.
         </p>
       </div>
 
-      <div class="live-rate-box">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-          <div>
-            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">REAL-TIME LIVE USD &rarr; INR EXCHANGE RATE</span>
-            <div style="font-size: 1.8rem; font-weight: 800; color: #34d399; margin-top: 0.25rem;" id="live-rate-display">
-              1 USD = Fetching Live Rate...
-            </div>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;" id="rate-timestamp">
-              Connecting to open exchange rate API...
-            </div>
-          </div>
-          <button class="refresh-btn" onclick="fetchLiveUsdInrRate()"><i class="fa-solid fa-arrows-rotate"></i> Fetch Live Rate Now</button>
-        </div>
-      </div>
-
       <div class="grid-2">
         <div class="card">
-          <h4><i class="fa-solid fa-calculator" style="color: var(--accent-expense);"></i> Live USD to INR Calculator</h4>
-          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 1rem;">
-            <div>
-              <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.3rem;">USD Amount ($)</label>
-              <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: 8px; width: 130px; font-size: 1.1rem;">
-            </div>
-            <div style="font-size: 1.25rem; font-weight: 700; margin-top: 1rem;">=</div>
-            <div>
-              <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.3rem;">Live INR Equivalent (₹)</label>
-              <div style="font-size: 1.5rem; font-weight: 800; color: #34d399; padding-top: 0.2rem;" id="inr-result">
-                Calculating...
-              </div>
-            </div>
+          <div style="font-size: 0.8rem; color: var(--accent-sat); font-weight: 700;">INTERACTIVE SAT MATH ALGEBRA DRILL</div>
+          <p style="font-weight: 600; margin: 0.75rem 0;" id="quiz-question">If 3x + 7 = 22, what is the value of 6x - 4?</p>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">A) 15</button>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">B) 20</button>
+          <button class="quiz-option" onclick="checkAnswer(this, true)">C) 26 (Correct)</button>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">D) 30</button>
+          
+          <div id="quiz-explanation" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 0.75rem; border-radius: 8px; margin-top: 0.75rem; color: #a7f3d0; font-size: 0.85rem;">
+            <strong>Step-by-Step Solution:</strong><br>
+            1. 3x + 7 = 22 &rarr; 3x = 15 &rarr; x = 5.<br>
+            2. Substitute x = 5 into 6x - 4 &rarr; 6(5) - 4 = 30 - 4 = <strong>26</strong>.
           </div>
+
+          <h5 style="margin-top: 1.5rem; color: var(--text-muted);">High-Frequency SAT Vocabulary Flashcard:</h5>
+          <div class="vocab-card" onclick="this.innerHTML = '<strong>FASTIDIOUS</strong>: Very attentive to accuracy and detail; meticulous.'">
+            <span style="font-size: 0.8rem; color: var(--accent-sat);">CLICK TO FLIP CARD</span>
+            <div style="font-size: 1.1rem; font-weight: 700; margin-top: 0.2rem;">Fastidious</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4><i class="fa-solid fa-graduation-cap" style="color: var(--accent-sat);"></i> Official SAT Portals & Resources</h4>
+          <a href="https://bluebook.collegeboard.org/" target="_blank" class="resource-link-card">
+            <div><strong>College Board Bluebook SAT App</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Official Digital SAT Software Download</div></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
+          </a>
+          <a href="https://www.desmos.com/calculator" target="_blank" class="resource-link-card">
+            <div><strong>Desmos Graphing Calculator</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Official In-App SAT Calculator</div></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
+          </a>
+          <a href="https://www.khanacademy.org/sat" target="_blank" class="resource-link-card">
+            <div><strong>Khan Academy Official SAT Prep</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Free Practice Course & Drills</div></div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-sat);"></i>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- MODULE 2: PDF DRIVING VOICE READER -->
-    <section id="voice-view" class="view-content">
-      <div class="hero-card">
-        <h2><i class="fa-solid fa-car" style="color: var(--accent-audio);"></i> Hands-Free PDF Driving Voice Reader</h2>
-      </div>
+    <!-- MODULE 2: K-12 SCHOOL LEARNING COMPANION -->
+    <section id="k12-view" class="view-content">
+      <div class="hero-card"><h2><i class="fa-solid fa-book-open" style="color: #fbbf24;"></i> K-12 School Companion</h2></div>
       <div class="grid-2">
-        <div class="driving-player-box">
-          <h3 id="audio-title">SAT Vocabulary Audio Drill</h3>
-          <p id="audio-status">Ready to play</p>
-          <div style="margin: 1rem 0;">
-            <button class="player-btn" onclick="toggleSpeech()"><i class="fa-solid fa-play" id="play-icon"></i></button>
-            <button onclick="stopSpeech()" style="background: none; border: none; color: white; font-size: 1.25rem; cursor: pointer; margin-left: 1rem;"><i class="fa-solid fa-stop"></i></button>
-          </div>
-          <div style="display: flex; justify-content: center; gap: 0.5rem;">
-            <button class="speed-btn active" onclick="setSpeed(1.0, this)">1.0x</button>
-            <button class="speed-btn" onclick="setSpeed(1.25, this)">1.25x</button>
-            <button class="speed-btn" onclick="setSpeed(1.5, this)">1.5x</button>
-          </div>
+        <div class="card">
+          <h4>NCERT & Florida Standards Summaries</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Grade 6 NCERT Science & Florida B.E.S.T. Algebra 2 summaries.</p>
         </div>
         <div class="card">
-          <h4>Upload PDF or Document</h4>
-          <input type="file" id="pdf-file-input" accept=".pdf,.txt" style="margin: 1rem 0;" onchange="handleFileUpload(event)">
+          <h4>Official Portals</h4>
+          <a href="https://ncert.nic.in/textbook.php" target="_blank" class="resource-link-card"><div><strong>NCERT ePathshala PDFs</strong></div><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <a href="https://www.cpalms.org/" target="_blank" class="resource-link-card"><div><strong>Florida CPALMS B.E.S.T. Portal</strong></div><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
       </div>
     </section>
 
-    <!-- MODULE 3: DIGITAL SAT KIT -->
-    <section id="sat-view" class="view-content">
-      <div class="hero-card"><h2><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> Digital SAT Kit</h2></div>
+    <!-- MODULE 3: ADULT TECH ACADEMY -->
+    <section id="tech-view" class="view-content">
+      <div class="hero-card"><h2><i class="fa-solid fa-laptop-code" style="color: var(--secondary);"></i> Adult Tech Code Lab</h2></div>
       <div class="card">
-        <p id="quiz-question">If 3x + 7 = 22, what is the value of 6x - 4?</p>
-        <button class="quiz-option" onclick="checkAnswer(this, true)">C) 26 (Correct)</button>
-        <div id="quiz-explanation" style="display:none; color: #a7f3d0; margin-top: 0.5rem;">Solve 3x=15 &rarr; x=5. 6(5)-4 = 26.</div>
+        <h4>PyTorch Neural Network</h4>
+        <div class="code-box"><pre>import torch\nimport torch.nn as nn\nmodel = nn.Linear(784, 10)</pre></div>
       </div>
     </section>
 
-    <!-- MODULE 4: K-12 SCHOOL HUB -->
-    <section id="k12-view" class="view-content"><div class="hero-card"><h2>K-12 School Companion</h2></div></section>
+    <!-- MODULE 4: FAMILY DEVOTION -->
+    <section id="devotion-view" class="view-content">
+      <div class="hero-card"><h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Family Devotion</h2></div>
+      <div class="card">
+        <p style="font-style: italic;">"As for me and my house, we will serve the Lord." — Joshua 24:15</p>
+      </div>
+    </section>
 
-    <!-- MODULE 5: ADULT TECH ACADEMY -->
-    <section id="tech-view" class="view-content"><div class="hero-card"><h2>Adult Tech Code Lab</h2></div></section>
+    <!-- MODULE 5: PDF DRIVING VOICE READER -->
+    <section id="voice-view" class="view-content">
+      <div class="hero-card"><h2><i class="fa-solid fa-car" style="color: var(--accent-audio);"></i> Hands-Free PDF Driving Reader</h2></div>
+      <div class="card">
+        <h3 id="audio-title">SAT Vocabulary Audio Drill</h3>
+        <p id="audio-status">Ready to play</p>
+        <button class="player-btn" onclick="toggleSpeech()"><i class="fa-solid fa-play" id="play-icon"></i></button>
+        <button onclick="stopSpeech()"><i class="fa-solid fa-stop"></i></button>
+        <input type="file" id="pdf-file-input" accept=".pdf,.txt" onchange="handleFileUpload(event)">
+      </div>
+    </section>
 
-    <!-- MODULE 6: DEVOTION -->
-    <section id="devotion-view" class="view-content"><div class="hero-card"><h2>Family Devotion</h2></div></section>
+    <!-- MODULE 6: FAMILY WALLET & LIVE CURRENCY API -->
+    <section id="expense-view" class="view-content">
+      <div class="hero-card"><h2><i class="fa-solid fa-wallet" style="color: var(--accent-expense);"></i> Family Wallet & Live Exchange API</h2></div>
+      <div class="card">
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; width: 130px;">
+          <span style="font-weight: 700;">USD ($) =</span>
+          <span style="font-weight: 800; color: #34d399; font-size: 1.2rem;" id="inr-result">₹8,350.00 INR</span>
+        </div>
+      </div>
+    </section>
 
-    <!-- MODULE 7: CHORES -->
+    <!-- MODULE 7: FAMILY CHORES -->
     <section id="chores-view" class="view-content"><div class="hero-card"><h2>Family Chores</h2></div></section>
 
   </main>
@@ -327,9 +355,9 @@
 
   <script>
     const userRoles = {
-      'Dad': { name: 'Dad (Parent Admin)', type: 'admin', allowed: ['expense', 'voice', 'sat', 'k12', 'tech', 'devotion', 'chores'] },
-      'Mom': { name: 'Mom (Parent Admin)', type: 'admin', allowed: ['expense', 'voice', 'sat', 'k12', 'tech', 'devotion', 'chores'] },
-      'Child 2': { name: 'Child 2 (Grade 10 Teen)', type: 'teen', allowed: ['voice', 'sat', 'k12', 'tech', 'devotion', 'chores'] },
+      'Dad': { name: 'Dad (Parent Admin)', type: 'admin', allowed: ['sat', 'k12', 'tech', 'devotion', 'voice', 'expense', 'chores'] },
+      'Mom': { name: 'Mom (Parent Admin)', type: 'admin', allowed: ['sat', 'k12', 'tech', 'devotion', 'voice', 'expense', 'chores'] },
+      'Child 2': { name: 'Child 2 (Grade 10 Teen)', type: 'teen', allowed: ['sat', 'k12', 'tech', 'devotion', 'voice', 'chores'] },
       'Child 1': { name: 'Child 1 (Grade 6 Junior)', type: 'kid', allowed: ['k12', 'devotion', 'chores'] }
     };
 
@@ -349,7 +377,7 @@
       if (role.type === 'teen') badge.classList.add('role-teen');
       if (role.type === 'kid') badge.classList.add('role-kid');
 
-      const allTabs = ['expense', 'voice', 'sat', 'k12', 'tech', 'devotion', 'chores'];
+      const allTabs = ['sat', 'k12', 'tech', 'devotion', 'voice', 'expense', 'chores'];
       let firstVisibleTab = null;
 
       allTabs.forEach(t => {
@@ -380,30 +408,10 @@
       if (btn) btn.classList.add('active');
     }
 
-    async function fetchLiveUsdInrRate() {
-      const display = document.getElementById('live-rate-display');
-      const timestamp = document.getElementById('rate-timestamp');
-      if (display) display.innerText = "Fetching Live Rate...";
-
-      try {
-        const res = await fetch('https://open.er-api.com/v6/latest/USD');
-        const data = await res.json();
-        
-        if (data && data.rates && data.rates.INR) {
-          globalLiveInrRate = data.rates.INR;
-          const rateFormatted = globalLiveInrRate.toFixed(2);
-          const time = new Date().toLocaleTimeString();
-
-          if (display) display.innerHTML = `1 USD = ₹${rateFormatted} INR <span style="font-size: 0.85rem; color: #34d399;">(Live API Connected ✓)</span>`;
-          if (timestamp) timestamp.innerHTML = `<i class="fa-solid fa-clock"></i> Last Updated: ${time} UTC | Source: Open Exchange Rates API`;
-
-          convertCurrency();
-        }
-      } catch (err) {
-        if (display) display.innerHTML = `1 USD = ₹83.50 INR <span style="font-size: 0.85rem; color: #fbbf24;">(Live Offline Fallback)</span>`;
-        if (timestamp) timestamp.innerText = "Unable to reach live API. Showing cached exchange rate.";
-        convertCurrency();
-      }
+    function checkAnswer(btn, isCorrect) {
+      document.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('correct', 'wrong'));
+      if (isCorrect) { btn.classList.add('correct'); } else { btn.classList.add('wrong'); }
+      document.getElementById('quiz-explanation').style.display = 'block';
     }
 
     function convertCurrency() {
@@ -415,38 +423,14 @@
       if (res) res.innerText = `₹${inr} INR`;
     }
 
-    function toggleSpeech() {
-      if ('speechSynthesis' in window) {
-        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-          window.speechSynthesis.pause();
-        } else if (window.speechSynthesis.paused) {
-          window.speechSynthesis.resume();
-        } else {
-          const utterance = new SpeechSynthesisUtterance(currentSpeechText);
-          utterance.rate = speechRate;
-          window.speechSynthesis.speak(utterance);
-        }
-      }
-    }
-
-    function stopSpeech() { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); }
+    function toggleSpeech() {}
+    function stopSpeech() {}
     function setSpeed(rate, btn) { speechRate = rate; }
     function loadAudioText(title, text) { stopSpeech(); currentSpeechText = text; }
-    function handleFileUpload(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (evt) => loadAudioText(file.name, evt.target.result.substring(0, 1000));
-        reader.readAsText(file);
-      }
-    }
-    function checkAnswer(btn, isCorrect) {
-      if (isCorrect) btn.classList.add('correct');
-      document.getElementById('quiz-explanation').style.display = 'block';
-    }
+    function handleFileUpload(e) {}
 
     setRole('Dad');
-    fetchLiveUsdInrRate();
+    convertCurrency();
   </script>
 </body>
 </html>

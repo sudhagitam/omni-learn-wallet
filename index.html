@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniLearn & Family Wallet - K12, Tech, Expense & Devotion</title>
+  <title>OmniLearn & Family Life - K12, SAT, Tech, Expense & Devotion</title>
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@
       --primary-glow: rgba(99, 102, 241, 0.4);
       --secondary: #06b6d4;
       --accent-ncert: #f59e0b;
-      --accent-florida: #3b82f6;
-      --accent-tech: #10b981;
+      --accent-sat: #10b981;
+      --accent-tech: #06b6d4;
       --accent-expense: #ec4899;
       --accent-devotion: #a855f7;
       --text-main: #f3f4f6;
@@ -41,9 +41,9 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(at 10% 10%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
-        radial-gradient(at 90% 90%, rgba(236, 72, 153, 0.12) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+        radial-gradient(at 10% 10%, rgba(16, 185, 129, 0.15) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
       background-attachment: fixed;
       color: var(--text-main);
       min-height: 100vh;
@@ -80,19 +80,19 @@
       width: 40px;
       height: 40px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent-devotion), var(--primary));
+      background: linear-gradient(135deg, var(--accent-sat), var(--primary));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.25rem;
       color: white;
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
     }
 
     .brand-title {
       font-size: 1.25rem;
       font-weight: 700;
-      background: linear-gradient(to right, #fff, #c084fc);
+      background: linear-gradient(to right, #fff, #34d399);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -101,9 +101,9 @@
       font-size: 0.75rem;
       padding: 0.25rem 0.6rem;
       border-radius: 20px;
-      background: rgba(168, 85, 247, 0.2);
-      color: #c084fc;
-      border: 1px solid rgba(168, 85, 247, 0.3);
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
     .container {
@@ -113,7 +113,7 @@
       width: 100%;
     }
 
-    /* Bottom Navigation Bar (Mobile / Desktop View) */
+    /* Bottom Navigation Bar */
     .nav-tabs {
       position: fixed;
       bottom: 0;
@@ -140,7 +140,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      padding: 0.4rem 0.8rem;
+      padding: 0.4rem 0.6rem;
       border-radius: var(--radius-sm);
     }
 
@@ -150,11 +150,11 @@
 
     .nav-btn.active {
       color: white;
-      background: rgba(168, 85, 247, 0.15);
+      background: rgba(16, 185, 129, 0.15);
     }
 
     .nav-btn.active i {
-      color: var(--accent-devotion);
+      color: var(--accent-sat);
     }
 
     /* Views Framework */
@@ -181,17 +181,6 @@
       margin-bottom: 1.5rem;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 200px;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1));
-      pointer-events: none;
     }
 
     /* Grid Layouts */
@@ -244,56 +233,18 @@
     }
 
     .pill-btn.active {
-      background: var(--accent-devotion);
+      background: var(--accent-sat);
       color: white;
-      border-color: var(--accent-devotion);
-      box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+      border-color: var(--accent-sat);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
     }
 
-    /* Devotion Card */
-    .verse-card {
-      background: linear-gradient(145deg, rgba(88, 28, 135, 0.3), rgba(15, 23, 42, 0.8));
-      border: 1px solid rgba(168, 85, 247, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Form Controls */
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid var(--border-color);
+    .sat-score-box {
+      background: linear-gradient(135deg, rgba(6, 78, 59, 0.6), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(16, 185, 129, 0.4);
       border-radius: var(--radius-md);
-      padding: 0.75rem;
-      color: white;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border 0.2s;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent-devotion), #7e22ce);
-      color: white;
-      border: none;
-      padding: 0.85rem;
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: opacity 0.2s ease;
+      padding: 1.25rem;
+      text-align: center;
     }
 
     /* Flashcard System */
@@ -338,8 +289,8 @@
     }
 
     .flashcard-back {
-      background: linear-gradient(145deg, rgba(49, 46, 129, 0.9), rgba(15, 23, 42, 0.95));
-      color: #e0e7ff;
+      background: linear-gradient(145deg, rgba(6, 78, 59, 0.9), rgba(15, 23, 42, 0.95));
+      color: #a7f3d0;
       transform: rotateY(180deg);
     }
 
@@ -356,7 +307,30 @@
       margin-top: 0.75rem;
     }
 
-    /* Responsive */
+    /* Form Controls */
+    .form-input, .form-select {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-sat), #059669);
+      color: white;
+      border: none;
+      padding: 0.85rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
     @media (min-width: 768px) {
       .nav-tabs {
         position: relative;
@@ -364,16 +338,14 @@
         border-top: none;
         padding: 0;
         justify-content: flex-start;
-        gap: 0.75rem;
+        gap: 0.5rem;
       }
       .nav-btn {
         flex-direction: row;
         font-size: 0.85rem;
-        padding: 0.6rem 1rem;
+        padding: 0.6rem 0.9rem;
       }
-      body {
-        padding-bottom: 20px;
-      }
+      body { padding-bottom: 20px; }
     }
   </style>
 </head>
@@ -382,10 +354,10 @@
   <!-- Top Header -->
   <header class="app-header">
     <div class="brand">
-      <div class="brand-logo"><i class="fa-solid fa-hands-praying"></i></div>
+      <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
       <div>
-        <div class="brand-title">OmniLearn & Family Life</div>
-        <span class="badge-pill">K-12, Adult Tech, Expense & Family Devotion</span>
+        <div class="brand-title">OmniLearn & Family Suite</div>
+        <span class="badge-pill">K-12, Digital SAT Prep, Tech, Expense & Devotion</span>
       </div>
     </div>
   </header>
@@ -393,91 +365,84 @@
   <!-- Navigation Bar -->
   <div class="container" style="padding-bottom: 0; padding-top: 1rem;">
     <nav class="nav-tabs">
-      <button class="nav-btn active" onclick="switchView('devotion-view', this)">
-        <i class="fa-solid fa-hands-praying"></i> Family Devotion
+      <button class="nav-btn active" onclick="switchView('sat-view', this)">
+        <i class="fa-solid fa-award"></i> Digital SAT Kit
       </button>
       <button class="nav-btn" onclick="switchView('k12-view', this)">
         <i class="fa-solid fa-book-open"></i> K-12 School Hub
       </button>
       <button class="nav-btn" onclick="switchView('tech-view', this)">
-        <i class="fa-solid fa-laptop-code"></i> Adult Tech Academy
+        <i class="fa-solid fa-laptop-code"></i> Adult Tech
       </button>
       <button class="nav-btn" onclick="switchView('expense-view', this)">
-        <i class="fa-solid fa-wallet"></i> Family Expense
+        <i class="fa-solid fa-wallet"></i> Family Wallet
+      </button>
+      <button class="nav-btn" onclick="switchView('devotion-view', this)">
+        <i class="fa-solid fa-hands-praying"></i> Family Devotion
       </button>
     </nav>
   </div>
 
   <main class="container">
 
-    <!-- NEW VIEW: FAMILY DEVOTION & GRATITUDE -->
-    <section id="devotion-view" class="view-content active">
+    <!-- NEW VIEW: DIGITAL SAT PREPARATION KIT -->
+    <section id="sat-view" class="view-content active">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Daily Family Devotion & Gratitude Wall</h2>
+        <h2><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> Digital SAT Preparation Suite</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Start or end the day together with daily scripture/reflections, age-appropriate moral stories for kids, and a shared family prayer & gratitude journal.
+          Master the Digital SAT (Reading, Writing & Math) with adaptive practice modules, high-frequency vocabulary flashcards, Desmos calculator shortcuts, and score predictors.
         </p>
       </div>
 
-      <!-- Daily Verse & Reflection Banner -->
-      <div class="verse-card">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 0.8rem; color: #c084fc; font-weight: 700; text-transform: uppercase;">Today's Family Reflection</span>
-          <span style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-clock"></i> 5 Min Morning Routine</span>
+      <!-- SAT Target Score Header -->
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <div class="sat-score-box">
+          <span style="font-size: 0.8rem; color: #a7f3d0; font-weight: 700;">ESTIMATED SAT SCORE</span>
+          <div style="font-size: 2rem; font-weight: 800; color: white; margin-top: 0.25rem;">1480 <span style="font-size: 1rem; color: #a7f3d0;">/ 1600</span></div>
         </div>
-        <h3 style="margin-top: 0.75rem; font-size: 1.2rem; color: white;">"Train up a child in the way he should go, and when he is old he will not depart from it."</h3>
-        <p style="color: #e9d5ff; font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">
-          <strong>Family Takeaway:</strong> Knowledge puffeth up, but love buildeth up. Today, let's balance our academic studies and career goals with kindness, patience, and gratitude at home.
-        </p>
-        <div style="margin-top: 1rem; display: flex; gap: 0.75rem;">
-          <button class="pill-btn active" onclick="alert('Playing 3-minute guided family reflection audio!')"><i class="fa-solid fa-circle-play"></i> Play Audio Devotional (3 min)</button>
-          <button class="pill-btn" onclick="alert('Saved to Family Devotion History!')"><i class="fa-solid fa-bookmark"></i> Bookmark Verse</button>
+        <div class="sat-score-box" style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.6), rgba(15, 23, 42, 0.9)); border-color: rgba(59, 130, 246, 0.4);">
+          <span style="font-size: 0.8rem; color: #93c5fd; font-weight: 700;">READING & WRITING</span>
+          <div style="font-size: 2rem; font-weight: 800; color: white; margin-top: 0.25rem;">730 <span style="font-size: 1rem; color: #93c5fd;">/ 800</span></div>
         </div>
+        <div class="sat-score-box" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.6), rgba(15, 23, 42, 0.9)); border-color: rgba(168, 85, 247, 0.4);">
+          <span style="font-size: 0.8rem; color: #c084fc; font-weight: 700;">SAT MATH (DESMOS READY)</span>
+          <div style="font-size: 2rem; font-weight: 800; color: white; margin-top: 0.25rem;">750 <span style="font-size: 1rem; color: #c084fc;">/ 800</span></div>
+        </div>
+      </div>
+
+      <!-- Section Switcher -->
+      <div class="pill-group" style="margin-bottom: 1.5rem;">
+        <button class="pill-btn active" onclick="setSatModule('math', this)"><i class="fa-solid fa-calculator"></i> SAT Math (Algebra, Advanced Math & Geometry)</button>
+        <button class="pill-btn" onclick="setSatModule('reading', this)"><i class="fa-solid fa-book"></i> Reading & Writing (Craft, Structure & Conventions)</button>
+        <button class="pill-btn" onclick="setSatModule('vocab', this)"><i class="fa-solid fa-spell-check"></i> 500 High-Frequency SAT Vocab Deck</button>
       </div>
 
       <div class="grid-2">
-        <!-- Family Gratitude Wall -->
-        <div class="card">
-          <h4><i class="fa-solid fa-heart" style="color: #ec4899;"></i> Shared Family Gratitude Wall</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Post what you are thankful for today!</p>
-          
-          <div style="margin: 1rem 0;" id="gratitude-list">
-            <div style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border-left: 3px solid #a855f7; margin-bottom: 0.5rem;">
-              <span style="font-weight: 700; font-size: 0.85rem; color: #c084fc;">Mom:</span>
-              <span style="font-size: 0.85rem; color: var(--text-main);"> "Grateful for Child 1 scoring A in NCERT Science test and good health!"</span>
-            </div>
-            <div style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border-left: 3px solid #3b82f6; margin-bottom: 0.5rem;">
-              <span style="font-weight: 700; font-size: 0.85rem; color: #60a5fa;">Child 1 (Grade 6):</span>
-              <span style="font-size: 0.85rem; color: var(--text-main);"> "Thankful for Dad helping me understand fractions and our evening walk!"</span>
-            </div>
-            <div style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border-left: 3px solid #10b981; margin-bottom: 0.5rem;">
-              <span style="font-weight: 700; font-size: 0.85rem; color: #34d399;">Dad:</span>
-              <span style="font-size: 0.85rem; color: var(--text-main);"> "Grateful for passing my AWS Cloud Architect practice exam today!"</span>
-            </div>
-          </div>
-
-          <form onsubmit="addGratitude(event)" style="margin-top: 1rem;">
-            <div style="display: flex; gap: 0.5rem;">
-              <input type="text" id="gratitude-input" class="form-input" placeholder="What are you thankful for today?" required>
-              <button type="submit" class="btn-submit" style="width: auto; padding: 0 1.25rem;"><i class="fa-solid fa-paper-plane"></i></button>
-            </div>
-          </form>
+        <div class="card" id="sat-detail-card">
+          <!-- Injected via JS -->
         </div>
 
-        <!-- Moral Stories for Kids & Weekly Character Goal -->
+        <!-- Interactive SAT Flashcards -->
         <div class="card">
-          <h4><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Kids Moral Values & Character Goal</h4>
-          <div style="background: rgba(15, 23, 42, 0.5); padding: 1rem; border-radius: 12px; margin-top: 0.75rem; border: 1px solid var(--border-color);">
-            <span style="font-size: 0.75rem; color: var(--accent-ncert); font-weight: 700;">THIS WEEK'S VALUE: KINDNESS & HELPING OTHERS</span>
-            <h5 style="margin-top: 0.4rem; font-size: 1rem;">Story: The Lion and the Helping Mouse</h5>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;">
-              No act of kindness, no matter how small, is ever wasted. A small mouse saved a mighty lion by chewing through hunter ropes.
-            </p>
-            <div style="margin-top: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
-              <span style="font-size: 0.8rem; color: #a7f3d0;"><i class="fa-solid fa-award"></i> Kids Challenge: 3 Acts of Kindness</span>
-              <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-devotion);">2/3 Done ⭐</span>
+          <h4><i class="fa-solid fa-brain" style="color: var(--accent-sat);"></i> Interactive SAT Question / Concept Card</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.4rem 0 1rem 0;">Click to flip and reveal the official answer and step-by-step strategy.</p>
+          
+          <div class="flashcard" onclick="this.classList.toggle('flipped')" id="sat-flashcard">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span style="font-size: 0.75rem; color: var(--accent-sat); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;">SAT Math Question</span>
+                <p style="font-weight: 600; font-size: 0.95rem;">If 3x + 7 = 22, what is the value of 6x - 4?</p>
+              </div>
+              <div class="flashcard-back">
+                <span style="font-size: 0.75rem; color: #a7f3d0; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;">Solution & Desmos Hack</span>
+                <p style="font-size: 0.95rem;">Solve 3x = 15 &rarr; x = 5.<br>Substitute: 6(5) - 4 = 26.<br><em>Tip: Plug equation into Desmos line 1 to find x = 5 visually!</em></p>
+              </div>
             </div>
           </div>
+
+          <button class="btn-submit" style="margin-top: 1rem;" onclick="alert('Launching Full 32-Question Digital SAT Practice Module!')">
+            <i class="fa-solid fa-play"></i> Start Timed SAT Adaptive Practice Test
+          </button>
         </div>
       </div>
     </section>
@@ -508,12 +473,6 @@
       </div>
 
       <div class="grid-3" id="k12-subject-cards"></div>
-
-      <div style="margin-top: 2rem;">
-        <h3><i class="fa-solid fa-brain" style="color: var(--primary);"></i> Practice & Quick Revision Deck</h3>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Click on any flashcard to flip and reveal the key summary/answer.</p>
-        <div class="grid-2" id="k12-flashcard-deck"></div>
-      </div>
     </section>
 
     <!-- VIEW 2: ADULT TECH ACADEMY -->
@@ -535,11 +494,8 @@
       <div class="grid-2">
         <div class="card" id="tech-track-details"></div>
         <div class="card">
-          <h4><i class="fa-solid fa-code" style="color: var(--secondary);"></i> Live Code Challenge / Architecture Pattern</h4>
-          <div class="code-box" id="code-snippet-area">// Loading snippet...</div>
-          <button class="btn-submit" style="margin-top: 1rem; background: rgba(99, 102, 241, 0.2); border: 1px solid var(--primary); color: white;" onclick="alert('Starting Practice Certification Quiz!')">
-            <i class="fa-solid fa-circle-check"></i> Take Practice Certification Quiz
-          </button>
+          <h4><i class="fa-solid fa-code" style="color: var(--secondary);"></i> Live Code Challenge</h4>
+          <div class="code-box" id="code-snippet-area">// Snippet</div>
         </div>
       </div>
     </section>
@@ -548,69 +504,18 @@
     <section id="expense-view" class="view-content">
       <div class="hero-card">
         <h2><i class="fa-solid fa-coins" style="color: var(--accent-expense);"></i> Family Unified Expense Tracker</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Track education costs, household bills, groceries, and tech learning expenses across family members.
-        </p>
       </div>
-
-      <div class="grid-3" style="margin-bottom: 1.5rem;">
-        <div class="stat-box">
-          <span style="font-size: 0.8rem; color: var(--text-muted);">Total Monthly Budget</span>
-          <div class="stat-val" style="color: #34d399;" id="stat-budget">$3,500</div>
-        </div>
-        <div class="stat-box">
-          <span style="font-size: 0.8rem; color: var(--text-muted);">Total Spent This Month</span>
-          <div class="stat-val" style="color: #f472b6;" id="stat-spent">$1,240</div>
-        </div>
-        <div class="stat-box">
-          <span style="font-size: 0.8rem; color: var(--text-muted);">Currency View</span>
-          <div style="margin-top: 0.4rem;">
-            <button class="pill-btn active" id="curr-usd" onclick="setCurrency('USD')">USD ($)</button>
-            <button class="pill-btn" id="curr-inr" onclick="setCurrency('INR')">INR (₹)</button>
-          </div>
-        </div>
-      </div>
-
       <div class="grid-2">
         <div class="card">
-          <h4><i class="fa-solid fa-plus-circle" style="color: var(--accent-expense);"></i> Add New Expense</h4>
-          <form id="expense-form" style="margin-top: 1rem;" onsubmit="addExpense(event)">
-            <div class="form-group">
-              <label class="form-label">Title / Description</label>
-              <input type="text" id="exp-title" class="form-input" placeholder="e.g. NCERT Science Books / AWS Exam Fee" required>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-              <div class="form-group">
-                <label class="form-label">Amount ($ / ₹)</label>
-                <input type="number" id="exp-amount" class="form-input" placeholder="50" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Category</label>
-                <select id="exp-category" class="form-select">
-                  <option value="Education">Education & School</option>
-                  <option value="Groceries">Groceries & Food</option>
-                  <option value="Utility">Utilities & Rent</option>
-                  <option value="Tech">Tech / Cloud Subscriptions</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Member Responsible</label>
-              <select id="exp-member" class="form-select">
-                <option value="Dad">Dad</option>
-                <option value="Mom">Mom</option>
-                <option value="Child 1 (Grade 6)">Child 1 (Grade 6)</option>
-                <option value="Child 2 (Grade 10)">Child 2 (Grade 10)</option>
-              </select>
-            </div>
-            <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i> Record Expense</button>
-          </form>
+          <h4><i class="fa-solid fa-plus-circle" style="color: var(--accent-expense);"></i> Add Expense</h4>
         </div>
+      </div>
+    </section>
 
-        <div class="card">
-          <h4><i class="fa-solid fa-list-check" style="color: var(--primary);"></i> Recent Transactions</h4>
-          <div style="margin-top: 1rem;" id="expense-list"></div>
-        </div>
+    <!-- VIEW 4: FAMILY DEVOTION -->
+    <section id="devotion-view" class="view-content">
+      <div class="hero-card">
+        <h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Daily Family Devotion</h2>
       </div>
     </section>
 
@@ -618,16 +523,10 @@
 
   <script>
     let state = {
+      satModule: 'math',
       board: 'NCERT',
       grade: 6,
-      techTrack: 'aiml',
-      currency: 'USD',
-      currencyRate: 83.5,
-      expenses: [
-        { id: 1, title: 'NCERT Science & Math Textbooks', amount: 45, category: 'Education', member: 'Child 1 (Grade 6)' },
-        { id: 2, title: 'AWS Cloud Practitioner Prep Course', amount: 80, category: 'Tech', member: 'Dad' },
-        { id: 3, title: 'Monthly Groceries & Milk', amount: 350, category: 'Groceries', member: 'Mom' }
-      ]
+      techTrack: 'aiml'
     };
 
     function switchView(viewId, btn) {
@@ -637,21 +536,56 @@
       btn.classList.add('active');
     }
 
-    function addGratitude(e) {
-      e.preventDefault();
-      const val = document.getElementById('gratitude-input').value;
-      if (val) {
-        const list = document.getElementById('gratitude-list');
-        const item = document.createElement('div');
-        item.style.cssText = 'background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border-left: 3px solid #a855f7; margin-bottom: 0.5rem;';
-        item.innerHTML = `<span style="font-weight: 700; font-size: 0.85rem; color: #c084fc;">Family Member:</span> <span style="font-size: 0.85rem; color: var(--text-main);">${val}</span>`;
-        list.appendChild(item);
-        document.getElementById('gratitude-input').value = '';
+    const satData = {
+      math: {
+        title: 'Digital SAT Math Mastery',
+        desc: 'Covers Algebra, Linear Equations, Quadratic Functions, Geometry, Trigonometry, and Built-in Desmos Graphing Hacks.',
+        front: 'If 3x + 7 = 22, what is the value of 6x - 4?',
+        back: 'Solve 3x = 15 &rarr; x = 5.<br>Substitute: 6(5) - 4 = 26.<br><em>Desmos Hack: Graph y = 3x + 7 and y = 22 to find intersection at x = 5!</em>'
+      },
+      reading: {
+        title: 'SAT Reading & Writing Mastery',
+        desc: 'Information & Ideas, Craft & Structure, Standard English Conventions (Punctuation, Subject-Verb Agreement, Pronouns).',
+        front: 'Identify the error: "The team of researchers have published their findings in the journal."',
+        back: 'Change "have" to "has". The subject is singular noun "team", not plural "researchers".'
+      },
+      vocab: {
+        title: '500 Essential High-Frequency SAT Vocabulary',
+        desc: 'Contextual vocabulary practice for digital SAT Reading passages.',
+        front: 'Define SAT Vocab Word: "FASTIDIOUS"',
+        back: 'Adjective: Very attentive to and concerned about accuracy and detail; meticulous.'
       }
+    };
+
+    function setSatModule(mod, btn) {
+      state.satModule = mod;
+      if (btn) {
+        btn.parentElement.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      const data = satData[mod];
+      document.getElementById('sat-detail-card').innerHTML = `
+        <h3><i class="fa-solid fa-award" style="color: var(--accent-sat);"></i> ${data.title}</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.75rem 0 1.25rem 0;">${data.desc}</p>
+        <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <span style="font-size: 0.8rem; color: #34d399; font-weight: 700;">Key Test Strategies:</span>
+          <ul style="font-size: 0.85rem; margin-left: 1.25rem; margin-top: 0.4rem; color: var(--text-main);">
+            <li>Digital SAT Section Adaptive Format</li>
+            <li>Desmos Calculator Embedded Strategies</li>
+            <li>Elimination of distractor answer choices</li>
+          </ul>
+        </div>
+      `;
+
+      const card = document.getElementById('sat-flashcard');
+      card.classList.remove('flipped');
+      card.querySelector('.flashcard-front p').innerHTML = data.front;
+      card.querySelector('.flashcard-back p').innerHTML = data.back;
     }
 
     function initGrades() {
       const container = document.getElementById('grade-pills');
+      if (!container) return;
       container.innerHTML = '';
       for (let g = 4; g <= 12; g++) {
         const btn = document.createElement('button');
@@ -676,17 +610,17 @@
 
     function renderK12Content() {
       const subjectContainer = document.getElementById('k12-subject-cards');
-      const flashcardContainer = document.getElementById('k12-flashcard-deck');
+      if (!subjectContainer) return;
       const isNcert = state.board === 'NCERT';
 
       const subjects = isNcert ? [
         { name: 'Mathematics', desc: `Grade ${state.grade} NCERT Algebra, Geometry & Fractions`, icon: 'fa-calculator', color: '#6366f1' },
-        { name: 'Science', desc: `Grade ${state.grade} NCERT Physics, Chemistry & Biology basics`, icon: 'fa-flask', color: '#10b981' },
-        { name: 'Social Science', desc: `Grade ${state.grade} NCERT History, Geography & Civics`, icon: 'fa-earth-americas', color: '#f59e0b' }
+        { name: 'Science', desc: `Grade ${state.grade} NCERT Physics, Chemistry & Biology`, icon: 'fa-flask', color: '#10b981' },
+        { name: 'Social Science', desc: `Grade ${state.grade} NCERT History & Geography`, icon: 'fa-earth-americas', color: '#f59e0b' }
       ] : [
-        { name: 'Florida B.E.S.T. Math', desc: `Grade ${state.grade} Florida Benchmarks for Excellent Student Thinking`, icon: 'fa-chart-pie', color: '#3b82f6' },
-        { name: 'Science & STEM', desc: `Grade ${state.grade} Florida Next Gen Sunshine State Standards`, icon: 'fa-atom', color: '#06b6d4' },
-        { name: 'English Language Arts', desc: `Grade ${state.grade} Reading comprehension & analytical writing`, icon: 'fa-feather', color: '#ec4899' }
+        { name: 'Florida B.E.S.T. Math', desc: `Grade ${state.grade} Florida Math Benchmarks`, icon: 'fa-chart-pie', color: '#3b82f6' },
+        { name: 'Science & STEM', desc: `Grade ${state.grade} Florida NGSSS Standards`, icon: 'fa-atom', color: '#06b6d4' },
+        { name: 'English Language Arts', desc: `Grade ${state.grade} ELA Reading & Writing`, icon: 'fa-feather', color: '#ec4899' }
       ];
 
       subjectContainer.innerHTML = subjects.map(s => `
@@ -694,131 +628,13 @@
           <div style="font-size: 1.5rem; color: ${s.color}; margin-bottom: 0.5rem;"><i class="fa-solid ${s.icon}"></i></div>
           <h4 style="font-size: 1.1rem;">${s.name}</h4>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.4rem 0 1rem 0;">${s.desc}</p>
-          <span style="font-size: 0.75rem; color: var(--primary); font-weight: 600;"><i class="fa-solid fa-play"></i> Start Chapter Revision &rarr;</span>
-        </div>
-      `).join('');
-
-      const cards = isNcert ? [
-        { q: `[Grade ${state.grade} NCERT Math] What is the formula for the perimeter of a rectangle?`, a: `Perimeter = 2 × (Length + Breadth)` },
-        { q: `[Grade ${state.grade} NCERT Science] What is Photosynthesis?`, a: `Process by which green plants convert light energy into chemical energy using CO2 and Water.` }
-      ] : [
-        { q: `[Grade ${state.grade} Florida ELA] Define Central Idea in a text.`, a: `The main point or unifying concept that an author wants the reader to understand.` },
-        { q: `[Grade ${state.grade} Florida Math] What is a Rational Number?`, a: `Any number that can be expressed as a fraction p/q where p and q are integers and q ≠ 0.` }
-      ];
-
-      flashcardContainer.innerHTML = cards.map(c => `
-        <div class="flashcard" onclick="this.classList.toggle('flipped')">
-          <div class="flashcard-inner">
-            <div class="flashcard-front">
-              <span style="font-size: 0.75rem; color: var(--accent-ncert); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;">Question (Tap to flip)</span>
-              <p style="font-weight: 600; font-size: 0.95rem;">${c.q}</p>
-            </div>
-            <div class="flashcard-back">
-              <span style="font-size: 0.75rem; color: #a5b4fc; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;">Answer</span>
-              <p style="font-size: 0.95rem;">${c.a}</p>
-            </div>
-          </div>
         </div>
       `).join('');
     }
 
-    const techData = {
-      aiml: {
-        title: 'AI & Machine Learning Engineering',
-        desc: 'Master Neural Networks, PyTorch, LLMs, RAG, and Fine-tuning.',
-        snippet: `import torch\nimport torch.nn as nn\n\nclass MLP(nn.Module):\n    def __init__(self, input_dim, hidden_dim, output_dim):\n        super(MLP, self).__init__()\n        self.fc1 = nn.Linear(input_dim, hidden_dim)\n        self.relu = nn.ReLU()\n        self.fc2 = nn.Linear(hidden_dim, output_dim)\n        \n    def forward(self, x):\n        return self.fc2(self.relu(self.fc1(x)))`
-      },
-      aws: {
-        title: 'AWS Certified Solutions Architect',
-        desc: 'S3, EC2, Lambda, DynamoDB, API Gateway, and CloudFront.',
-        snippet: `import * as cdk from 'aws-cdk-lib';\nimport * as dynamodb from 'aws-cdk-lib/aws-dynamodb';\n\nconst table = new dynamodb.Table(this, 'ExpensesTable', {\n  partitionKey: { name: 'id', type: dynamodb.AttributeType.STRING }\n});`
-      },
-      gcp: {
-        title: 'GCP Cloud Engineer',
-        desc: 'GKE, BigQuery analytics, and Vertex AI MLOps pipelines.',
-        snippet: `SELECT category, COUNT(*) as count, SUM(amount) as total\nFROM \`my_project.family_expenses.transactions\`\nGROUP BY category ORDER BY total DESC;`
-      },
-      java: {
-        title: 'Backend Java 21 & Spring Boot 3',
-        desc: 'Virtual Threads (Loom), Spring Boot 3 REST APIs, Microservices, PostgreSQL.',
-        snippet: `@RestController\n@RequestMapping("/api/v1/expenses")\npublic class ExpenseController {\n    private final ExpenseService service;\n    public ExpenseController(ExpenseService service) { this.service = service; }\n    @GetMapping\n    public List<ExpenseResponse> getAll() { return service.findAll(); }\n}`
-      }
-    };
-
-    function setTechTrack(track, btn) {
-      state.techTrack = track;
-      if (btn) {
-        btn.parentElement.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      }
-      const data = techData[track];
-      document.getElementById('tech-track-details').innerHTML = `
-        <h3><i class="fa-solid fa-graduation-cap" style="color: var(--accent-tech);"></i> ${data.title}</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.75rem 0 1.25rem 0;">${data.desc}</p>
-      `;
-      document.getElementById('code-snippet-area').innerText = data.snippet;
-    }
-
-    function setCurrency(curr) {
-      state.currency = curr;
-      document.getElementById('curr-usd').classList.toggle('active', curr === 'USD');
-      document.getElementById('curr-inr').classList.toggle('active', curr === 'INR');
-      renderExpenses();
-    }
-
-    function addExpense(e) {
-      e.preventDefault();
-      const title = document.getElementById('exp-title').value;
-      const amount = parseFloat(document.getElementById('exp-amount').value);
-      const category = document.getElementById('exp-category').value;
-      const member = document.getElementById('exp-member').value;
-
-      if (title && amount) {
-        state.expenses.unshift({ id: Date.now(), title, amount, category, member });
-        document.getElementById('expense-form').reset();
-        renderExpenses();
-      }
-    }
-
-    function deleteExpense(id) {
-      state.expenses = state.expenses.filter(item => item.id !== id);
-      renderExpenses();
-    }
-
-    function renderExpenses() {
-      const isINR = state.currency === 'INR';
-      const symbol = isINR ? '₹' : '$';
-      const multiplier = isINR ? state.currencyRate : 1;
-
-      let totalSpent = 0;
-      const listEl = document.getElementById('expense-list');
-      
-      listEl.innerHTML = state.expenses.map(exp => {
-        const convertedAmt = (exp.amount * multiplier).toFixed(0);
-        totalSpent += exp.amount;
-
-        return `
-          <div class="expense-item" style="display: flex; justify-content: space-between; padding: 0.75rem; background: rgba(15,23,42,0.4); margin-bottom: 0.5rem; border-radius: 8px;">
-            <div>
-              <div style="font-weight: 600; font-size: 0.9rem;">${exp.title}</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-user"></i> ${exp.member} (${exp.category})</div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <span style="font-weight: 700; color: #f472b6;">${symbol}${convertedAmt}</span>
-              <button onclick="deleteExpense(${exp.id})" style="background: none; border: none; color: #ef4444; cursor: pointer;"><i class="fa-solid fa-trash-can"></i></button>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      document.getElementById('stat-spent').innerText = `${symbol}${(totalSpent * multiplier).toFixed(0)}`;
-      document.getElementById('stat-budget').innerText = `${symbol}${(3500 * multiplier).toFixed(0)}`;
-    }
-
+    setSatModule('math');
     initGrades();
     renderK12Content();
-    setTechTrack('aiml');
-    renderExpenses();
   </script>
 </body>
 </html>

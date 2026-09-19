@@ -1,6 +1,6 @@
 /**
  * Automated Unit Test Runner for OmniLearn & Family Suite
- * Verifies DOM elements, views, navigation, role switching, currency converter, and locker vault.
+ * Verifies DOM elements, views, navigation, role switching, currency converter, locker vault, and Google Drive sync.
  */
 
 const fs = require('fs');
@@ -48,6 +48,8 @@ assert(htmlContent.includes('id="tab-chores"'), "Navigation button #tab-chores e
 assert(htmlContent.includes('function switchView('), "JavaScript function switchView() is defined");
 assert(htmlContent.includes('function setRole('), "JavaScript function setRole() is defined");
 assert(htmlContent.includes('function toggleRoleModal('), "JavaScript function toggleRoleModal() is defined");
+assert(htmlContent.includes('function saveToGoogleDrive('), "JavaScript function saveToGoogleDrive() is defined");
+assert(htmlContent.includes('function syncAllDocsToGoogleDrive('), "JavaScript function syncAllDocsToGoogleDrive() is defined");
 assert(htmlContent.includes('function handleLockerUpload('), "JavaScript function handleLockerUpload() is defined");
 assert(htmlContent.includes('function filterLockerDocs('), "JavaScript function filterLockerDocs() is defined");
 assert(htmlContent.includes('function convertCurrency('), "JavaScript function convertCurrency() is defined");

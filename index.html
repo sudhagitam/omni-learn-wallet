@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniLearn & Family Suite - Live USD to INR Rate</title>
+  <title>OmniLearn & Family Suite - Telugu Christian Song Lyrics & Devotion</title>
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(at 10% 10%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+        radial-gradient(at 10% 10%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
         radial-gradient(at 90% 90%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
         radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
       background-attachment: fixed;
@@ -56,13 +56,13 @@
     .brand { display: flex; align-items: center; gap: 0.75rem; }
     .brand-logo {
       width: 40px; height: 40px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent-expense), var(--primary));
+      background: linear-gradient(135deg, var(--accent-devotion), var(--primary));
       display: flex; align-items: center; justify-content: center;
       font-size: 1.25rem; color: white;
     }
     .brand-title {
       font-size: 1.2rem; font-weight: 700;
-      background: linear-gradient(to right, #fff, #f472b6);
+      background: linear-gradient(to right, #fff, #c084fc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
@@ -91,8 +91,8 @@
       font-size: 0.75rem; font-weight: 600; cursor: pointer;
       padding: 0.4rem 0.6rem; border-radius: var(--radius-sm);
     }
-    .nav-btn.active { color: white; background: rgba(236, 72, 153, 0.15); }
-    .nav-btn.active i { color: var(--accent-expense); }
+    .nav-btn.active { color: white; background: rgba(168, 85, 247, 0.15); }
+    .nav-btn.active i { color: var(--accent-devotion); }
     .nav-btn.restricted { display: none !important; }
 
     .view-content { display: none; animation: fadeIn 0.3s ease-in-out forwards; }
@@ -121,12 +121,12 @@
       border-radius: var(--radius-md); text-decoration: none; color: white;
       transition: all 0.2s ease;
     }
-    .resource-link-card:hover { background: rgba(30, 41, 59, 0.9); border-color: var(--accent-expense); transform: translateX(4px); }
+    .resource-link-card:hover { background: rgba(30, 41, 59, 0.9); border-color: var(--accent-devotion); transform: translateX(4px); }
 
     .live-rate-box {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
       border: 1px solid rgba(236, 72, 153, 0.5); border-radius: var(--radius-lg);
-      padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: 0 0 20px rgba(236, 72, 153, 0.15);
+      padding: 1.5rem; margin-bottom: 1.25rem;
     }
 
     .refresh-btn {
@@ -134,17 +134,15 @@
       color: #f472b6; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;
       font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
     }
-    .refresh-btn:hover { background: var(--accent-expense); color: white; }
 
     .quiz-option {
       display: block; width: 100%; text-align: left;
       padding: 0.75rem 1rem; margin-bottom: 0.5rem;
       background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color);
       border-radius: var(--radius-md); color: var(--text-main); font-size: 0.9rem;
-      cursor: pointer; transition: all 0.2s;
+      cursor: pointer;
     }
     .quiz-option.correct { background: rgba(16, 185, 129, 0.3) !important; border-color: #10b981 !important; color: #a7f3d0; }
-    .quiz-option.wrong { background: rgba(239, 68, 68, 0.3) !important; border-color: #ef4444 !important; color: #fca5a5; }
 
     .driving-player-box {
       background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
@@ -156,19 +154,6 @@
       background: linear-gradient(135deg, var(--accent-audio), #e11d48);
       border: none; color: white; font-size: 1.3rem; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center;
-    }
-    .speed-btn {
-      background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color);
-      color: white; padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.8rem;
-      cursor: pointer; font-weight: 600;
-    }
-    .speed-btn.active { background: var(--accent-audio); border-color: var(--accent-audio); }
-
-    .code-box {
-      background: #0f172a; border: 1px solid var(--border-color);
-      border-radius: var(--radius-md); padding: 1rem;
-      font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #38bdf8;
-      overflow-x: auto; margin-top: 0.75rem; position: relative;
     }
 
     .modal-overlay {
@@ -202,10 +187,10 @@
   <!-- Top Header -->
   <header class="app-header">
     <div class="brand">
-      <div class="brand-logo"><i class="fa-solid fa-arrow-trend-up"></i></div>
+      <div class="brand-logo"><i class="fa-solid fa-hands-praying"></i></div>
       <div>
-        <div class="brand-title">OmniLearn Live Wallet Hub</div>
-        <span style="font-size: 0.75rem; color: #f472b6;"><i class="fa-solid fa-wifi"></i> Live Real-Time USD to INR Rate API</span>
+        <div class="brand-title">OmniLearn Family Devotion</div>
+        <span style="font-size: 0.75rem; color: #c084fc;"><i class="fa-solid fa-music"></i> Daily Scriptures & Telugu Christian Songs</span>
       </div>
     </div>
 
@@ -217,71 +202,84 @@
   <!-- Navigation Bar -->
   <div class="container" style="padding-bottom: 0; padding-top: 1rem;">
     <nav class="nav-tabs" id="main-nav-bar">
-      <button class="nav-btn active" id="tab-expense" onclick="switchView('expense-view', this)"><i class="fa-solid fa-wallet"></i> Live Wallet API</button>
+      <button class="nav-btn active" id="tab-devotion" onclick="switchView('devotion-view', this)"><i class="fa-solid fa-hands-praying"></i> Devotion</button>
       <button class="nav-btn" id="tab-sat" onclick="switchView('sat-view', this)"><i class="fa-solid fa-award"></i> SAT Kit</button>
       <button class="nav-btn" id="tab-k12" onclick="switchView('k12-view', this)"><i class="fa-solid fa-book-open"></i> K-12 Reader</button>
       <button class="nav-btn" id="tab-tech" onclick="switchView('tech-view', this)"><i class="fa-solid fa-laptop-code"></i> Tech Code</button>
-      <button class="nav-btn" id="tab-devotion" onclick="switchView('devotion-view', this)"><i class="fa-solid fa-hands-praying"></i> Devotion</button>
       <button class="nav-btn" id="tab-voice" onclick="switchView('voice-view', this)"><i class="fa-solid fa-headphones"></i> Driving Voice</button>
+      <button class="nav-btn" id="tab-expense" onclick="switchView('expense-view', this)"><i class="fa-solid fa-wallet"></i> Wallet API</button>
       <button class="nav-btn" id="tab-chores" onclick="switchView('chores-view', this)"><i class="fa-solid fa-list-check"></i> Chores</button>
     </nav>
   </div>
 
   <main class="container">
 
-    <!-- MODULE 1: FAMILY WALLET & LIVE CURRENCY RATE API -->
-    <section id="expense-view" class="view-content active">
+    <!-- MODULE 1: FAMILY DEVOTION & TELUGU CHRISTIAN SONGS -->
+    <section id="devotion-view" class="view-content active">
       <div class="hero-card">
-        <h2><i class="fa-solid fa-coins" style="color: var(--accent-expense);"></i> Family Wallet & Dynamic Live Exchange API</h2>
+        <h2><i class="fa-solid fa-hands-praying" style="color: var(--accent-devotion);"></i> Family Devotion & Telugu Christian Song Lyrics</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">
-          Queries open-access live currency market endpoints dynamically on page load and on demand.
+          Daily scriptures, family gratitude notes, and official portals for Telugu Christian Song lyrics, Keerthanalu, and Hosanna worship songs.
         </p>
       </div>
 
-      <!-- Live Rate Banner -->
-      <div class="live-rate-box">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-          <div>
-            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">REAL-TIME MARKET FEED</span>
-            <div style="font-size: 1.8rem; font-weight: 800; color: #34d399; margin-top: 0.25rem;" id="live-rate-display">
-              1 USD = Fetching Live Rate...
-            </div>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;" id="rate-timestamp">
-              Connecting to live exchange rate servers...
-            </div>
-          </div>
-          <button class="refresh-btn" onclick="fetchLiveUsdInrRate()"><i class="fa-solid fa-arrows-rotate"></i> Fetch Live Rate Now</button>
-        </div>
-      </div>
-
       <div class="grid-2">
+        <!-- Daily Scripture & Gratitude Note -->
         <div class="card">
-          <h4><i class="fa-solid fa-calculator" style="color: var(--accent-expense);"></i> Live USD to INR Calculator</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.4rem 0 1rem 0;">Type any US Dollar amount to convert using the live API rate:</p>
-          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-            <div>
-              <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.3rem;">USD Amount ($)</label>
-              <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: 8px; width: 140px; font-size: 1.1rem; outline: none;">
-            </div>
-            <div style="font-size: 1.25rem; font-weight: 700; margin-top: 1rem;">=</div>
-            <div>
-              <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.3rem;">Live INR Equivalent (₹)</label>
-              <div style="font-size: 1.5rem; font-weight: 800; color: #34d399; padding-top: 0.2rem;" id="inr-result">
-                Calculating...
-              </div>
-            </div>
+          <h4><i class="fa-solid fa-heart" style="color: var(--accent-devotion);"></i> Daily Family Verse & Reflection</h4>
+          <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid var(--accent-devotion); padding: 1rem; border-radius: var(--radius-md); margin: 0.75rem 0;">
+            <p style="font-style: italic; font-size: 1rem; color: #e9d5ff;">
+              "నా యింటివారును నేనును యెహోవాను సేవించెదము" <br>
+              ("As for me and my house, we will serve the Lord.")
+            </p>
+            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 0.3rem;">— Joshua (యెహోషువ) 24:15</span>
+          </div>
+
+          <h5 style="margin-top: 1rem; color: var(--text-muted);">Family Gratitude Note Wall:</h5>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.4rem;">
+            <input type="text" id="gratitude-input" placeholder="What are you thankful for today?" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; width: 100%; outline: none;">
+            <button onclick="addGratitude()" style="background: var(--accent-devotion); border: none; color: white; padding: 0.6rem 1rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Post</button>
+          </div>
+          <div id="gratitude-list" style="margin-top: 0.75rem; font-size: 0.85rem; color: #e9d5ff;">
+            • "Grateful for family unity and good health!" — Dad
           </div>
         </div>
 
+        <!-- NEW CARD: TELUGU CHRISTIAN SONG LYRICS WEBSITES -->
         <div class="card">
-          <h4><i class="fa-solid fa-globe" style="color: var(--secondary);"></i> Official Foreign Exchange Resources</h4>
-          <a href="https://www.rbi.org.in/" target="_blank" class="resource-link-card">
-            <div><strong>Reserve Bank of India (RBI) Official Portal</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Official Reference Rates & Policy</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--secondary);"></i>
+          <h4><i class="fa-solid fa-music" style="color: var(--accent-devotion);"></i> 🎵 Telugu Christian Song Lyrics Portals</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.4rem 0 1rem 0;">Direct access to Telugu lyrics, English transliterated lyrics, and Andhra Christian Keerthanalu:</p>
+
+          <a href="https://www.google.com/search?q=telugu+christian+songs+lyrics" target="_blank" class="resource-link-card">
+            <div>
+              <strong>Telugu Christian Song Lyrics Portal</strong>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Telugu Script & English Script Lyrics Archive</div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
           </a>
-          <a href="https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=INR" target="_blank" class="resource-link-card">
-            <div><strong>XE Currency Live USD to INR Charts</strong><div style="font-size: 0.75rem; color: var(--text-muted);">Global FX Live Market Graphs</div></div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--secondary);"></i>
+
+          <a href="https://www.google.com/search?q=andhra+christian+keerthanalu+lyrics" target="_blank" class="resource-link-card">
+            <div>
+              <strong>Andhra Christian Keerthanalu (కీర్తనలు)</strong>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Traditional Telugu Hymns & Chords Book</div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
+          </a>
+
+          <a href="https://www.google.com/search?q=hosanna+ministries+telugu+song+lyrics" target="_blank" class="resource-link-card">
+            <div>
+              <strong>Hosanna Ministries Song Lyrics</strong>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Annual Album Lyrics & Chords</div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
+          </a>
+
+          <a href="https://www.biblegateway.com/" target="_blank" class="resource-link-card">
+            <div>
+              <strong>Bible Gateway Official Portal</strong>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Parallel Telugu & English Bible Search</div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--accent-devotion);"></i>
           </a>
         </div>
       </div>
@@ -294,9 +292,6 @@
         <p id="quiz-question">If 3x + 7 = 22, what is the value of 6x - 4?</p>
         <button class="quiz-option" onclick="checkAnswer(this, true)">C) 26 (Correct)</button>
         <div id="quiz-explanation" style="display:none; color: #a7f3d0; margin-top: 0.5rem;">Solve 3x=15 &rarr; x=5. 6(5)-4 = 26.</div>
-        <a href="https://bluebook.collegeboard.org/" target="_blank" class="resource-link-card" style="margin-top: 1rem;">
-          <div><strong>College Board Bluebook SAT App</strong></div><i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
       </div>
     </section>
 
@@ -306,10 +301,7 @@
     <!-- MODULE 4: ADULT TECH ACADEMY -->
     <section id="tech-view" class="view-content"><div class="hero-card"><h2>Adult Tech Code Lab</h2></div></section>
 
-    <!-- MODULE 5: DEVOTION -->
-    <section id="devotion-view" class="view-content"><div class="hero-card"><h2>Family Devotion</h2></div></section>
-
-    <!-- MODULE 6: DRIVING VOICE -->
+    <!-- MODULE 5: PDF DRIVING VOICE READER -->
     <section id="voice-view" class="view-content">
       <div class="hero-card"><h2>Hands-Free PDF Driving Reader</h2></div>
       <div class="card">
@@ -321,7 +313,19 @@
       </div>
     </section>
 
-    <!-- MODULE 7: CHORES -->
+    <!-- MODULE 6: FAMILY WALLET & LIVE CURRENCY API -->
+    <section id="expense-view" class="view-content">
+      <div class="hero-card"><h2>Family Wallet & Dynamic Live Exchange API</h2></div>
+      <div class="card">
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <input type="number" id="usd-input" value="100" oninput="convertCurrency()" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 0.6rem; border-radius: 8px; width: 130px;">
+          <span style="font-weight: 700;">USD ($) =</span>
+          <span style="font-weight: 800; color: #34d399; font-size: 1.2rem;" id="inr-result">₹8,350.00 INR</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 7: FAMILY CHORES -->
     <section id="chores-view" class="view-content"><div class="hero-card"><h2>Family Chores</h2></div></section>
 
   </main>
@@ -340,13 +344,13 @@
 
   <script>
     const userRoles = {
-      'Dad': { name: 'Dad (Parent Admin)', type: 'admin', allowed: ['expense', 'sat', 'k12', 'tech', 'devotion', 'voice', 'chores'] },
-      'Mom': { name: 'Mom (Parent Admin)', type: 'admin', allowed: ['expense', 'sat', 'k12', 'tech', 'devotion', 'voice', 'chores'] },
-      'Child 2': { name: 'Child 2 (Grade 10 Teen)', type: 'teen', allowed: ['sat', 'k12', 'tech', 'devotion', 'voice', 'chores'] },
-      'Child 1': { name: 'Child 1 (Grade 6 Junior)', type: 'kid', allowed: ['k12', 'devotion', 'chores'] }
+      'Dad': { name: 'Dad (Parent Admin)', type: 'admin', allowed: ['devotion', 'sat', 'k12', 'tech', 'voice', 'expense', 'chores'] },
+      'Mom': { name: 'Mom (Parent Admin)', type: 'admin', allowed: ['devotion', 'sat', 'k12', 'tech', 'voice', 'expense', 'chores'] },
+      'Child 2': { name: 'Child 2 (Grade 10 Teen)', type: 'teen', allowed: ['devotion', 'sat', 'k12', 'tech', 'voice', 'chores'] },
+      'Child 1': { name: 'Child 1 (Grade 6 Junior)', type: 'kid', allowed: ['devotion', 'k12', 'chores'] }
     };
 
-    let globalLiveInrRate = 83.50; // Initial fallback rate
+    let globalLiveInrRate = 83.50;
     let currentSpeechText = "Digital SAT Vocabulary Drill. Fastidious means meticulous.";
     let speechRate = 1.0;
 
@@ -362,7 +366,7 @@
       if (role.type === 'teen') badge.classList.add('role-teen');
       if (role.type === 'kid') badge.classList.add('role-kid');
 
-      const allTabs = ['expense', 'sat', 'k12', 'tech', 'devotion', 'voice', 'chores'];
+      const allTabs = ['devotion', 'sat', 'k12', 'tech', 'voice', 'expense', 'chores'];
       let firstVisibleTab = null;
 
       allTabs.forEach(t => {
@@ -393,52 +397,24 @@
       if (btn) btn.classList.add('active');
     }
 
-    // Dynamic Resilient API Fetcher for Live USD to INR Rates
-    async function fetchLiveUsdInrRate() {
-      const display = document.getElementById('live-rate-display');
-      const timestamp = document.getElementById('rate-timestamp');
-      if (display) display.innerText = "Fetching Live Exchange API Rate...";
+    function addGratitude() {
+      const input = document.getElementById('gratitude-input');
+      if (input && input.value.trim() !== '') {
+        const list = document.getElementById('gratitude-list');
+        list.innerHTML += `<br>• "${input.value.trim()}" — Family Member`;
+        input.value = '';
+      }
+    }
 
-      // Try Primary Live API Endpoint
+    async function fetchLiveUsdInrRate() {
       try {
         const res = await fetch('https://open.er-api.com/v6/latest/USD');
         const data = await res.json();
-        
         if (data && data.rates && data.rates.INR) {
           globalLiveInrRate = data.rates.INR;
-          const rateFormatted = globalLiveInrRate.toFixed(2);
-          const time = new Date().toLocaleTimeString();
-
-          if (display) display.innerHTML = `1 USD = ₹${rateFormatted} INR <span style="font-size: 0.85rem; color: #34d399;">(🟢 Live Market API)</span>`;
-          if (timestamp) timestamp.innerHTML = `<i class="fa-solid fa-clock"></i> Updated: ${time} UTC | Source: Open Exchange Rates Live Feed`;
-
           convertCurrency();
-          return;
         }
-      } catch (err) {
-        console.warn("Primary currency API failed, trying secondary fallback...");
-      }
-
-      // Try Secondary Backup Live API Endpoint
-      try {
-        const res2 = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-        const data2 = await res2.json();
-        if (data2 && data2.rates && data2.rates.INR) {
-          globalLiveInrRate = data2.rates.INR;
-          const rateFormatted = globalLiveInrRate.toFixed(2);
-          const time = new Date().toLocaleTimeString();
-
-          if (display) display.innerHTML = `1 USD = ₹${rateFormatted} INR <span style="font-size: 0.85rem; color: #34d399;">(🟢 Live Backup API)</span>`;
-          if (timestamp) timestamp.innerHTML = `<i class="fa-solid fa-clock"></i> Updated: ${time} UTC | Source: ExchangeRate-API`;
-
-          convertCurrency();
-          return;
-        }
-      } catch (err2) {
-        if (display) display.innerHTML = `1 USD = ₹83.50 INR <span style="font-size: 0.85rem; color: #fbbf24;">(Offline Cached)</span>`;
-        if (timestamp) timestamp.innerText = "Showing cached rate due to network latency.";
-        convertCurrency();
-      }
+      } catch (err) {}
     }
 
     function convertCurrency() {
@@ -460,7 +436,6 @@
       document.getElementById('quiz-explanation').style.display = 'block';
     }
 
-    // Initialize App and Fetch Live USD to INR Rate immediately
     setRole('Dad');
     fetchLiveUsdInrRate();
   </script>

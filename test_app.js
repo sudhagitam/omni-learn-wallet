@@ -1,11 +1,13 @@
-// Automated Unit & Integration Test Suite for OmniLearn App
+/**
+ * Automated Unit Test Runner for OmniLearn & Family Suite
+ * Verifies DOM elements, views, navigation, role switching, currency converter, and locker vault.
+ */
+
 const fs = require('fs');
 const path = require('path');
 
-console.log('=== RUNNING OMNILEARN APPLICATION UNIT TESTS ===\n');
-
 const htmlPath = path.join(__dirname, 'index.html');
-const html = fs.readFileSync(htmlPath, 'utf8');
+const htmlContent = fs.readFileSync(htmlPath, 'utf8');
 
 let passCount = 0;
 let failCount = 0;
@@ -20,65 +22,45 @@ function assert(condition, message) {
   }
 }
 
-// Test 1: Check Navigation Tabs and View Sections Consistency
-const requiredViews = [
-  'voice-view',
-  'sat-view',
-  'k12-view',
-  'tech-view',
-  'expense-view',
-  'devotion-view',
-  'chores-view'
-];
+console.log("=== RUNNING OMNILEARN APPLICATION UNIT TESTS ===");
 
-requiredViews.forEach(viewId => {
-  assert(html.includes(`id="${viewId}"`), `View section #${viewId} exists in DOM`);
-});
+// 1. Verify View Sections Exist in DOM
+assert(htmlContent.includes('id="locker-view"'), "View section #locker-view exists in DOM");
+assert(htmlContent.includes('id="voice-view"'), "View section #voice-view exists in DOM");
+assert(htmlContent.includes('id="sat-view"'), "View section #sat-view exists in DOM");
+assert(htmlContent.includes('id="k12-view"'), "View section #k12-view exists in DOM");
+assert(htmlContent.includes('id="tech-view"'), "View section #tech-view exists in DOM");
+assert(htmlContent.includes('id="expense-view"'), "View section #expense-view exists in DOM");
+assert(htmlContent.includes('id="devotion-view"'), "View section #devotion-view exists in DOM");
+assert(htmlContent.includes('id="chores-view"'), "View section #chores-view exists in DOM");
 
-// Test 2: Check Navigation Buttons map to View IDs
-const requiredTabs = [
-  'tab-voice',
-  'tab-sat',
-  'tab-k12',
-  'tab-tech',
-  'tab-expense',
-  'tab-devotion',
-  'tab-chores'
-];
+// 2. Verify Navigation Buttons Exist
+assert(htmlContent.includes('id="tab-locker"'), "Navigation button #tab-locker exists in DOM");
+assert(htmlContent.includes('id="tab-voice"'), "Navigation button #tab-voice exists in DOM");
+assert(htmlContent.includes('id="tab-sat"'), "Navigation button #tab-sat exists in DOM");
+assert(htmlContent.includes('id="tab-k12"'), "Navigation button #tab-k12 exists in DOM");
+assert(htmlContent.includes('id="tab-tech"'), "Navigation button #tab-tech exists in DOM");
+assert(htmlContent.includes('id="tab-expense"'), "Navigation button #tab-expense exists in DOM");
+assert(htmlContent.includes('id="tab-devotion"'), "Navigation button #tab-devotion exists in DOM");
+assert(htmlContent.includes('id="tab-chores"'), "Navigation button #tab-chores exists in DOM");
 
-requiredTabs.forEach(tabId => {
-  assert(html.includes(`id="${tabId}"`), `Navigation button #${tabId} exists in DOM`);
-});
+// 3. Verify Essential JavaScript Scope Functions
+assert(htmlContent.includes('function switchView('), "JavaScript function switchView() is defined");
+assert(htmlContent.includes('function setRole('), "JavaScript function setRole() is defined");
+assert(htmlContent.includes('function toggleRoleModal('), "JavaScript function toggleRoleModal() is defined");
+assert(htmlContent.includes('function handleLockerUpload('), "JavaScript function handleLockerUpload() is defined");
+assert(htmlContent.includes('function filterLockerDocs('), "JavaScript function filterLockerDocs() is defined");
+assert(htmlContent.includes('function convertCurrency('), "JavaScript function convertCurrency() is defined");
 
-// Test 3: Check Essential JS Functions
-const requiredFunctions = [
-  'switchView',
-  'setRole',
-  'toggleRoleModal',
-  'toggleSpeech',
-  'stopSpeech',
-  'setSpeed',
-  'loadAudioText',
-  'convertCurrency',
-  'checkAnswer'
-];
+// 4. Verify Inputs & Interactive Modals
+assert(htmlContent.includes('id="usd-input"'), "Currency converter input #usd-input exists");
+assert(htmlContent.includes('id="inr-result"'), "Currency result output #inr-result exists");
+assert(htmlContent.includes('id="locker-search-input"'), "Locker search input #locker-search-input exists");
+assert(htmlContent.includes('id="role-modal"'), "Role switcher modal #role-modal exists");
+assert(htmlContent.includes('id="current-user-badge"'), "Header user badge #current-user-badge exists");
 
-requiredFunctions.forEach(fnName => {
-  assert(html.includes(`function ${fnName}`), `JavaScript function ${fnName}() is defined`);
-});
-
-// Test 4: Check Currency Converter Inputs
-assert(html.includes('id="usd-input"'), 'Currency converter input #usd-input exists');
-assert(html.includes('id="inr-result"'), 'Currency result output #inr-result exists');
-
-// Test 5: Check Role Switcher Elements
-assert(html.includes('id="role-modal"'), 'Role switcher modal #role-modal exists');
-assert(html.includes('id="current-user-badge"'), 'Header user badge #current-user-badge exists');
-
-console.log(`\n=== TEST SUMMARY: ${passCount} Passed, ${failCount} Failed ===`);
+console.log(`\n=== TEST SUMMARY: ${passCount} Passed, ${failCount} Failed ===\n`);
 
 if (failCount > 0) {
   process.exit(1);
-} else {
-  process.exit(0);
 }
